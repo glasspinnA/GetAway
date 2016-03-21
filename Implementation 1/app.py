@@ -95,7 +95,7 @@ def getAllWishes():
 def showDashboard():
     return render_template('dashboard.html')
     
-# Används ej än, men förberedd...
+# Not being used but prepared
 @app.route('/deleteWish',methods=['POST'])
 def deleteWish():
     try:
@@ -121,7 +121,7 @@ def deleteWish():
         cursor.close()
         conn.close()
 
-# Används ej än, men förberedd...
+# Not being used but prepared
 @app.route('/getWishById',methods=['POST'])
 def getWishById():
     try:
@@ -144,7 +144,7 @@ def getWishById():
     except Exception as e:
         return render_template('error.html',error = str(e))
 
-# Används ej än, men förberedd...
+# Not being used but prepared
 @app.route('/getWish',methods=['POST'])
 def getWish():
     try:
@@ -219,7 +219,7 @@ def addWish():
         cursor.close()
         conn.close()
 
-# Används ej än, men förberedd...
+# Not being used but prepared
 @app.route('/updateWish', methods=['POST'])
 def updateWish():
     try:
