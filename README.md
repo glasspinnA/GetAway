@@ -1,9 +1,5 @@
 # GetAway
 
-
-###### *instruktioner för mac*
-
-
 Python (3.5.1)
 ------
 https://www.python.org/downloads/release/python-351/
