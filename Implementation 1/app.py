@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from flask import Flask, render_template, json, request,redirect,session,jsonify, url_for
 import pymysql.cursors
 from werkzeug import generate_password_hash, check_password_hash
@@ -235,6 +238,21 @@ def updateWish():
     finally:
         cursor.close()
         conn.close()
+
+@app.route('/login',methods=['POST','GET'])
+def validateLogin():
+    if request.method == 'POST':
+        usernameInput = request.form['username']
+        passwordInput = request.form['password']
+
+        if usernameInput == 'admin' and passwordInput == 'qaz123':
+            return redirect(url_for('welcome'))  
+
+    return render_template('login.html')
+
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')
 
 
 if __name__ == "__main__":
