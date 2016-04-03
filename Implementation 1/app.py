@@ -11,7 +11,6 @@ import os
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-
 mysql = pymysql.connect(host='sql7.freemysqlhosting.net',
                              user='sql7111162',
                              password='j37hIiC1L1',
@@ -246,7 +245,7 @@ def updateWish():
 @app.before_request
 def before_request():
     session.permanent = True
-    app.permanent_session_lifetime = timedelta(seconds=20) #Om inget händer på 20 sek så droppas sessionen
+    app.permanent_session_lifetime = timedelta(minutes=20) #Om inget händer på 20 sek så droppas sessionen
     g.user = None
     if 'user' in session:
         g.user = session['user']
@@ -255,27 +254,25 @@ def before_request():
 #stämmer överrens med det username och password som finns i DB
 @app.route('/login',methods=['POST','GET'])
 def login():
-    errorMessage = None
     try:
-        with connection.cursor() as cursor:
+        with mysql.cursor() as cursor:
             if request.method == 'POST':
                 usernameInput = request.form['username']
                 passwordInput = request.form['password']
-                cursor.callproc('sp_deleteWish',(_id,_user))
-                cursor.execute('SELECT username FROM adminDB WHERE username =%s', [usernameInput])
+                cursor.execute('SELECT username FROM tbl_login WHERE username =%s', [usernameInput])
                 usernameFromDB = cursor.fetchone()[0]
-                cursor.execute('SELECT password FROM adminDB WHERE username =%s', [usernameInput])
+                cursor.execute('SELECT password FROM tbl_login WHERE username =%s', [usernameInput])
                 passwordFromDB = cursor.fetchone()[0]
-                if usernameInput == usernameFromDB and passwordInput == passwordFromDB:
+                if usernameInput == usernameFromDB and check_password_hash(passwordFromDB, passwordInput):
                     session['user'] = usernameInput
-                    return redirect(url_for('welcome'))  
+                    return redirect(url_for('welcome'))
                 else:
-                    errorMessage = "Fel lösenord"
+                    flash("Fel användarnamn eller lösenord")
+            return render_template('login.html')
     except Exception as e:
-            return render_template('login.html', error = errorMessage)
-    finally:
-        cursor.close()
-
+        flash("Fel användarnamn eller lösenord")
+        return render_template('login.html')
+             
 #Metod som renderar admin sidan
 @app.route('/welcome')
 def welcome():
@@ -288,7 +285,16 @@ def welcome():
 def logout():
     session.pop('user', None)
     flash("Du är utloggad")
-    return redirect(url_for('main'))
+    return redirect(url_for('login'))
 
+
+@app.route("/changeContactInfo", methods=['POST','GET'])
+def changePassword():
+    if request.method == 'POST':
+        oldPassword = request.form['oldPassword']
+        login()
+        if check_password_hash(login.passwordFromDB, oldPassword):
+            print(login.passwordFromDB)
+    return render_template('changeContactInfo.html')
 if __name__ == "__main__":
     app.run(debug=True, port=5002)
