@@ -209,7 +209,7 @@ def addWish():
 
                 if len(data) is 0:
                     mysql.commit()
-                    return redirect('/showDashboard')
+                    return redirect('/dashboard')
                 else:
                     return render_template('error.html',error = 'An error occurred!')
             else:
