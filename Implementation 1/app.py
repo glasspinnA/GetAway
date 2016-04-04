@@ -55,13 +55,36 @@ def upload():
         return json.dumps({'filename':f_name})
 
 
-@app.route('/showAddWish')
+@app.route('/add')
 def showAddWish():
-    return render_template('addWish.html')
+    if session.get('user'):
+        return render_template('addWish.html')
+    else:
+        return render_template('error.html', error = 'Unauthorized Access')
 
+@app.route('/updateWish', methods=['POST'])
+def updateWish():
+    try:
+        with mysql.cursor() as cursor:
+            if session.get('user'):
+                _title = request.form['title']
+                _description = request.form['description']
+                _wish_id = request.form['id']
+                _filePath = request.form['filePath']
 
+                cursor.callproc('sp_updateWish',(_title,_description,_wish_id.split(),_filePath))
+                data = cursor.fetchall()
 
-
+                if len(data) is 0:
+                    mysql.commit()
+                    return json.dumps({'status':'OK'})
+                else:
+                    return json.dumps({'status':'ERROR'})
+    except Exception as e:
+        return json.dumps({'status':'Unauthorized access'})
+    finally:
+        cursor.close()
+    
 @app.route('/getAllWishes')
 def getAllWishes():
     try:
@@ -85,10 +108,10 @@ def getAllWishes():
     finally:
         cursor.close()
 
-@app.route('/showDashboard')
+@app.route('/dashboard')
 def showDashboard():
-    return render_template('dashboard.html')
-    
+        return render_template('dashboard.html')
+
 # Not being used but prepared
 @app.route('/deleteWish',methods=['POST'])
 def deleteWish():
@@ -96,15 +119,13 @@ def deleteWish():
         with mysql.cursor() as cursor:
         
             if session.get('user'):
-                _id = request.form['id']    
-                _user = session.get('user')
+                _id = request.form['id']
 
-                conn = mysql.connect()
-                cursor.callproc('sp_deleteWish',(_id,_user))
+                cursor.callproc('sp_deleteWish',(_id.split()))
                 result = cursor.fetchall()
 
                 if len(result) is 0:
-                    conn.commit()
+                    mysql.commit()
                     return json.dumps({'status':'OK'})
                 else:
                     return json.dumps({'status':'An Error occured'})
@@ -114,9 +135,7 @@ def deleteWish():
         return json.dumps({'status':str(e)})
     finally:
         cursor.close()
-        conn.close()
-
-# Not being used but prepared
+    
 @app.route('/getWishById',methods=['POST'])
 def getWishById():
     try:
@@ -124,34 +143,29 @@ def getWishById():
             if session.get('user'):
             
                 _id = request.form['id']
-                _user = session.get('user')
     
-                conn = mysql.connect()
-                cursor.callproc('sp_GetWishById',(_id,_user))
+                cursor.callproc('sp_GetWishById',(_id.split()))
                 result = cursor.fetchall()
 
                 wish = []
-                wish.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2],'FilePath':result[0][3],'Private':result[0][4],'Done':result[0][5]})
+                wish.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2],'FilePath':result[0][3]})
 
                 return json.dumps(wish)
             else:
                 return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
-
-# Not being used but prepared
+    
 @app.route('/getWish',methods=['POST'])
 def getWish():
     try:
         with mysql.cursor() as cursor:
             if session.get('user'):
-                _user = session.get('user')
                 _limit = pageLimit
                 _offset = request.form['offset']
                 _total_records = 0
 
-                conn = mysql.connect()
-                cursor.callproc('sp_GetWishByUser',(_user,_limit,_offset,_total_records))
+                cursor.callproc('sp_GetWishByUser',(_limit,_offset,_total_records))
             
                 wishes = cursor.fetchall()
                 cursor.close()
@@ -160,8 +174,6 @@ def getWish():
 
                 outParam = cursor.fetchall()
 
-            
-
                 response = []
                 wishes_dict = []
                 for wish in wishes:
@@ -169,76 +181,44 @@ def getWish():
                             'Id': wish[0],
                             'Title': wish[1],
                             'Description': wish[2],
-                            'Date': wish[4]}
+                            'FilePath': wish[3]}
                     wishes_dict.append(wish_dict)
                 response.append(wishes_dict)
                 response.append({'total':outParam[0][0]}) 
                 
-
-
-
-
                 return json.dumps(response)
             else:
                 return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html', error = str(e))
-
+        
 @app.route('/addWish',methods=['POST'])
 def addWish():    
     try:
         with mysql.cursor() as cursor:
-            _title = request.form['inputTitle']
-            _description = request.form['inputDescription']
-            if request.form.get('filePath') is None:
-                _filePath = ''
+            if session.get('user'):
+                _title = request.form['inputTitle']
+                _description = request.form['inputDescription']
+                if request.form.get('filePath') is None:
+                    _filePath = ''
+                else:
+                    _filePath = request.form.get('filePath')
+
+                cursor.callproc('sp_addWish',(_title,_description,_filePath))
+                data = cursor.fetchall()
+
+                if len(data) is 0:
+                    mysql.commit()
+                    return redirect('/showDashboard')
+                else:
+                    return render_template('error.html',error = 'An error occurred!')
             else:
-                _filePath = request.form.get('filePath')
+                return render_template('error.html', error = 'Unauthorized Access')
 
-            cursor.callproc('sp_addWish',(_title,_description,_filePath))
-            data = cursor.fetchall()
-
-            if len(data) is 0:
-                mysql.commit()
-                return redirect('/showDashboard')
-            else:
-                return render_template('error.html',error = 'An error occurred!')
-
-            return render_template('error.html',error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     finally:
         cursor.close()
-
-# Not being used but prepared
-@app.route('/updateWish', methods=['POST'])
-def updateWish():
-    try:
-        with mysql.cursor() as cursor:
-            if session.get('user'):
-                _user = session.get('user')
-                _title = request.form['title']
-                _description = request.form['description']
-                _wish_id = request.form['id']
-                _filePath = request.form['filePath']
-                _isPrivate = request.form['isPrivate']
-                _isDone = request.form['isDone']
-
-
-                conn = mysql.connect()
-                cursor.callproc('sp_updateWish',(_title,_description,_wish_id,_user,_filePath,_isPrivate,_isDone))
-                data = cursor.fetchall()
-
-                if len(data) is 0:
-                    conn.commit()
-                    return json.dumps({'status':'OK'})
-                else:
-                    return json.dumps({'status':'ERROR'})
-    except Exception as e:
-        return json.dumps({'status':'Unauthorized access'})
-    finally:
-        cursor.close()
-        conn.close()
 
 #Metod som kontrollerar om det finns någon aktiv session eller inte
 #Metoden droppar också session om den har varit inaktiv i 20 sekunder
@@ -274,14 +254,15 @@ def login():
         return render_template('login.html')
              
 #Metod som renderar admin sidan
-@app.route('/welcome')
+@app.route('/admin')
 def welcome():
     if g.user:
         return render_template('welcome.html')
+    else:
+        return render_template('error.html', error = 'Unauthorized Access')
     return redirect(url_for('login'))
-
 #Metod som droppar ens session när man loggar ut från admin sidan
-@app.route('/welcome', methods=["POST","GET"])
+@app.route('/admin', methods=["POST","GET"])
 def logout():
     session.pop('user', None)
     flash("Du är utloggad")
