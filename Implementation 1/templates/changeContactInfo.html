@@ -7,9 +7,19 @@
     <div class="container">
       <h1>Byt lösen</h1>
       <form action="" method="post">
-        <input type="text" placeholder="Gamla lösenord" name="oldPassword" value="{{request.form.oldPassword }}">
-        <!--<input type="password" placeholder="Nya lösenord" name="newPassword" value="{{request.form.newPassword }}">-->
+        <input type="password" placeholder="Gamla lösenord" name="oldPassword" value="{{request.form.oldPassword }}">
+        <input type="password" placeholder="Nya lösenord" name="newPassword" value="{{request.form.newPassword }}">
+        <input type="password" placeholder="Skriv nya lösenord" name="newPasswordChecker" value="{{request.form.newPasswordChecker }}">
         <input type="submit" value="Byt lösenord">
+                {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
       </form>
     </div>
   </body>

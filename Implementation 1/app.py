@@ -234,6 +234,7 @@ def before_request():
 #stämmer överrens med det username och password som finns i DB
 @app.route('/login',methods=['POST','GET'])
 def login():
+    global passwordFromDB
     try:
         with mysql.cursor() as cursor:
             if request.method == 'POST':
@@ -252,6 +253,8 @@ def login():
     except Exception as e:
         flash("Fel användarnamn eller lösenord")
         return render_template('login.html')
+    finally:
+        cursor.close()
              
 #Metod som renderar admin sidan
 @app.route('/admin')
@@ -268,14 +271,30 @@ def logout():
     flash("Du är utloggad")
     return redirect(url_for('login'))
 
-
-@app.route("/changeContactInfo", methods=['POST','GET'])
+#Metod som ändrar lösenordet till admin kontont.
+#Skickar det nya lösenordet till DB och ersätter det gamla lösenordet
+@app.route("/changeContactInfo", methods=["POST","GET"])
 def changePassword():
-    if request.method == 'POST':
-        oldPassword = request.form['oldPassword']
-        login()
-        if check_password_hash(login.passwordFromDB, oldPassword):
-            print(login.passwordFromDB)
-    return render_template('changeContactInfo.html')
+    if g.user:
+        try:
+            with mysql.cursor() as cursor:
+                if request.method == "POST":
+                    oldPasswordInput = request.form['oldPassword']
+                    newPasswordInput = request.form['newPassword']
+                    newPasswordCheckInput = request.form['newPasswordChecker']
+                    if check_password_hash(passwordFromDB, oldPasswordInput) and newPasswordInput == newPasswordCheckInput:
+                        newPassword = generate_password_hash(newPasswordInput)
+                        cursor.execute('UPDATE tbl_login SET password=%s WHERE password=%s', (newPassword,passwordFromDB))
+                        flash("Lösenordet är nu ändrat")
+                        mysql.commit()
+                    else:
+                        flash("Det gamla lösenordet är felaktigt eller så stämmer det nya lösenordet inte överrens")
+        except Exception as e:
+            return render_template('error.html',error = str(e)) 
+        finally:
+            cursor.close() 
+        return render_template('changeContactInfo.html')
+    return redirect(url_for('login'))
+
 if __name__ == "__main__":
     app.run(debug=True, port=5002)
