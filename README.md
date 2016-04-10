@@ -34,3 +34,13 @@ $ pip install PyMySQL
 För Windows
 pip install PyMySQL
 ```
+
+Werkzeug
+------
+```
+För OSX
+$ pip install Werkzeug
+
+För Windows
+pip install Werkzeug
+```
