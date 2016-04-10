@@ -11,7 +11,7 @@
         <input type="password" placeholder="Nya lösenord" name="newPassword" value="{{request.form.newPassword }}">
         <input type="password" placeholder="Skriv nya lösenord" name="newPasswordChecker" value="{{request.form.newPasswordChecker }}">
         <input type="submit" value="Byt lösenord">
-                {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}
           {% if messages %}
             <ul class=flashes>
               {% for message in messages %}
