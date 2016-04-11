@@ -64,10 +64,10 @@ def upload():
     
 @app.route('/add')
 def showAddWish():
-    if session.get('user'):
+    #if session.get('user'):
         return render_template('addWish.html')
-    else:
-        return render_template('error.html', error = 'Unauthorized Access')
+    #else:
+    #    return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Uppdatera inlägg.
     
@@ -75,7 +75,7 @@ def showAddWish():
 def updateWish():
     try:
         with mysql.cursor() as cursor:
-            if session.get('user'):
+            #if session.get('user'):
                 _title = request.form['title']
                 _description = request.form['description']
                 _wish_id = request.form['id']
@@ -133,7 +133,7 @@ def deleteWish():
     try:
         with mysql.cursor() as cursor:
         
-            if session.get('user'):
+            #if session.get('user'):
                 _id = request.form['id']
 
                 cursor.callproc('sp_deleteWish',(_id.split()))
@@ -144,8 +144,8 @@ def deleteWish():
                     return json.dumps({'status':'OK'})
                 else:
                     return json.dumps({'status':'An Error occured'})
-            else:
-                return render_template('error.html',error = 'Unauthorized Access')
+            #else:
+            #    return render_template('error.html',error = 'Unauthorized Access')
     except Exception as e:
         return json.dumps({'status':str(e)})
     finally:
@@ -157,7 +157,7 @@ def deleteWish():
 def getWishById():
     try:
         with mysql.cursor() as cursor:
-            if session.get('user'):
+            #if session.get('user'):
             
                 _id = request.form['id']
     
@@ -168,8 +168,8 @@ def getWishById():
                 wish.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2],'FilePath':result[0][3],'Tag':result[0][4]})
 
                 return json.dumps(wish)
-            else:
-                return render_template('error.html', error = 'Unauthorized Access')
+            #else:
+            #    return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     
@@ -179,18 +179,22 @@ def getWishById():
 def addWish():    
     try:
         with mysql.cursor() as cursor:
-            if session.get('user'):
+            #if session.get('user'):
                 _title = request.form['inputTitle']
                 _description = request.form['inputDescription']
+                
                 if request.form.get('filePath') is None:
                     _filePath = ''
                 else:
                     _filePath = request.form.get('filePath')
-                if request.form.get('inputTag') is None:
-                    _tag = ''
-                else:
-                    _tag = request.form['inputTag']
-                
+
+                _tag = " "
+                storeTags = ""
+                checkboxArray = []
+                checkboxArray = request.form.getlist("inputTag")
+                for i in checkboxArray:
+                    storeTags += i + ", "               
+                _tag = storeTags   
                 cursor.callproc('sp_addWish',(_title,_description,_filePath,_tag))
                 data = cursor.fetchall()
 
@@ -199,8 +203,8 @@ def addWish():
                     return redirect('/dashboard')
                 else:
                     return render_template('error.html',error = 'An error occurred!')
-            else:
-                return render_template('error.html', error = 'Unauthorized Access')
+            #else:
+            #    return render_template('error.html', error = 'Unauthorized Access')
 
     except Exception as e:
         return render_template('error.html',error = str(e))
