@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template, json, request,redirect,session,jsonify, url_for,g, flash
 import pymysql.cursors
+import random
 from werkzeug import generate_password_hash, check_password_hash
 from werkzeug.wsgi import LimitedStream
 from datetime import timedelta
@@ -283,5 +284,64 @@ def changePassword():
         return render_template('changeContactInfo.html')
     return redirect(url_for('login'))
 
+'''
+
+@app.route("/showPage")
+def showPage():
+    try:
+        with mysql.cursor() as cursor:
+            countryId = "119"
+            cursor.execute("SELECT wish_title FROM tbl_wish WHERE wish_id=%s", [countryId])
+            title = cursor.fetchone()[0]
+            cursor.execute("SELECT wish_description FROM tbl_wish WHERE wish_id=%s", [countryId])
+            text = cursor.fetchone()[0]
+            cursor.execute("SELECT wish_file_path FROM tbl_wish WHERE wish_id=%s", [countryId])
+            image = cursor.fetchone()[0]
+    finally:
+        cursor.close()
+    return render_template("showPage.html", title=title, text=text, image=image)
+
+
+
+
+def radomizer():
+    try:
+        with mysql.cursor() as cursor:
+            cursor.execute('SELECT id FROM test')
+            randomList = list(cursor)
+            r = random.choice(randomList)
+    finally:
+        cursor.close()
+
+@app.route("/showPage")
+def showPage():
+    try:
+        with mysql.cursor() as cursor:
+            countryId = input("Välj id ")
+            cursor.execute("SELECT wish_title FROM tbl_wish WHERE wish_id=%s", [countryId])
+            title = cursor.fetchone()[0]
+            cursor.execute("SELECT wish_description from tbl_wish WHERE wish_id=%s", [countryId])
+            text = cursor.fetchone()[0]
+            cursor.execute("SELECT wish_file_path from tbl_wish WHERE wish_id=%s", [countryId])
+            image = cursor.fetchone()[0] 
+    finally:
+        cursor.close()
+    return render_template("showPage.html", title=title, text=text, image=image)
+
+@app.route("/search")
+#Not beign used but is prepared 
+def searchFunction():
+    if request.method == "POST":
+        searchword = request.form['searchField']
+        cursor.execute('SELECT searchword FROM database')
+        result = cursor.fetchall()
+        flash(result)
+#Not beign used but is prepared 
+def commentField():
+    if request.method == 'POST':
+        title = request.form['']
+        comment = request.form['']
+        flash(title + comment)
+'''
 if __name__ == "__main__":
     app.run(debug=True, port=5002)
