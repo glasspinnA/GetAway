@@ -10,15 +10,17 @@ import uuid
 import os
 
 app = Flask(__name__)
+
+# DATABAS: Uppgifter för anslutning.
 app.secret_key = os.urandom(24)
 mysql = pymysql.connect(host='sql7.freemysqlhosting.net',
                              user='sql7111162',
                              password='j37hIiC1L1',
                              db='sql7111162')
 
-# Default setting
-pageLimit = 5
-
+# Fix för Connection Reset på POST
+# Mer info om denna klass:
+# http://flask.pocoo.org/snippets/47/
 class StreamConsumingMiddleware(object):
 
     def __init__(self, app):
@@ -40,10 +42,13 @@ class StreamConsumingMiddleware(object):
 app.config['UPLOAD_FOLDER'] = 'static/Uploads'
 app.wsgi_app = StreamConsumingMiddleware(app.wsgi_app)
 
+# SIDA: Start.
 
 @app.route('/')
 def main():
     return render_template('index.html')
+
+# FUNKTION: Ladda upp fil.
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -54,7 +59,8 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], f_name))
         return json.dumps({'filename':f_name})
 
-
+# SIDA: Lägg till.
+    
 @app.route('/add')
 def showAddWish():
     if session.get('user'):
@@ -62,6 +68,8 @@ def showAddWish():
     else:
         return render_template('error.html', error = 'Unauthorized Access')
 
+# FUNKTION: Uppdatera inlägg.
+    
 @app.route('/updateWish', methods=['POST'])
 def updateWish():
     try:
@@ -85,6 +93,8 @@ def updateWish():
     finally:
         cursor.close()
     
+# FUNKTION: Hämta alla inlägg (från databasen).
+    
 @app.route('/getAllWishes')
 def getAllWishes():
     try:
@@ -98,7 +108,8 @@ def getAllWishes():
                         'Id': wish[0],
                         'Title': wish[1],
                         'Description': wish[2],
-                        'FilePath': wish[3],}
+                        'FilePath': wish[3],
+                        'Tag': wish[4]} 
                 wishes_dict.append(wish_dict)
                 
             return json.dumps(wishes_dict)
@@ -108,11 +119,14 @@ def getAllWishes():
     finally:
         cursor.close()
 
+# SIDA: Visa alla inlägg.
+        
 @app.route('/dashboard')
 def showDashboard():
         return render_template('dashboard.html')
 
-# Not being used but prepared
+# FUNKTION: Ta bort inlägg.
+
 @app.route('/deleteWish',methods=['POST'])
 def deleteWish():
     try:
@@ -135,6 +149,8 @@ def deleteWish():
         return json.dumps({'status':str(e)})
     finally:
         cursor.close()
+        
+# FUNKTION: Hämta ett inläggs id (används för redigering).
     
 @app.route('/getWishById',methods=['POST'])
 def getWishById():
@@ -148,7 +164,7 @@ def getWishById():
                 result = cursor.fetchall()
 
                 wish = []
-                wish.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2],'FilePath':result[0][3]})
+                wish.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2],'FilePath':result[0][3],'Tag':result[0][4]})
 
                 return json.dumps(wish)
             else:
@@ -156,41 +172,7 @@ def getWishById():
     except Exception as e:
         return render_template('error.html',error = str(e))
     
-@app.route('/getWish',methods=['POST'])
-def getWish():
-    try:
-        with mysql.cursor() as cursor:
-            if session.get('user'):
-                _limit = pageLimit
-                _offset = request.form['offset']
-                _total_records = 0
-
-                cursor.callproc('sp_GetWishByUser',(_limit,_offset,_total_records))
-            
-                wishes = cursor.fetchall()
-                cursor.close()
-
-                cursor.execute('SELECT @_sp_GetWishByUser_3');
-
-                outParam = cursor.fetchall()
-
-                response = []
-                wishes_dict = []
-                for wish in wishes:
-                    wish_dict = {
-                            'Id': wish[0],
-                            'Title': wish[1],
-                            'Description': wish[2],
-                            'FilePath': wish[3]}
-                    wishes_dict.append(wish_dict)
-                response.append(wishes_dict)
-                response.append({'total':outParam[0][0]}) 
-                
-                return json.dumps(response)
-            else:
-                return render_template('error.html', error = 'Unauthorized Access')
-    except Exception as e:
-        return render_template('error.html', error = str(e))
+# FUNKTION: Lägg till.   
         
 @app.route('/addWish',methods=['POST'])
 def addWish():    
@@ -203,8 +185,12 @@ def addWish():
                     _filePath = ''
                 else:
                     _filePath = request.form.get('filePath')
-
-                cursor.callproc('sp_addWish',(_title,_description,_filePath))
+                if request.form.get('inputTag') is None:
+                    _tag = ''
+                else:
+                    _tag = request.form['inputTag']
+                
+                cursor.callproc('sp_addWish',(_title,_description,_filePath,_tag))
                 data = cursor.fetchall()
 
                 if len(data) is 0:
@@ -264,6 +250,7 @@ def welcome():
     else:
         return render_template('error.html', error = 'Unauthorized Access')
     return redirect(url_for('login'))
+
 #Metod som droppar ens session när man loggar ut från admin sidan
 @app.route('/admin', methods=["POST","GET"])
 def logout():
