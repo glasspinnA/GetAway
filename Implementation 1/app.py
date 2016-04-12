@@ -195,6 +195,7 @@ def addWish():
                 for i in checkboxArray:
                     storeTags += i + ", "               
                 _tag = storeTags   
+
                 cursor.callproc('sp_addWish',(_title,_description,_filePath,_tag))
                 data = cursor.fetchall()
 
@@ -288,13 +289,30 @@ def changePassword():
         return render_template('changeContactInfo.html')
     return redirect(url_for('login'))
 
-'''
+
 
 @app.route("/showPage")
-def showPage():
+def radomizer():
+    choiceFromUser = 'Nattliv, Januari, Europa,'
     try:
         with mysql.cursor() as cursor:
-            countryId = "119"
+            cursor.execute('SELECT wish_id FROM tbl_wish WHERE wish_tag=%s', [choiceFromUser])
+            resultFromDatabase = cursor.fetchall()
+            res = random.choice(resultFromDatabase)
+            convertRes = str(res)
+            removeShit = convertRes.replace("(","").replace(",","").replace(")","")
+            showPage(removeShit)
+    finally:
+        cursor.close()
+    return showPage(removeShit)
+
+
+@app.route("/showPage")
+def showPage(resultFromDatabase):
+    result = resultFromDatabase
+    try:
+        with mysql.cursor() as cursor:
+            countryId = result
             cursor.execute("SELECT wish_title FROM tbl_wish WHERE wish_id=%s", [countryId])
             title = cursor.fetchone()[0]
             cursor.execute("SELECT wish_description FROM tbl_wish WHERE wish_id=%s", [countryId])
@@ -308,15 +326,7 @@ def showPage():
 
 
 
-def radomizer():
-    try:
-        with mysql.cursor() as cursor:
-            cursor.execute('SELECT id FROM test')
-            randomList = list(cursor)
-            r = random.choice(randomList)
-    finally:
-        cursor.close()
-
+'''
 @app.route("/showPage")
 def showPage():
     try:
