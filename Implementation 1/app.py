@@ -183,6 +183,7 @@ def addWish():
         with mysql.cursor() as cursor:
             #if session.get('user'):
                 _title = request.form['inputTitle']
+                _country = request.form['inputCountry']
                 _description = request.form['inputDescription']
                 
                 if request.form.get('filePath') is None:
@@ -198,7 +199,7 @@ def addWish():
                     storeTags += i + ", "               
                 _tag = storeTags   
 
-                cursor.callproc('sp_addWish',(_title,_description,_filePath,_tag))
+                cursor.callproc('sp_addWish',(_title,_country,_description,_filePath,_tag))
                 data = cursor.fetchall()
 
                 if len(data) is 0:
