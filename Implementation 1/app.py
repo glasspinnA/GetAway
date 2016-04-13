@@ -323,7 +323,7 @@ def showPage(resultFromDatabase):
             image = cursor.fetchone()[0]
     finally:
         cursor.close()
-    return render_template("showPage.html", title=title, text=text, image=image)
+    return render_template("page2index.html", title=title, text=text, image=image, country=country)
 
 
 
