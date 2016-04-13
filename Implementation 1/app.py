@@ -319,6 +319,8 @@ def showPage(resultFromDatabase):
             text = cursor.fetchone()[0]
             cursor.execute("SELECT wish_file_path FROM tbl_wish WHERE wish_id=%s", [countryId])
             image = cursor.fetchone()[0]
+            cursor.execute("SELECT wish_country_path FROM tbl_wish WHERE wish_id=%s", [countryId])
+            image = cursor.fetchone()[0]
     finally:
         cursor.close()
     return render_template("showPage.html", title=title, text=text, image=image)
