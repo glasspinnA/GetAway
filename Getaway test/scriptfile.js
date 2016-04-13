@@ -1,6 +1,7 @@
 function getAnything(){
     var showAnything = document.getElementById("anything");
-    if (showAnything.style.display !== "none") {
+    console.log(showAnything.style.display);
+    if (showAnything.style.display == "block") {
         showAnything.style.display = "none";
     }
     else {
@@ -10,7 +11,7 @@ function getAnything(){
 
 function getAnywhere(){
     var showAnything = document.getElementById("anywhere");
-    if (showAnything.style.display !== "none") {
+    if (showAnything.style.display == "block") {
         showAnything.style.display = "none";
     }
     else {
@@ -20,7 +21,7 @@ function getAnywhere(){
 
 function getAnytime(){
     var showAnything = document.getElementById("anytime");
-    if (showAnything.style.display !== "none") {
+    if (showAnything.style.display == "block") {
         showAnything.style.display = "none";
     }
     else {
@@ -52,5 +53,12 @@ function randomGrab() {
     var sendAnywhereChoice = document.getElementById('heading2').innerHTML
     var sendAnytimeChoice = document.getElementById('heading3').innerHTML
     var allChoices = [sendAnythingChoice, sendAnywhereChoice, sendAnytimeChoice]
-    alert (allChoices)
+    
+    document.getElementById('fillAnything').value = (sendAnythingChoice);
+    var fillAnything =  document.getElementById('fillAnything').value
+    alert (fillAnything);
+    console.log (fillAnything)
 }
+
+
+    
