@@ -77,6 +77,7 @@ def updateWish():
         with mysql.cursor() as cursor:
             #if session.get('user'):
                 _title = request.form['title']
+                _country = request.form['country']
                 _description = request.form['description']
                 _wish_id = request.form['id']
                 _filePath = request.form['filePath']
