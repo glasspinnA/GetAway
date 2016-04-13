@@ -21,7 +21,7 @@
 
 #title {
 	position: absolute;
-	z-index: -1;
+	z-index: 1;
 	font-family: 'Tahoma', san-serif;
 	top: 2em;
 	left: 2em;
