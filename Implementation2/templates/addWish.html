@@ -45,28 +45,6 @@
     position: relative;
     overflow: hidden;
 }
-   
-.label_category {
-display: block !important;
-}
-
-.well {
-background: #fff !important;
-border: 0 !important;
-}
-        
-.category_id {
-display: inline-flex;
-white-space: nowrap;
-}
-.category_id input[type="checkbox"], .category_id input[type="radio"] {
-    margin: -0.4em 0.5em 0 0.57em;
-}
-        
-.category_id p {
-display: block;
-}
-        
 .btn-file input[type=file] {
     position: absolute;
     top: 0;
@@ -150,22 +128,23 @@ display: block;
             </div>
   
 </div>
-          <label class="label_category" for="txtPost">Tag Kategorier</label>
-
-<div class="form-group category_id">
-  <input class="form-control" type="checkbox" value="Nattliv" name="inputTag"><p>Nattliv</p></input>                
+        
+<div class="form-group">
+  <label for="txtPost">Tag Kategorier</label>
+  <input class="form-control" type="checkbox" value="Nattliv" name="inputTag">Nattliv</input>                  
   <input class="form-control" type="checkbox" value="Alpint" name="inputTag">Alpint</input>
   <input class="form-control" type="checkbox" value="Natur" name="inputTag">Natur</input>
   <input class="form-control" type="checkbox" value="Strand" name="inputTag">Strand</input>
 </div>
-  <label class="label_category" for="txtPost">Tag Månad</label>
-<div class="form-group category_id">
+
+<div class="form-group">
+  <label for="txtPost">Tag Månad</label>
   <input class="form-control" type="checkbox" value="Januari" name="inputTag">Januari</input> 
   <input class="form-control" type="checkbox" value="Februari" name="inputTag">Februari</input> 
   <input class="form-control" type="checkbox" value="Mars" name="inputTag">Mars</input> 
   <input class="form-control" type="checkbox" value="April" name="inputTag">April</input> 
   <input class="form-control" type="checkbox" value="Maj" name="inputTag">Maj</input>
-  <input class="form-control" type="checkbox" value="Juni" name="inputTag">Juni</input>
+  <input class="form-control" type="checkbox" value="Juni" name="inputTag">Juni</input> 
   <input class="form-control" type="checkbox" value="Juli" name="inputTag">Juli</input> 
   <input class="form-control" type="checkbox" value="Augusti" name="inputTag">Augusti</input> 
   <input class="form-control" type="checkbox" value="September" name="inputTag">September</input> 
@@ -173,9 +152,9 @@ display: block;
   <input class="form-control" type="checkbox" value="November" name="inputTag">November</input> 
   <input class="form-control" type="checkbox" value="December" name="inputTag">December</input>
 </div>
-  <label class="label_category" for="txtPost">Tag Kontinenter</label>
 
-<div class="form-group category_id">
+<div class="form-group">
+  <label for="txtPost">Tag Kontinenter</label>
   <input class="form-control" type="checkbox" value="Europa" name="inputTag">Europa</input> 
   <input class="form-control" type="checkbox" value="Asien" name="inputTag">Asien</input> 
   <input class="form-control" type="checkbox" value="Afrika" name="inputTag">Afrika</input> 
