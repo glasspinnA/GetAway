@@ -81,7 +81,7 @@ def updateWish():
                 _wish_id = request.form['id']
                 _filePath = request.form['filePath']
 
-                cursor.callproc('sp_updateWish',(_title,_description,_wish_id.split(),_filePath))
+                cursor.callproc('sp_updateWish',(_title,_country,_description,_wish_id.split(),_filePath))
                 data = cursor.fetchall()
 
                 if len(data) is 0:
@@ -108,9 +108,10 @@ def getAllWishes():
                 wish_dict = {
                         'Id': wish[0],
                         'Title': wish[1],
-                        'Description': wish[2],
-                        'FilePath': wish[3],
-                        'Tag': wish[4]} 
+						'Country': wish[2],
+                        'Description': wish[3],
+                        'FilePath': wish[4],
+                        'Tag': wish[5]} 
                 wishes_dict.append(wish_dict)
                 
             return json.dumps(wishes_dict)
@@ -165,7 +166,7 @@ def getWishById():
                 result = cursor.fetchall()
 
                 wish = []
-                wish.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2],'FilePath':result[0][3],'Tag':result[0][4]})
+                wish.append({'Id':result[0][0],'Title':result[0][1],'Country': result[0][2],'Description':result[0][3],'FilePath':result[0][4],'Tag':result[0][5]})
 
                 return json.dumps(wish)
             #else:
@@ -320,7 +321,7 @@ def showPage(resultFromDatabase):
             cursor.execute("SELECT wish_file_path FROM tbl_wish WHERE wish_id=%s", [countryId])
             image = cursor.fetchone()[0]
             cursor.execute("SELECT wish_country_path FROM tbl_wish WHERE wish_id=%s", [countryId])
-            image = cursor.fetchone()[0]
+            country = cursor.fetchone()[0]
     finally:
         cursor.close()
     return render_template("page2index.html", title=title, text=text, image=image, country=country)
