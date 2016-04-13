@@ -1,0 +1,77 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Getaway</title>
+
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <script type="text/javascript" src="static/js/scriptfile.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <h1 id="heading">Take me to</h1>
+        </div>
+        <div onclick="getAnything()" class="row">
+            <h1 id="heading1">anything</h1>
+        </div>
+        <div onclick="getAnywhere()" class="row">
+            <h1 id="heading2">anywhere</h1>
+        </div>
+            <div onclick="getAnytime()" class="row">
+            <h1 id="heading3">anytime</h1>
+        </div>
+    </div>
+    
+    <form action="/getTags" method="POST" name="form" role="form">
+        <input name="inputTxtTag" type="hidden" id="fillAnything" value=""/>
+        <input name="inputTxtTag" type="hidden" id="fillAnytime" value=""/>
+        <input name="inputTxtTag" type="hidden" id="fillAnywhere" value=""/>
+        <button type="submit" onclick="randomGrab()">Slumpa</button>
+    </form>
+    
+    <div id="anything">
+        <h2 id="a city" onclick='grabAnythingHtml(this.id)'><a href="#">A city</a></h2>
+        <h2 id="Nattliv" onclick='grabAnythingHtml(this.id)'><a href="#">Nattliv</a></h2>
+        <h2 id="the beach" onclick='grabAnythingHtml(this.id)'><a href="#">The beach</a></h2>
+        <h2 id="the nightlife" onclick='grabAnythingHtml(this.id)'><a href="#">The nightlife</a></h2>
+        <h2 id="the ski sklopes" onclick='grabAnythingHtml(this.id)'><a href="#">The ski slopes</a></h2>
+    </div>
+        
+    <div id="anytime">
+        <h2 id="Januari" onclick='grabAnytimeHtml(this.id)'><a href="#">Januari</a></h2>
+        <h2 id="Februari" onclick='grabAnytimeHtml(this.id)'><a href="#">Februari</a></h2>
+        <h2 id="March" onclick='grabAnytimeHtml(this.id)'><a href="#">March</a></h2>
+        <h2 id="April" onclick='grabAnytimeHtml(this.id)'><a href="#">April</a></h2>
+        <h2 id="May" onclick='grabAnytimeHtml(this.id)'><a href="#">May</a></h2>
+        <h2 id="June" onclick='grabAnytimeHtml(this.id)'><a href="#">June</a></h2>
+        <h2 id="July" onclick='grabAnytimeHtml(this.id)'><a href="#">July</a></h2>
+        <h2 id="August" onclick='grabAnytimeHtml(this.id)'><a href="#">August</a></h2>
+        <h2 id="September" onclick='grabAnytimeHtml(this.id)'><a href="#">September</a></h2>
+        <h2 id="October" onclick='grabAnytimeHtml(this.id)'><a href="#">October</a></h2>
+        <h2 id="November" onclick='grabAnytimeHtml(this.id)'><a href="#">November</a></h2>
+        <h2 id="December" onclick='grabAnytimeHtml(this.id)'><a href="#">December</a></h2>
+
+    </div>
+    
+    <div id="anywhere">
+        <h2 id="Europa" onclick='grabAnywhereHtml(this.id)'><a href="#">Europa</a></h2>
+        <h2 id="Africa" onclick='grabAnywhereHtml(this.id)'><a href="#">Africa</a></h2>
+        <h2 id="Asia" onclick='grabAnywhereHtml(this.id)'><a href="#">Asia</a></h2>
+        <h2 id="North America" onclick='grabAnywhereHtml(this.id)'><a href="#">North America</a></h2>
+        <h2 id="South America" onclick='grabAnywhereHtml(this.id)'><a href="#">South America</a></h2>
+        <h2 id="Oceania" onclick='grabAnywhereHtml(this.id)'><a href="#">Oceania</a></h2>
+    </div>
+    
+</body>
+</html>
