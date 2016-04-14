@@ -60,3 +60,6 @@ function randomGrab() {
     console.log (fillAnything)
 
 }
+function test() {
+window.location = window.location.href;
+}
