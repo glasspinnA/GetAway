@@ -31,18 +31,18 @@ function getAnytime(){
 
 
 function grabAnythingHtml(clicked_id){
-    	document.getElementById('heading1').innerHTML = (clicked_id); { 
-            getAnything()}
+    var clickedAnything = document.getElementById(clicked_id).innerHTML;
+    document.getElementById('heading1').innerHTML = (clickedAnything);
 }
 
 function grabAnywhereHtml(clicked_id){
-    	document.getElementById('heading2').innerHTML = (clicked_id); { 
-            getAnywhere()}
+    var clickedAnywhere = document.getElementById(clicked_id).innerHTML;
+    document.getElementById('heading2').innerHTML = (clickedAnywhere);
 }
 
 function grabAnytimeHtml(clicked_id){
-    	document.getElementById('heading3').innerHTML = (clicked_id); {
-            getAnytime()}
+    var clickedAnytime = document.getElementById(clicked_id).innerHTML;
+    document.getElementById('heading3').innerHTML = (clickedAnytime);
 }
 
 
@@ -56,24 +56,7 @@ function randomGrab() {
     document.getElementById('fillAnything').value = (sendAnythingChoice);
     document.getElementById('fillAnytime').value = (sendAnytimeChoice);
     document.getElementById('fillAnywhere').value = (sendAnywhereChoice);
-    var fillAnything =  document.getElementById('fillAnything').value
-    var fillAnytime =  document.getElementById('fillAnytime').value
-    var fillAnywhere =  document.getElementById('fillAnywhere').value
         
-
     console.log (fillAnything)
 
-  
-        $.ajax({
-            url: '/getTags',
-            data: $('form').serialize(),
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    
 }
