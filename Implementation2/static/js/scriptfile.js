@@ -63,7 +63,7 @@ function randomGrab() {
     
     localStorage.setItem('inputTxtTag', name);
     localStorage.setItem('inputTxtTag2', name2);
-    localStorage.setItem('inputTxtTag3', name4);
+    localStorage.setItem('inputTxtTag3', name3);
 
     console.log (fillAnything)
 
