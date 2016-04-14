@@ -98,7 +98,7 @@
 
 #readMoresite h2,p {
 	filter: blur(0px);
-	color: white;
+	color: black;
 	font-family: 'Tahoma', san-serif;
 	padding: 0px;
 }
