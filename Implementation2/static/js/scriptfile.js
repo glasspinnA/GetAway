@@ -57,9 +57,30 @@ function randomGrab() {
     document.getElementById('fillAnytime').value = (sendAnytimeChoice);
     document.getElementById('fillAnywhere').value = (sendAnywhereChoice);
         
+    var name = document.getElementById('fillAnything').value;
+    var name2 = document.getElementById('fillAnytime').value;
+    var name3 = document.getElementById('fillAnywhere').value;
+    
+    localStorage.setItem('inputTxtTag', name);
+    localStorage.setItem('inputTxtTag2', name2);
+    localStorage.setItem('inputTxtTag3', name4);
+
     console.log (fillAnything)
 
+
+    
 }
-function test() {
-window.location = window.location.href;
-}
+function randomAgain(){
+        
+    var name = localStorage.getItem('inputTxtTag');
+    var name2 = localStorage.getItem('inputTxtTag2');
+    var name3 = localStorage.getItem('inputTxtTag3');
+
+    console.log(name,name2,name3);
+    
+    document.getElementById('fillAnything').value = (name);
+    document.getElementById('fillAnytime').value = (name2);
+    document.getElementById('fillAnywhere').value = (name3);
+        
+		
+	}

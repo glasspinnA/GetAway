@@ -301,7 +301,7 @@ def getTags():
     _tag = " "
     storeTags = ""
     checkboxArray = []
-    checkboxArray = request.form.getlist("inputTxtTag")
+    checkboxArray += request.form.getlist("inputTxtTag") + request.form.getlist("inputTxtTag2") + request.form.getlist("inputTxtTag3")
     for i in checkboxArray:
         storeTags += i + ", "               
     _tag = storeTags 
@@ -310,9 +310,9 @@ def getTags():
     
     radomizer(_tag)
     
-
+    
     return radomizer(_tag)
-
+    return json.dumps(_tag)
 
 @app.route('/showPage')
 def radomizer(_tag):
