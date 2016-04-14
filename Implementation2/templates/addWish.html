@@ -3,22 +3,27 @@
 <html lang="en">
   <head>
     <title>Getaway</title>
-
-   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    
-    <script src="../static/js/jquery-1.11.2.js"></script>
-
-	<script src="../static/js/jquery.ui.widget.js"></script>
-	
-	<script type="text/javascript" src="../static/js/jquery.fileupload.js"></script>
-	<script type="text/javascript" src="../static/js/jquery.fileupload-process.js"></script>
-	<script type="text/javascript" src="../static/js/jquery.fileupload-ui.js"></script>
-	
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+        <script src="../static/js/jquery-1.11.2.js"></script>
+	      <script src="../static/js/jquery.ui.widget.js"></script>
+        <link rel="stylesheet" href="../static/css/style.css">
+	      <script type="text/javascript" src="../static/js/jquery.fileupload.js"></script>
+	      <script type="text/javascript" src="../static/js/jquery.fileupload-process.js"></script>
+	      <script type="text/javascript" src="../static/js/jquery.fileupload-ui.js"></script>
+	      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"
+        rel="stylesheet" type="text/css" />
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
+        type="text/javascript"></script>
 	    
         <script>
+                $(function () {
+            $('.lstFruits').multiselect({
+                includeSelectAllOption: true
+            });
+        });
 		$(function(){
 			    $('#fileupload').fileupload({
         			url: 'upload',
@@ -39,149 +44,109 @@
     			});
 		})
 	</script>
-
-    <style>
-	.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-    </style>
-   
   </head>
-
   <body>
 
-    <div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="/">Hem</a></li>
-            <li role="presentation" class="active"><a href="/add">Lägg till</a></li>
- 	    <li role="presentation"><a href="/dashboard">Se</a></li>
-              <li role="presentation"><a href="/admin">Mina sidor</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Getaway</h3>
-      </div>
+  <div class="container">
+    <div class="header">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation"><a href="/">Hem</a></li>
+          <li role="presentation" class="active"><a href="/add">Lägg till</a></li>
+ 	        <li role="presentation"><a href="/dashboard">Se</a></li>
+          <li role="presentation"><a href="/admin">Mina sidor</a></li>
+        </ul>
+      </nav>
+    <h3 class="text-muted">Getaway</h3>
+  </div>
      
+  <div class="well">
+    <form role="form" method="post" action="/addWish">
+      <!-- Form Name -->
+      <legend>Lägg till</legend>  
 
-	<div class="well">
-      <form role="form" method="post" action="/addWish">
+      <!-- Text input-->
+      <div class="form-group">
+        <label  for="txtTitle">Stad</label>    
+        <input required="required" id="txtTitle" name="inputTitle" type="text" placeholder="Titel" class="form-control input-md">
+      </div>
 
 
-<!-- Form Name -->
-<legend>Lägg till</legend>  
+      <div class="form-group">
+        <label  for="country">Land</label>  
+        <input required="required" id="country" name="inputCountry" type="text" placeholder="Titel" class="form-control input-md">
+      </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label  for="txtTitle">Stad</label>  
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <label for="txtPost">Beskrivning</label>                   
+        <textarea required="required" class="form-control" id="txtPost" placeholder="Text" name="inputDescription" ></textarea>
+      </div>
+
+
+      <div class="form-group">
+        <label for="txtPost">Bilder</label>                     
+        <div class="input-group">
+          <span class="input-group-btn">
+            <span class="btn btn-primary btn-file">
+              Browse&hellip; <input type="file" id="fileupload" name="file" multiple>
+              </span>
+            </span>
+        		<div class="pull-right">
+              <img  id="imgUpload" style="width: 140px; height: 140px;" class="img-thumbnail"><input type="hidden" name="filePath" id="filePath"></input>
+        		</div>
+          </div>
+      </div>
+            
+      <div class="form-group">
+        <label for="txtPost">Tag Kategorier</label>
+          <select class="lstFruits" name="inputTag" multiple="multiple">
+            <option value="Nattliv">Nattliv</option>
+            <option value="Alpint">Alpint</option>
+            <option value="Natur">Natur</option>
+            <option value="Strand">Strand</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label for="txtPost">Tag Månad</label>
+          <select class="lstFruits" name="inputTag" multiple="multiple">
+            <option value="Januari">Januari</option>
+            <option value="Februari">Februari</option>
+            <option value="Mars">Mars</option>
+            <option value="April">April</option>
+            <option value="Maj">Maj</option>
+            <option value="Juni">Juni</option>
+            <option value="Juli">Juli</option>
+            <option value="Augusti">Augusti</option>
+            <option value="September">September</option>
+            <option value="Oktober">Oktober</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label for="txtPost">Tag Kontinenter</label>
+            <select class="lstFruits" name="inputTag" multiple="multiple">
+            <option value="Europa">Europa</option>
+            <option value="Asien">Asien</option>
+            <option value="Afrika">Afrika</option>
+            <option value="Oceanien">Oceanien</option>
+            <option value="Sydamerika">Sydamerika</option>
+            <option value="Nordamerika">Nordamerika</option>
+          </select>
+      </div>    
+      <!-- Button -->
+      <div class="form-group">
+        <p class="text-center">
+          <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
+      	</p>
+      </div>
+    </form>
+  </div>
   
-  <input required="required" id="txtTitle" name="inputTitle" type="text" placeholder="Titel" class="form-control input-md">
-  
-</div>
-
-
-<div class="form-group">
-  <label  for="country">Land</label>  
-  
-  <input required="required" id="country" name="inputCountry" type="text" placeholder="Titel" class="form-control input-md">
-  
-</div>
-
-
-<!-- Textarea -->
-<div class="form-group">
-  <label for="txtPost">Beskrivning</label>
-                     
-    <textarea required="required" class="form-control" id="txtPost" placeholder="Text" name="inputDescription" ></textarea>
-  
-</div>
-
-
-<div class="form-group">
-  <label for="txtPost">Bilder</label>
-                     
-<div class="input-group">
-                <span class="input-group-btn">
-                    <span class="btn btn-primary btn-file">
-                        Browse&hellip; <input type="file" id="fileupload" name="file" multiple>
-                    </span>
-                </span>
-		<div class="pull-right">
-                <img  id="imgUpload" style="width: 140px; height: 140px;" class="img-thumbnail"><input type="hidden" name="filePath" id="filePath"></input>
-		</div>
-            </div>
-  
-</div>
-        
-<div class="form-group">
-  <label for="txtPost">Tag Kategorier</label>
-  <input class="form-control" type="checkbox" value="Nattliv" name="inputTag">Nattliv</input>                  
-  <input class="form-control" type="checkbox" value="Alpint" name="inputTag">Alpint</input>
-  <input class="form-control" type="checkbox" value="Natur" name="inputTag">Natur</input>
-  <input class="form-control" type="checkbox" value="Strand" name="inputTag">Strand</input>
-</div>
-
-<div class="form-group">
-  <label for="txtPost">Tag Månad</label>
-  <input class="form-control" type="checkbox" value="Januari" name="inputTag">Januari</input> 
-  <input class="form-control" type="checkbox" value="Februari" name="inputTag">Februari</input> 
-  <input class="form-control" type="checkbox" value="Mars" name="inputTag">Mars</input> 
-  <input class="form-control" type="checkbox" value="April" name="inputTag">April</input> 
-  <input class="form-control" type="checkbox" value="Maj" name="inputTag">Maj</input>
-  <input class="form-control" type="checkbox" value="Juni" name="inputTag">Juni</input> 
-  <input class="form-control" type="checkbox" value="Juli" name="inputTag">Juli</input> 
-  <input class="form-control" type="checkbox" value="Augusti" name="inputTag">Augusti</input> 
-  <input class="form-control" type="checkbox" value="September" name="inputTag">September</input> 
-  <input class="form-control" type="checkbox" value="Oktober" name="inputTag">Oktober</input> 
-  <input class="form-control" type="checkbox" value="November" name="inputTag">November</input> 
-  <input class="form-control" type="checkbox" value="December" name="inputTag">December</input>
-</div>
-
-<div class="form-group">
-  <label for="txtPost">Tag Kontinenter</label>
-  <input class="form-control" type="checkbox" value="Europa" name="inputTag">Europa</input> 
-  <input class="form-control" type="checkbox" value="Asien" name="inputTag">Asien</input> 
-  <input class="form-control" type="checkbox" value="Afrika" name="inputTag">Afrika</input> 
-  <input class="form-control" type="checkbox" value="Oceanien" name="inputTag">Oceanien</input> 
-  <input class="form-control" type="checkbox" value="Sydamerika" name="inputTag">Sydamerika</input>
-  <input class="form-control" type="checkbox" value="Nordamerika" name="inputTag">Nordamerika</input>
-</div>    
-<!-- Button -->
-<div class="form-group">
-  
-    <p class="text-center">
-    <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
-  	</p>
-</div>
-
-
-</form>
-
-</div>
-
-
-      
-
-      <footer class="footer">
-        <p>&copy; Company 2015</p>
-      </footer>
-
     </div>
   </body>
 </html>
