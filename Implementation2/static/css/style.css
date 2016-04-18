@@ -104,7 +104,7 @@
 
 #readMoresite h2,p {
 	filter: blur(0px);  /*Firefox*/
-	-webkit-filter: blur(10px); /*Chrome*/
+	-webkit-filter: blur(0px); /*Chrome*/
 	color: white;
 	font-family: 'Tahoma', san-serif;
 	padding: 0px;
