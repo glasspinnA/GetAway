@@ -84,6 +84,9 @@
 }
 
 #readMoresite img {
+	filter: blur(10px); /*Firefox*/
+	-webkit-filter: blur(10px); /*Chrome*/
+	
 	/* Set rules to fill background*/
 	min-height: 100%;
 	min-width: 1024px;
@@ -96,12 +99,12 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	
-	filter: blur(10px);	
+		
 }
 
 #readMoresite h2,p {
-	filter: blur(0px);
+	filter: blur(0px);  /*Firefox*/
+	-webkit-filter: blur(10px); /*Chrome*/
 	color: white;
 	font-family: 'Tahoma', san-serif;
 	padding: 0px;
