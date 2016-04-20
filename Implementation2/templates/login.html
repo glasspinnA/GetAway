@@ -1,15 +1,25 @@
+<!doctype html>
 <html>
-  <head>
-    <title>Flask Intro - login page</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Please login</h1>
-      <br>
-        
-      <form action="" method="post">
+	<head>
+		<link href="../static/css/login.css" rel="stylesheet" type="text/css">
+		<meta charset="utf-8">
+		<title>Getaway login</title>
+	</head>
+
+	<body>
+
+		<header>
+		<div id= "title">
+		<p>Getaway</p>
+		</div>
+		</header>
+
+	
+		<section>
+		<div id="login">
+		<form action="" method="post">
         <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
-         <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
+		<input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
         <input class="btn btn-default" type="submit" value="Login">
         {% with messages = get_flashed_messages() %}
           {% if messages %}
@@ -20,10 +30,11 @@
             </ul>
           {% endif %}
         {% endwith %}
-      </form>
-        
-        <a href="/">Tillbaka</a>
-        
-    </div>
-  </body>
+		</form>
+		</div>
+		
+		</div>
+		</section>
+
+	</body>
 </html>
