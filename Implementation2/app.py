@@ -14,10 +14,15 @@ app = Flask(__name__)
 
 # DATABAS: Uppgifter för anslutning.
 app.secret_key = os.urandom(24)
-mysql = pymysql.connect(host='sql7.freemysqlhosting.net',
-                             user='sql7111162',
-                             password='j37hIiC1L1',
-                             db='sql7111162')
+
+loginDatbaseInfo = open("loginDatbaseInfo.txt").read()
+loginDatbaseInfo = loginDatbaseInfo.split()
+host = loginDatbaseInfo[0]
+user = loginDatbaseInfo[1]
+password = loginDatbaseInfo[2]
+db = loginDatbaseInfo[3]
+
+mysql = pymysql.connect(host=host, user=user, password=password, db=db)
 
 # Fix för Connection Reset på POST
 # Mer info om denna klass:
