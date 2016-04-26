@@ -1,154 +1,218 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <meta charset="utf-8">
     <title>Getaway</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="../static/js/jquery-1.11.2.js"></script>
-	      <script src="../static/js/jquery.ui.widget.js"></script>
-        <link rel="stylesheet" href="../static/css/style.css">
-	      <script type="text/javascript" src="../static/js/jquery.fileupload.js"></script>
-	      <script type="text/javascript" src="../static/js/jquery.fileupload-process.js"></script>
-	      <script type="text/javascript" src="../static/js/jquery.fileupload-ui.js"></script>
-	      
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"
-        rel="stylesheet" type="text/css" />
-    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
-        type="text/javascript"></script>
-	    
-        <script>
+    <link href="../static/css/addWish.css" rel="stylesheet">
+
+    
+    <link href=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href=
+    "http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css"
+    rel="stylesheet">
+
+    
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type=
+    "text/javascript">
+    </script>
+    <script src="../static/js/jquery-1.11.2.js">
+    </script>
+    <script src="../static/js/jquery.ui.widget.js">
+    </script>
+    <script src="../static/js/jquery.fileupload.js" type="text/javascript">
+    </script>
+    <script src="../static/js/jquery.fileupload-process.js" type=
+    "text/javascript">
+    </script>
+    <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript">
+    </script>
+    <script src=
+    "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
+    type="text/javascript">
+    </script>
+    <script src=
+    "http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
+    type="text/javascript">
+    </script>
+    <script>
                 $(function () {
             $('.lstFruits').multiselect({
                 includeSelectAllOption: true
             });
         });
-		$(function(){
-			    $('#fileupload').fileupload({
-        			url: 'upload',
-        			dataType: 'json',
-        			add: function (e, data) {
-        				data.submit();
-        			},
-			        success:function(response,status) {
-					console.log(response.filename);
-					var filePath = 'static/Uploads/' + response.filename;
-					$('#imgUpload').attr('src',filePath);
-					$('#filePath').val(filePath);
-			        	console.log('success');
-			        },
-			        error:function(error){
-			        	console.log(error);
-			        }
-    			});
-		})
-	</script>
-  </head>
-  <body>
+        $(function(){
+                $('#fileupload').fileupload({
+                    url: 'upload',
+                    dataType: 'json',
+                    add: function (e, data) {
+                        data.submit();
+                    },
+                    success:function(response,status) {
+                    console.log(response.filename);
+                    var filePath = 'static/Uploads/' + response.filename;
+                    $('#imgUpload').attr('src',filePath);
+                    $('#filePath').val(filePath);
+                        console.log('success');
+                    },
+                    error:function(error){
+                        console.log(error);
+                    }
+                });
+        })
+        
+        
+        
+        
+        
+        
+        /* Saras
+        
+        $(function(){
 
-  <div class="container">
-    <div class="header">
-      <nav>
-        <ul class="nav nav-pills pull-right">
-          <li role="presentation"><a href="/">Hem</a></li>
-          <li role="presentation" class="active"><a href="/add">Lägg till</a></li>
- 	        <li role="presentation"><a href="/dashboard">Se</a></li>
-          <li role="presentation"><a href="/admin">Mina sidor</a></li>
+    $('.nav').(function(){
+
+        $('.nav .active').removeClass('active'); // remove the class from the currently selected
+        $(this).addClass('active'); // add the class to the newly clicked link
+
+    });
+
+}); 
+*/
+        
+    </script>
+</head>
+    
+    
+    
+    
+<body>
+    <header>
+        <h3 id="logotyp">Getaway</h3>
+        <a href="/" id="signOut" class="a-link">Sign out</a>
+    </header>
+    <nav>
+        <ul id="nav">
+            <li>
+                <a href="/add" class="a-link up"><div class="nav"><p>Add location</p></div></a>
+            </li>
+            <li>
+                <a href="/dashboard" class="a-link"><div class="nav"><p>All locations</p></div></a>
+            </li>
+            <li>
+                <a href="/admin" class="a-link"><div class="nav"><p>Admin settings</p></div></a>
+            </li>
+            <li>
+                <a href="/admin" class="a-link"><div class="nav"><p>Google Analytics</p></div></a>
+            </li>
         </ul>
-      </nav>
-    <h3 class="text-muted">Getaway</h3>
-  </div>
-     
-  <div class="well">
-    <form role="form" method="post" action="/addWish">
-      <!-- Form Name -->
-      <legend>Lägg till</legend>  
+    </nav>
+    
+    <content>
+<div class="content">
+    <form action="/addWish" method="post">
+        
+        
+        <!-- Text input-->
+        <div class="left-group">
+            <label for="txtTitle">City</label> <input class=
+            "form-control input-md" id="txtTitle" name="inputTitle"
+            placeholder="ex. Malmö" required="required" type="text">
+        </div>
+        
+        
+        <div class="left-group">
+            <label for="country">Country</label> <input class=
+            "form-control input-md" id="country" name="inputCountry"
+            placeholder="ex. Sverige" required="required" type="text">
+        </div>
+        
+        
+        <!-- Textarea -->
+        <div class="left-group">
+            <label for="txtPost">Discription</label> 
+            <textarea class="form-control" id="txtPost" name="inputDescription"
+            placeholder="Text" required="required"></textarea>
+        </div>
+        
+        
+</div>
+    
 
-      <!-- Text input-->
-      <div class="form-group">
-        <label  for="txtTitle">Stad</label>    
-        <input required="required" id="txtTitle" name="inputTitle" type="text" placeholder="Titel" class="form-control input-md">
-      </div>
-
-
-      <div class="form-group">
-        <label  for="country">Land</label>  
-        <input required="required" id="country" name="inputCountry" type="text" placeholder="Titel" class="form-control input-md">
-      </div>
-
-
-      <!-- Textarea -->
-      <div class="form-group">
-        <label for="txtPost">Beskrivning</label>                   
-        <textarea required="required" class="form-control" id="txtPost" placeholder="Text" name="inputDescription" ></textarea>
-      </div>
-
-
-      <div class="form-group">
-        <label for="txtPost">Bilder</label>                     
-        <div class="input-group">
-          <span class="input-group-btn">
-            <span class="btn btn-primary btn-file">
-              Browse&hellip; <input type="file" id="fileupload" name="file" multiple>
-              </span>
+<div class="content">   
+    
+    
+        <div class="criteria-group">
+            <label for="txtPost">Tags</label><br>
+            <select class="lstFruits" multiple="multiple" name="inputTag">
+                <option value="Stad">a city</option>
+                <option value="Natur">the wilderness</option>
+                <option value="Strand">the beach</option>
+                <option value="Nattliv">the nightlife</option>
+                <option value="Alpint">the ski slopes</option>
+            </select>
+        </div>
+    
+    
+        <div class="criteria-group">
+            <label for="txtPost">Continent</label><br>
+            <select class="lstFruits" multiple="multiple" name="inputTag">
+                <option value="Europa">Europe</option>
+                <option value="Afrika">Africa</option>
+                <option value="Asien">Asia</option>
+                <option value="Nordamerika">North America</option>
+                <option value="Sydamerika">South America</option>
+                <option value="Oceanien">Oceania</option>
+            </select>
+        </div>
+    
+    
+    
+        <div class="criteria-group">
+            <label for="txtPost">Month</label><br>
+            <select class="lstFruits" multiple="multiple" name="inputTag">
+                <option value="Januari">January</option>
+                <option value="Februari">February</option>
+                <option value="Mars">March</option>
+                <option value="April">April</option>
+                <option value="Maj">May</option>
+                <option value="Juni">June</option>
+                <option value="Juli">July</option>
+                <option value="Augusti">August</option>
+                <option value="September">September</option>
+                <option value="Oktober">Oktober</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+        </div>
+    
+        <div class="right-group">
+            <label for="txtPost">Image</label><br>
+            <span class="btn btn-default btn-file">
+                Choose image <input type="file" id="fileupload" name="file">
             </span>
-        		<div class="pull-right">
-              <img  id="imgUpload" style="width: 140px; height: 140px;" class="img-thumbnail"><input type="hidden" name="filePath" id="filePath"></input>
-        		</div>
-          </div>
-      </div>
+        </div>
+    
+    
+        <div class="right-group" id="viewImage">
+            <img id="imgUpload" class="img-thumbnail">
+            <input type="hidden" name="filePath" id="filePath"></input>
+        </div>
+    
+</div>            
             
-      <div class="form-group">
-        <label for="txtPost">Tag Kategorier</label>
-          <select class="lstFruits" name="inputTag" multiple="multiple">
-            <option value="Nattliv">Nattliv</option>
-            <option value="Alpint">Alpint</option>
-            <option value="Natur">Natur</option>
-            <option value="Strand">Strand</option>
-          </select>
-      </div>
-
-      <div class="form-group">
-        <label for="txtPost">Tag Månad</label>
-          <select class="lstFruits" name="inputTag" multiple="multiple">
-            <option value="Januari">Januari</option>
-            <option value="Februari">Februari</option>
-            <option value="Mars">Mars</option>
-            <option value="April">April</option>
-            <option value="Maj">Maj</option>
-            <option value="Juni">Juni</option>
-            <option value="Juli">Juli</option>
-            <option value="Augusti">Augusti</option>
-            <option value="September">September</option>
-            <option value="Oktober">Oktober</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-          </select>
-      </div>
-
-      <div class="form-group">
-        <label for="txtPost">Tag Kontinenter</label>
-            <select class="lstFruits" name="inputTag" multiple="multiple">
-            <option value="Europa">Europa</option>
-            <option value="Asien">Asien</option>
-            <option value="Afrika">Afrika</option>
-            <option value="Oceanien">Oceanien</option>
-            <option value="Sydamerika">Sydamerika</option>
-            <option value="Nordamerika">Nordamerika</option>
-          </select>
-      </div>    
-      <!-- Button -->
-      <div class="form-group">
-        <p class="text-center">
-          <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
-      	</p>
-      </div>
+        </div><!-- Button -->
+        <div class="form-group">
+            <hr>
+            <p class="text-center"><input class="btn btn-primary" id=
+            "singlebutton" name="singlebutton" type="submit" value=
+            "Publish"></p>
+        </div>
     </form>
-  </div>
-  
-    </div>
-  </body>
+        
+        </content>
+    
+</body>
 </html>
-
