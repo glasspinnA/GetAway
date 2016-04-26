@@ -1,7 +1,25 @@
 body {
   background-color: #fcfcfc;
 }
-.center-div {
+
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover; 
+}
+
+#center-div {
   position: absolute;
   margin: auto;
   top: 0;
@@ -13,6 +31,7 @@ body {
   /*background-color: #ccc;*/
   border-radius: 3px;
 }
+
 .smaller-div {
     /*background-color: grey;*/
     min-width: 0;
@@ -34,27 +53,30 @@ body {
 h1 {
     font-family: 'Helvetica', sans-serif;
     text-align: center;
-    color: black;
+    color: white;
     font-size: 40px;
+    font-weight: bold;
 }
 
 h2 {
     font-family: 'Helvetica', sans-serif;
     -webkit-margin-before: 0.5em;
     -webkit-margin-after: 0.5em;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .brightH1 {
-    color: grey;
+    color: lightblue;
 }
 
 a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 a:hover {
-    color: grey;
+    color: #d9d9d9;
 }
 
 button#randomGrab {
@@ -62,21 +84,132 @@ button#randomGrab {
 }
 
 #anything {
-    position: relative;
+    position: absolute;
     display: none;
     float: left;
-    transition: opacity 1s linear;
+    
 }
 
 #anywhere {
-    position: relative;
+    position: absolute;
     display: none;
     float: left;
 }
 
 #anytime {
-    position: relative;
+    position: absolute;
     display: none;
     max-height: 250px;
     overflow-y: scroll;
 }
+
+/*TESTKOD*/
+
+#wrap_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#video_overlays {
+position: fixed;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: -10;
+background-color: rgba(000,000,000,.5);
+}
+#player{
+    background: purple;
+}
+
+#getaway {
+	position: fixed;
+	right: 1em;
+	bottom: 0em;
+	z-index: 4;
+    font-family: 'Pacifico', sans-serif;
+    font-size: 30px;
+    color: white;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: -0.5em;
+}
+
+#send_data {
+    position: absolute;
+	left: 4em;
+	bottom: 4em;
+	z-index: 4;
+}   
+
+/*---RESPONSIV KOD---*/
+
+@media all and (max-width: 640px) {
+
+#center-div {
+  /*background-color: grey;*/
+  position: static;
+  margin-top: 30%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 50px;
+  /*background-color: #ccc;*/
+  border-radius: 3px;
+}
+    
+.smaller-div {
+    /*background-color: grey;*/
+    min-width: 80%;
+    min-height: 50px;
+    float: left;
+    padding-left: 10px;
+    text-align: left;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+    
+h1 {
+    text-align: left;
+    -webkit-margin-before: 0.3em;
+    -webkit-margin-after: 0.3em;
+}
+    
+h2 {
+    font-family: 'Helvetica', sans-serif;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    font-size: 30px;
+    font-weight: bold;
+}
+    
+.smaller-div.in-div {
+    min-width: 10%;
+    float: left;
+}
+    
+#small-anything-div {
+    min-width: 100%;
+}
+    
+.medium-div {
+    background-color: rgba(0,0,0, 0.9);
+    position: relative;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 99;
+    background-size: cover;
+    transition: ease-in 0.5s;
+    padding-top: 10%;
+    padding-left: 10%;
+
+    }

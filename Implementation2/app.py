@@ -300,60 +300,13 @@ def changePassword():
 
 # SIDA: Hämta alla tags.
         
-@app.route('/getTags', methods = ['POST','GET'] )
-def getTags():
+@app.route('/data_post', methods=['POST'])
+def data_post():
     
-    _tag = " "
-    storeTags = ""
-    checkboxArray = []
-    checkboxArray += request.form.getlist("inputTxtTag") + request.form.getlist("inputTxtTag2") + request.form.getlist("inputTxtTag3")
-    for i in checkboxArray:
-        storeTags += i + ", "               
-    _tag = storeTags 
+    checkboxArray = request.form['data'];
     
-    print(_tag)
-    
-    radomizer(_tag)
-    
-    
-    return radomizer(_tag)
-    return json.dumps(_tag)
-
-@app.route('/showPage')
-def radomizer(_tag):
-    choiceFromUser = _tag
-    print(choiceFromUser)
-    try:
-        with mysql.cursor() as cursor:
-            cursor.execute('SELECT wish_id FROM tbl_wish WHERE wish_tag=%s', [choiceFromUser])
-            resultFromDatabase = cursor.fetchall()
-            res = random.choice(resultFromDatabase)
-            convertRes = str(res)
-            removeShit = convertRes.replace("(","").replace(",","").replace(")","")
-            showPage(removeShit)
-    finally:
-        cursor.close()
-    return showPage(removeShit)
-
-@app.route('/showPage')
-def showPage(resultFromDatabase):
-    result = resultFromDatabase
-    print(result)
-    try:
-        with mysql.cursor() as cursor:
-            countryId = result
-            cursor.execute("SELECT wish_title FROM tbl_wish WHERE wish_id=%s", [countryId])
-            title = cursor.fetchone()[0]
-            cursor.execute("SELECT wish_description FROM tbl_wish WHERE wish_id=%s", [countryId])
-            text = cursor.fetchone()[0]
-            cursor.execute("SELECT wish_file_path FROM tbl_wish WHERE wish_id=%s", [countryId])
-            image = cursor.fetchone()[0]
-            cursor.execute("SELECT wish_country_path FROM tbl_wish WHERE wish_id=%s", [countryId])
-            country = cursor.fetchone()[0]
-    finally:
-        cursor.close()
-    return render_template("page2index.html", title=title, text=text, image=image, country=country)
-
-
+    print(checkboxArray)
+   
+    return checkboxArray
 if __name__ == "__main__":
     app.run(debug=True, port=5002)
