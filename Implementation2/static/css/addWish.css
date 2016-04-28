@@ -9,6 +9,9 @@ body {
     padding: 0;
 }
 
+body#bodyOne li#liOne{
+    background: rgb(80, 111, 139);
+}
 
 #logotyp {
     font-size: 30px;
@@ -33,6 +36,7 @@ header {
     margin-top: -60px;
     padding-right: 50px;
     padding-top: 35px;
+    color:#FFF;
 }
 
 #signOut:hover,
@@ -47,9 +51,22 @@ nav {
     background-color: rgb(98, 136, 170);
 }
 
-.a-link {
-    color: #FFFFFF;
-    text-decoration: none !important;
+
+li a{
+    color: #FFF;
+    text-decoration: none !important;  
+}
+
+
+li:hover {
+    background: #466078;
+    -webkit-transition: width 2s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+}
+
+li a:hover{
+    color:#FFF;
 }
 
 #nav {
@@ -66,22 +83,6 @@ nav {
     transition: width 2s;
 }
 
-li:hover {
-    background: rgb(80, 111, 139);
-    -webkit-transition: width 2s;
-    /* For Safari 3.1 to 6.0 */
-    transition: width 2s;
-}
-
-a:focus, 
-a:hover {
-    color: #FFFFFF !important;
-}
-
-.nav.active,
-.nav:active {
-    background: red;
-}
 
 ul#nav {
     padding-left: 0px;
