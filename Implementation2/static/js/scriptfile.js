@@ -47,6 +47,49 @@ function grabAnytimeHtml(clicked_id){
     document.getElementById('heading3').innerHTML = (clickedAnytime);
 }
 
+function hideCriterias() {
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+    var centerDiv = document.getElementById("center-div");
+    
+    if (centerDiv.style.display == "block") {
+        centerDiv.style.display = "none";
+    }
+    else {
+        centerDiv.style.display = "none";
+    }
+}
+
+function showCircles() {
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+    var readMore = document.getElementById("readMore");
+    var showAll = document.getElementById("showAll");
+    readMore.style.display = "block";
+    showAll.style.display = "block";
+}
+
+function readMoresite() {
+	var showstuff = document.getElementById("fullSizeTest")
+	if (showstuff.style.display == "block") {
+       showstuff.style.display = "none";
+   }
+   else {
+       showstuff.style.display = "block";
+       console.log("här händer det grejer");
+   }
+    }
+
+/*function showCircles() {
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+    var bottomLeftDiv = document.getElementById("bottomLeftDiv");
+    
+    if (bottomLeftDiv.style.display == "block") {
+        bottomLeftDiv.style.display = "none";
+    }
+    else {
+        bottomLeftDiv.style.display = "block";
+    }
+}*/
+
 function randomGrab() {
     // Aktiveras onclick på slumpknapp
     // sparar de valda kriterierna i variabler. Vet inte om vi kan använda detta för att skicka vidare till python sen.
@@ -67,6 +110,8 @@ function randomGrab() {
     localStorage.setItem('inputTxtTag3', name3);    
     localStorage.setItem('inputTxtTag2', name2);
 }
+
+
 
 $(document).ready(function() {
     

@@ -6,7 +6,6 @@
 /* FÖRSTA SIDAN */
 #picture {
 	position: relative;
-	z-index: -2;
 }
 #picture img {
 	/* Set rules to fill background */
@@ -21,42 +20,34 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+    z-index: -2;
 }
 
 #title {
 	position: absolute;
 	/*z-index: 1;*/
 	font-family: 'Tahoma', san-serif;
-	top: 2em;
-	left: 2em;
+	top: 3em;
+	left: 3em;
 	color: white;
+    z-index: 10;
 }
 
 #title h1 {
 	font-size: 30px;
 	margin: 0px;
 	color: white;
+    z-index: 10;
 }
 
 #title p {
 	font-size: 20px;
 	margin: 0px;
 	color: white;
+    z-index: 10;
 }
 
 /*Knappar*/
-
-#readMore {
-	position: absolute;
-	bottom: 2em;
-	left: 2em;	
-	z-index: 4;
-}
-
-#readMore img {
-	width: 3em;
-	height: 3em;
-}
 
 #getaway {
 	position: absolute;
@@ -65,22 +56,18 @@
 	z-index: 4;
 }
 
-#showAll {
-	position: absolute;
-	top: 2em;
-	right: 2em;
-	z-index: 4;
-}
-
-#showAll img {
-	width: 3em;
-	height: 3em;
-}
-
 
 /*VISA MER/SHOW MORE INFORMATION*/
 #readMoresite {
-	display: none;
+	display: block;
+    position: fixed;
+    z-index: 10000;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40%;
 }
 
 #readMoresite img {
