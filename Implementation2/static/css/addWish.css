@@ -228,7 +228,6 @@ label.checkbox {
     font-weight: 300;
 }
 
-<<<<<<< HEAD
 .labels {
     font-weight: 400;
     font-size: 15px;
@@ -256,7 +255,7 @@ label.checkbox {
 #buttons:hover {
     background: rgb(73, 101, 127);
 }
-=======
+
 #changePassw {
 	padding: 30px;	
 }
@@ -284,4 +283,3 @@ label.checkbox {
 	width: 100px;
 
 }
->>>>>>> origin/master
