@@ -2,7 +2,9 @@
 
 
 /* -------- ALLMÄNT FÖR ADMINGRÄNSSNITT -------- */
-
+#bodyWelcome #liWelcome{
+    background: rgb(73, 101, 127);
+}
 
 @font-face {
 	font-family: 'Pacifico';
@@ -87,10 +89,6 @@ a:hover {
     color: #FFFFFF !important;
 }
 
-.nav.active,
-.nav:active {
-    background: red;
-}
 
 ul#nav {
     padding-left: 0px;

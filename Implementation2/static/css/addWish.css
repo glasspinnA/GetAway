@@ -1,6 +1,11 @@
 /* -------- ALLMÄNT FÖR ADMINGRÄNSSNITT -------- */
+#bodyAddWish #liAddWish{
+    background: rgb(73, 101, 127);
+}
 
-
+#bodyChangeContact #liChangeContact{
+    background: rgb(73, 101, 127);
+}
 @font-face {
 	font-family: 'Pacifico';
 	src: url('fonts/Pacifico.ttf');
@@ -82,11 +87,6 @@ li:hover {
 a:focus, 
 a:hover {
     color: #FFFFFF !important;
-}
-
-.nav.active,
-.nav:active {
-    background: red;
 }
 
 ul#nav {
