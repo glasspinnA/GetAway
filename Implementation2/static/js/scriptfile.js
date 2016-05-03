@@ -238,6 +238,9 @@ $.ajax({
             }
             } else {
                 alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
+                location.reload();
+                return false;
+
             }
         }    
 },
