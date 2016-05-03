@@ -26,7 +26,7 @@
     </header>
     
         <div id="wrap_video">     
-            <video autoplay loop poster="" id="bgvid">
+            <video controls muted autoplay loop poster="" id="bgvid">
                 <source src="https://player.vimeo.com/external/134025228.hd.mp4?s=9fdf3d36312edfd18b3a5a8df0be17e3&amp;profile_id=113" type="video/mp4">
             </video>
             <div id="video_overlays">
@@ -105,21 +105,23 @@
             <!-- Innehåll som visas när resmål visas-->
 
 
-    <div style="transition: ease-in" id="picture"></div>
+    <div id="picture"></div>
     <div id="gradientOverlay"></div>
     <div id="fullSizeTest"><div id="readMoresite"></div></div>
     
     <div id="bottomLeftDiv">
         <div class="smaller-div resposiveDiv">
-            <button class="button" onclick="randomGrab(); hideCriterias(); showCircles();" id="send_data">Go!</button>
+            <button class="button" onclick="randomGrab(); hideCriterias(); showCircles();" id="send_data"><img src="../static/pictures/shuffle.svg"></button>
         </div>
         
         <div class="smaller-div resposiveDiv">
-            <div id="readMore"><img alt="Read more" src="../static/pictures/readmore.png" onclick="readMoresite();"></div>
+            <!---<div id="readMore"><img alt="Read more" src="../static/pictures/readmore.png" onclick="readMoresite();"></div>-->
+            <div id="readMore"><button class="button" onclick="readMoresite();"><img src="../static/pictures/plus-2.svg"></button></div>
         </div>
         
         <div class="smaller-div resposiveDiv">
-            <div id="showAll"><img alt="Show all" src="../static/pictures/showall.png"></div>
+            <!--<div id="showAll"><img alt="Show all" src="../static/pictures/showall.png" onclick="showCriterias();"></div>-->
+            <div id="showAll"><button class="button" onclick="showCriterias();"><img src="../static/pictures/central-alignment.svg"></button></div>
         </div> 
     </div>
     

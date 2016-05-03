@@ -47,17 +47,43 @@ function grabAnytimeHtml(clicked_id){
     document.getElementById('heading3').innerHTML = (clickedAnytime);
 }
 
-function hideCriterias() {
-    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+
+// --- FUNKTIONER FÖR ATT VISA OCH DÖLJA KNAPPAR OCH DIVAR --- //
+
+function showCriterias() {
+    // Visar kriterier efter att man tryckt visaknappen
     var centerDiv = document.getElementById("center-div");
+    var showstuff = document.getElementById("fullSizeTest")
+    var readMoreBox = document.getElementById("readMoresite")
     
-    if (centerDiv.style.display == "block") {
-        centerDiv.style.display = "none";
+    if (centerDiv.style.display == "none") {
+        centerDiv.style.display = "block";
+        showstuff.style.display = "block";
+        readMoreBox.style.display = "none";
     }
     else {
         centerDiv.style.display = "none";
+        showstuff.style.display = "none";
+        readMoreBox.style.display = "none";
     }
 }
+
+function hideCriterias() {
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+    var centerDiv = document.getElementById("center-div");
+    var showstuff = document.getElementById("fullSizeTest")
+    
+    if (centerDiv.style.display == "block") {
+        centerDiv.style.display = "none";
+        showstuff.style.display = "none";
+        
+    }
+    else {
+        centerDiv.style.display = "none";
+        showstuff.style.display = "none";
+    }
+}
+
 
 function showCircles() {
     // Döljer kriterier efter att man tryckt slumpa på förstasidan
@@ -68,27 +94,24 @@ function showCircles() {
 }
 
 function readMoresite() {
+    // Visar mer information om resmålet när man trycker på pluset
 	var showstuff = document.getElementById("fullSizeTest")
+    var readMoreBox = document.getElementById("readMoresite")
+    var centerDiv = document.getElementById("center-div");
+    
 	if (showstuff.style.display == "block") {
-       showstuff.style.display = "none";
+        showstuff.style.display = "none";
+        readMoreBox.style.display = "none";
+        centerDiv.style.display = "none";
    }
    else {
        showstuff.style.display = "block";
-       console.log("här händer det grejer");
+       readMoreBox.style.display = "block";
+       centerDiv.style.display = "none";
    }
     }
 
-/*function showCircles() {
-    // Döljer kriterier efter att man tryckt slumpa på förstasidan
-    var bottomLeftDiv = document.getElementById("bottomLeftDiv");
-    
-    if (bottomLeftDiv.style.display == "block") {
-        bottomLeftDiv.style.display = "none";
-    }
-    else {
-        bottomLeftDiv.style.display = "block";
-    }
-}*/
+// --- FUNKTIONER FÖR FILTRERING AV RESMÅLEN --- //
 
 function randomGrab() {
     // Aktiveras onclick på slumpknapp
@@ -214,7 +237,7 @@ $.ajax({
             }
             }
             } else {
-                alert('finns ej')
+                alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
             }
         }    
 },

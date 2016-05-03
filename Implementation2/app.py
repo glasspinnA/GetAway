@@ -15,7 +15,7 @@ app = Flask(__name__)
 # DATABAS: Uppgifter för anslutning.
 app.secret_key = os.urandom(24)
 
-loginDatbaseInfo = open("loginDatbaseInfo.txt").read()
+loginDatbaseInfo = open("/Users/Oliver/Desktop/Implementation2/loginDatbaseInfo.txt").read()
 loginDatbaseInfo = loginDatbaseInfo.split()
 host = loginDatbaseInfo[0]
 user = loginDatbaseInfo[1]
@@ -45,7 +45,7 @@ class StreamConsumingMiddleware(object):
             if hasattr(app_iter, 'close'):
                 app_iter.close()
 
-app.config['UPLOAD_FOLDER'] = 'static/Uploads'
+app.config['UPLOAD_FOLDER'] = '/Users/Oliver/Desktop/Implementation2/static/Uploads'
 app.wsgi_app = StreamConsumingMiddleware(app.wsgi_app)
 
 # SIDA: Start.

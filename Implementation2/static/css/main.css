@@ -12,7 +12,7 @@ body {
     background-color: black;
     top:0;
     opacity: 0.8;
-    
+    transition: width 2s, height 4s; 
 }
 
 video#bgvid { 
@@ -43,6 +43,7 @@ video#bgvid {
     height: 100px;
     /*background-color: #ccc;*/
     border-radius: 3px;
+    z-index: 2;
 }
 
 .smaller-div {
@@ -91,12 +92,18 @@ a {
 
 a:hover {
     color: #d9d9d9;
+    text-decoration: none;
 }
+
+#picture {
+    transition: width 2s linear 1s;
+
+}
+
 
 .button {
     width: 3em;
     height: 3em;
-    line-height: 3em;
     display: block;
     position: relative;
     -moz-border-radius: 50%;
@@ -104,13 +111,21 @@ a:hover {
     border-radius: 50%;
     border: 2px solid #fff;
     text-align: center;
-    display: block;
     vertical-align: middle;
     position: relative;
     z-index: 10;
     color: #fff;
     padding: 0;
     background-color: rgba(000,000,000,0);
+    transition: ease 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+.button img {
+    width: 1.5em;
 }
 
 #anything {
@@ -133,22 +148,64 @@ a:hover {
     overflow-y: scroll;
 }
 
+/*VISA MER/SHOW MORE INFORMATION*/
+#readMoresite {
+	display: none;
+    position: fixed;
+    z-index: 10000;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40%;
+}
+
+#readMoresite img {
+	filter: blur(10px); /*Firefox*/
+	-webkit-filter: blur(10px); /*Chrome*/
+	
+	/* Set rules to fill background*/
+	min-height: 100%;
+	min-width: 1024px;
+	
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
+	
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+		
+}
+
+#readMoresite h2,p {
+	filter: blur(0px);  /*Firefox*/
+	-webkit-filter: blur(0px); /*Chrome*/
+	color: white;
+	font-family: 'Tahoma', san-serif;
+	padding: 0px;
+}
+
+#readMoresite h2 {
+	font-size: 40px;
+	text-align: center;	
+}
+
+#readMoresite p {
+	text-align: center;
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 #readMore {
     display: none;
 }
 
 #showAll {
     display: none;
-}
-
-#readMore img{
-	width: 3em;
-	height: 3em;
-}
-
-#showAll img{
-	width: 3em;
-	height: 3em;
 }
 
 /*TESTKOD*/
@@ -230,6 +287,10 @@ a:hover {
 /*---RESPONSIV KOD---*/
 
 @media all and (max-width: 640px) {
+    
+#fullSizeTest {
+    z-index: -1;
+}
 
 #center-div {
     /*background-color: grey;*/
@@ -243,6 +304,7 @@ a:hover {
     height: 50px;
     /*background-color: #ccc;*/
     border-radius: 3px;
+    z-index: 100;
 }
     
 .smaller-div {
