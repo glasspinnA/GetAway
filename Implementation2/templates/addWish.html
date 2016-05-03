@@ -84,28 +84,35 @@
         
     </script>
 </head>
-    
-    
+    <!--
+    <a href="/" id="signOut" class="a-link">Sign out</a>
+
+<input type="submit" value="Logga ut">Sign out</input>
+-->
     
     
 <body>
     <header>
         <h3 id="logotyp">Getaway</h3>
-        <a href="/" id="signOut" class="a-link">Sign out</a>
+        
+        <form action="">
+            <input id="signOut" type="submit" value="Sign out">
+      </form>
+        
     </header>
     <nav>
         <ul id="nav">
             <li>
-                <a href="/add" class="a-link up"><div class="nav"><p>Add location</p></div></a>
+                <a href="/dashboard" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
             </li>
             <li>
-                <a href="/dashboard" class="a-link"><div class="nav"><p>All locations</p></div></a>
+                <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
             </li>
             <li>
-                <a href="/admin" class="a-link"><div class="nav"><p>Admin settings</p></div></a>
+                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
             </li>
             <li>
-                <a href="/admin" class="a-link"><div class="nav"><p>Google Analytics</p></div></a>
+                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
             </li>
         </ul>
     </nav>
@@ -117,14 +124,14 @@
         
         <!-- Text input-->
         <div class="left-group">
-            <label for="txtTitle">City</label> <input class=
+            <label for="txtTitle" class="labels">City</label> <input class=
             "form-control input-md" id="txtTitle" name="inputTitle"
             placeholder="ex. Malmö" required="required" type="text">
         </div>
         
         
         <div class="left-group">
-            <label for="country">Country</label> <input class=
+            <label for="country" class="labels">Country</label> <input class=
             "form-control input-md" id="country" name="inputCountry"
             placeholder="ex. Sverige" required="required" type="text">
         </div>
@@ -132,7 +139,7 @@
         
         <!-- Textarea -->
         <div class="left-group">
-            <label for="txtPost">Discription</label> 
+            <label for="txtPost" class="labels">Discription</label> 
             <textarea class="form-control" id="txtPost" name="inputDescription"
             placeholder="Text" required="required"></textarea>
         </div>
@@ -145,19 +152,19 @@
     
     
         <div class="criteria-group">
-            <label for="txtPost">Tags</label><br>
-            <select class="lstFruits" multiple="multiple" name="inputTag">
+            <label for="txtPost" class="labels">Tags</label><br>
+            <select class="lstFruits" id="lstFruits" multiple="multiple" name="inputTag">
                 <option value="Stad">a city</option>
                 <option value="Natur">the wilderness</option>
                 <option value="Strand">the beach</option>
                 <option value="Nattliv">the nightlife</option>
-                <option value="Alpint">the ski slopes</option>
+                <option value="Alpint">the snow</option>
             </select>
         </div>
     
     
         <div class="criteria-group">
-            <label for="txtPost">Continent</label><br>
+            <label for="txtPost" class="labels">Continent</label><br>
             <select class="lstFruits" multiple="multiple" name="inputTag">
                 <option value="Europa">Europe</option>
                 <option value="Afrika">Africa</option>
@@ -171,7 +178,7 @@
     
     
         <div class="criteria-group">
-            <label for="txtPost">Month</label><br>
+            <label for="txtPost" class="labels">Month</label><br>
             <select class="lstFruits" multiple="multiple" name="inputTag">
                 <option value="Januari">January</option>
                 <option value="Februari">February</option>
@@ -189,16 +196,16 @@
         </div>
     
         <div class="right-group">
-            <label for="txtPost">Image</label><br>
-            <span class="btn btn-default btn-file">
-                Choose image <input type="file" id="fileupload" name="file">
+            <label for="txtPost" class="labels">Image</label><br>
+            <span id="browse" class="btn btn-default btn-file">
+                Browse... <input type="file" id="fileupload" name="file">
             </span>
         </div>
     
     
         <div class="right-group" id="viewImage">
             <img id="imgUpload" class="img-thumbnail">
-            <input type="hidden" name="filePath" id="filePath"></input>
+            <input type="hidden" name="filePath" id="filePath">
         </div>
     
 </div>            
@@ -206,7 +213,11 @@
         </div><!-- Button -->
         <div class="form-group">
             <hr>
-            <p class="text-center"><input class="btn btn-primary" id=
+            <p class="text-center"><input id="buttons" class="btn btn-primary" id=
+            "singlebutton" name="singlebutton" type="submit" value=
+            "Save"></p>
+            
+            <p class="text-center"><input id="buttons" class="btn btn-primary" id=
             "singlebutton" name="singlebutton" type="submit" value=
             "Publish"></p>
         </div>

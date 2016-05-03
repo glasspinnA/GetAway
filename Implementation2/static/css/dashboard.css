@@ -1,6 +1,9 @@
 /* -------- ALLMÄNT FÖR ADMINGRÄNSSNITT -------- */
 
 
+/* -------- ALLMÄNT FÖR ADMINGRÄNSSNITT -------- */
+
+
 @font-face {
 	font-family: 'Pacifico';
 	src: url('fonts/Pacifico.ttf');
@@ -38,7 +41,7 @@ header {
     padding-top: 35px;
     border: none;
     color: white;
-    background: rgba(73, 101, 127, 0.0);
+    background-color: rgba(73, 101, 127, 0.81);
 }
 
 #signOut:hover,
@@ -249,4 +252,84 @@ label.checkbox {
 
 #buttons:hover {
     background: rgb(73, 101, 127);
+}
+
+
+
+/* --------- BARA FÖR DENNA SIDA --------- */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#well .imgInList {
+    height: 200px; 
+    width: 250px;
+    padding: 5px;
+    padding-bottom: 0px;
+    margin: 0px;
+    border: solid 0.5px;
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+} 
+
+#well {
+    border-color: #FFFFFF;
+    border-top-color: #FFFFFF;
+    border-top: solid 0.5px;
+    border-radius: 0.5;
+    border: solid 0.5px;
+    background-color: #FFF;
+    margin: 40px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#well.well {
+    background: #FFF;
+    border-color: #FFF;
+    box-shadow: 0;
+}
+
+#well .caption {
+    font-family: 'helvetica neue';
+    margin-top: -70px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding-left: 10px;
+    font-weight: 300;
+}
+
+#well p {
+    display: none;
+}
+
+#well .thumbnail {
+    background-color: #FFFFFF;
+    border: solid 0.5px;
+    border-color: #FFF;
+    border-radius: 0;
+    margin: 0px;
+    padding: 0px;
+}
+
+#well .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding: 0px !important;
+    margin: 0px !important;
 }

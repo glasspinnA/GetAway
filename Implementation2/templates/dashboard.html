@@ -4,6 +4,9 @@
   <head>
     <title>Getaway</title>
 
+      
+      <link rel="stylesheet" href="../static/css/dashboard.css">
+      
    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -27,7 +30,7 @@
 					for(var i=0;i<data.length;i++){
 						
 					    
-						if(itemsPerRow<3){
+						if(itemsPerRow<i){
 							console.log(i);
 							if(i==data.length-1){
 								div.append(CreateThumb(data[i].Id,data[i].Title,data[i].Country,data[i].Description,data[i].FilePath,data[i].Tag));
@@ -57,9 +60,9 @@
 
 		})
 		function CreateThumb(id,title,country,desc,filepath,tag){
-			var mainDiv = $('<div>').attr('class','col-sm-4 col-md-4');
+			var mainDiv = $('<div>').attr('class','col-sm-3 col-md-3');
 			var thumbNail = $('<div>').attr('class','thumbnail');
-			var img = $('<img>').attr({'src':filepath,'data-holder-rendered':true,'style':'height: 150px; width: 150px; display: block'});
+			var img = $('<img>').attr({'src':filepath,'data-holder-rendered':true,'class':'imgInList'});
            
 			var caption = $('<div>').attr('class','caption');
 			var title = $('<h3>').text(title);
@@ -88,258 +91,45 @@
 		}
 	</script>
 
-    <style>
-	.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-    </style>
+
    
   </head>
 
-  <body>
-
-   <div class="container">
-<div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="/">Hem</a></li>
-            <li role="presentation"><a href="/add">Lägg till</a></li>
- 	    <li role="presentation" class="active"><a href="/dashboard">Se</a></li>
-              <li role="presentation"><a href="/admin">Mina sidor</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Getaway</h3>
-      </div>
-
-
+  
     
-
-<div class="well">
-
-</div>
-    
-
-      <footer class="footer">
-        <p>&copy; Company 2015</p>
-      </footer>
-
-    </div>
-  </body>
-</html>
-
-
-
-<!--
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Getaway</title>
-    <link href="../static/css/addWish.css" rel="stylesheet">
-
-    
-    <link href=
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-    rel="stylesheet">
-    <link href=
-    "http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css"
-    rel="stylesheet">
-
-    
-    <script src=
-    "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type=
-    "text/javascript">
-    </script>
-    <script src="../static/js/jquery-1.11.2.js">
-    </script>
-    <script src="../static/js/jquery.ui.widget.js">
-    </script>
-    <script src="../static/js/jquery.fileupload.js" type="text/javascript">
-    </script>
-    <script src="../static/js/jquery.fileupload-process.js" type=
-    "text/javascript">
-    </script>
-    <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript">
-    </script>
-    <script src=
-    "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
-    type="text/javascript">
-    </script>
-    <script src=
-    "http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
-    type="text/javascript">
-    </script>
-    <script>
-                $(function () {
-            $('.lstFruits').multiselect({
-                includeSelectAllOption: true
-            });
-        });
-        $(function(){
-                $('#fileupload').fileupload({
-                    url: 'upload',
-                    dataType: 'json',
-                    add: function (e, data) {
-                        data.submit();
-                    },
-                    success:function(response,status) {
-                    console.log(response.filename);
-                    var filePath = 'static/Uploads/' + response.filename;
-                    $('#imgUpload').attr('src',filePath);
-                    $('#filePath').val(filePath);
-                        console.log('success');
-                    },
-                    error:function(error){
-                        console.log(error);
-                    }
-                });
-        })
-    </script>
-</head>
 <body>
     <header>
         <h3 id="logotyp">Getaway</h3>
-        <a href="/" id="signOut" class="a-link">Sign out</a>
+        
+        <form action="">
+            <input id="signOut" type="submit" value="Sign out">
+      </form>
+        
     </header>
     <nav>
         <ul id="nav">
             <li>
-                <a href="/add" class="a-link up"><div class="nav"><p>Add location</p></div></a>
+                <a href="/dashboard" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
             </li>
             <li>
-                <a href="/dashboard" class="a-link"><div class="nav"><p>All locations</p></div></a>
+                <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
             </li>
             <li>
-                <a href="/admin" class="a-link"><div class="nav"><p>Admin settings</p></div></a>
+                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
             </li>
             <li>
-                <a href="/admin" class="a-link"><div class="nav"><p>Google Analytics</p></div></a>
+                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
             </li>
         </ul>
     </nav>
     
-    <content>
-<div class="content">
-    <form action="/addWish" method="post">
-        -->
-        
-        <!-- Text input
-        <div class="left-group">
-            <label for="txtTitle">City</label> <input class=
-            "form-control input-md" id="txtTitle" name="inputTitle"
-            placeholder="ex. Malmö" required="required" type="text">
-        </div>
-        
-        
-        <div class="left-group">
-            <label for="country">Country</label> <input class=
-            "form-control input-md" id="country" name="inputCountry"
-            placeholder="ex. Sverige" required="required" type="text">
-        </div>
-        
-        
-         Textarea 
-        <div class="left-group">
-            <label for="txtPost">Discription</label> 
-            <textarea class="form-control" id="txtPost" name="inputDescription"
-            placeholder="Text" required="required"></textarea>
-        </div>
-        
-        
+<content>
+    
+    <div class="well" id="well">
+
 </div>
     
-
-<div class="content">   
-    
-    
-        <div class="criteria-group">
-            <label for="txtPost">Tags</label><br>
-            <select class="lstFruits" multiple="multiple" name="inputTag">
-                <option value="Stad">a city</option>
-                <option value="Natur">the wilderness</option>
-                <option value="Strand">the beach</option>
-                <option value="Nattliv">the nightlife</option>
-                <option value="Alpint">the ski slopes</option>
-            </select>
-        </div>
-    
-    
-        <div class="criteria-group">
-            <label for="txtPost">Continent</label><br>
-            <select class="lstFruits" multiple="multiple" name="inputTag">
-                <option value="Europa">Europe</option>
-                <option value="Afrika">Africa</option>
-                <option value="Asien">Asia</option>
-                <option value="Nordamerika">North America</option>
-                <option value="Sydamerika">South America</option>
-                <option value="Oceanien">Oceania</option>
-            </select>
-        </div>
-    
-    
-    
-        <div class="criteria-group">
-            <label for="txtPost">Month</label><br>
-            <select class="lstFruits" multiple="multiple" name="inputTag">
-                <option value="Januari">January</option>
-                <option value="Februari">February</option>
-                <option value="Mars">March</option>
-                <option value="April">April</option>
-                <option value="Maj">May</option>
-                <option value="Juni">June</option>
-                <option value="Juli">July</option>
-                <option value="Augusti">August</option>
-                <option value="September">September</option>
-                <option value="Oktober">Oktober</option>
-                <option value="November">November</option>
-                <option value="December">December</option>
-            </select>
-        </div>
-    
-        <div class="right-group">
-            <label for="txtPost">Image</label><br>
-            <span class="btn btn-default btn-file">
-                Choose image <input type="file" id="fileupload" name="file">
-            </span>
-        </div>
-    
-    
-        <div class="right-group" id="viewImage">
-            <img id="imgUpload" class="img-thumbnail">
-            <input type="hidden" name="filePath" id="filePath"></input>
-        </div>
-    
-</div>            
-            
-        </div> Button
-        <div class="form-group">
-            <hr>
-            <p class="text-center"><input class="btn btn-primary" id=
-            "singlebutton" name="singlebutton" type="submit" value=
-            "Publish"></p>
-        </div>
-    </form>
-        
-        </content>
+    </content>
     
 </body>
 </html>
-
--->
