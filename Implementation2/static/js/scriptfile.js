@@ -215,6 +215,8 @@ $.ajax({
             }
             } else {
                 alert('finns ej')
+                location.reload();
+                return false;
             }
         }    
 },
