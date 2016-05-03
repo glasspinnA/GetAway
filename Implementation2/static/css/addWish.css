@@ -139,13 +139,9 @@ content {
     float: left;
     padding: 30px;
     background-color: rgb(240, 240, 240);
-<<<<<<< HEAD
     width: 82%;
     color: rgb(130, 130, 130);
-=======
-    width: 80%;
-	min-height: 650px;
->>>>>>> origin/master
+    min-height: 650px;
 }
 
 .content {
