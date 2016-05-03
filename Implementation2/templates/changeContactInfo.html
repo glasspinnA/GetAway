@@ -1,17 +1,97 @@
-<html>
-  <head>
-    <title>Ändra lösen</title>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Byt lösen</h1>
-      <form action="" method="post">
-        <input type="password" placeholder="Gamla lösenord" name="oldPassword" value="{{request.form.oldPassword }}">
-        <input type="password" placeholder="Nya lösenord" name="newPassword" value="{{request.form.newPassword }}">
-        <input type="password" placeholder="Skriv nya lösenord" name="newPasswordChecker" value="{{request.form.newPasswordChecker }}">
-        <input type="submit" value="Byt lösenord">
-        {% with messages = get_flashed_messages() %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Getaway</title>
+    <link href="addwish.css" rel="stylesheet">
+
+    
+    <link href=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href=
+    "http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css"
+    rel="stylesheet">
+
+    
+    <script src=
+    "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type=
+    "text/javascript">
+    </script>
+    <script src="../static/js/jquery-1.11.2.js">
+    </script>
+    <script src="../static/js/jquery.ui.widget.js">
+    </script>
+    <script src="../static/js/jquery.fileupload.js" type="text/javascript">
+    </script>
+    <script src="../static/js/jquery.fileupload-process.js" type=
+    "text/javascript">
+    </script>
+    <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript">
+    </script>
+    <script src=
+    "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
+    type="text/javascript">
+    </script>
+    <script src=
+    "http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
+    type="text/javascript">
+    </script>
+    <script>
+                $(function () {
+            $('.lstFruits').multiselect({
+                includeSelectAllOption: true
+            });
+        });
+        $(function(){
+                $('#fileupload').fileupload({
+                    url: 'upload',
+                    dataType: 'json',
+                    add: function (e, data) {
+                        data.submit();
+                    },
+                    success:function(response,status) {
+                    console.log(response.filename);
+                    var filePath = 'static/Uploads/' + response.filename;
+                    $('#imgUpload').attr('src',filePath);
+                    $('#filePath').val(filePath);
+                        console.log('success');
+                    },
+                    error:function(error){
+                        console.log(error);
+                    }
+                });
+        })
+
+</script>
+</head>
+
+<body id="bodyOne">
+    <header>
+        <h3 id="logotyp">Getaway</h3>
+        <a href="/" id="signOut" class="a-link">Sign out</a>
+    </header>
+    <nav>
+        <ul id="nav">
+            <li id="liOne"><a href="/add"><div class="nav"><p>Add location</p></div></a></li>
+            <li><a href="/dashboard" class="a-link"><div class="nav"><p>All locations</p></div></a></li>
+            <li><a href="/admin" class="a-link"><div class="nav"><p>Admin settings</p></div></a></li>
+            <li><a href="/admin" class="a-link"><div class="nav"><p>Google Analytics</p></div></a></li>
+        </ul>
+    </nav>
+	
+<content>
+<div class="content">
+<form action="" method="post">
+
+		<div id="changePassw">
+        <label for="changepassword">Change password</label>
+		<input type="password" placeholder="Old password" name="oldPassword" value="{{request.form.oldPassword}}">
+        <input type="password" placeholder="New password" name="newPassword" value="{{request.form.newPassword}}">
+        <input type="password" placeholder="Write new password again" name="newPasswordChecker" value="{{request.form.newPasswordChecker}}">
+        <input type="submit" value="Change"> 
+		
+		{% with messages = get_flashed_messages() %}
           {% if messages %}
             <ul class=flashes>
               {% for message in messages %}
@@ -20,7 +100,10 @@
             </ul>
           {% endif %}
         {% endwith %}
+		
       </form>
-    </div>
+      </div>
+	  </div>
+		
   </body>
 </html>

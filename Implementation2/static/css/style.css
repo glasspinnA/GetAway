@@ -6,7 +6,6 @@
 /* FÖRSTA SIDAN */
 #picture {
 	position: relative;
-	z-index: -2;
 }
 #picture img {
 	/* Set rules to fill background */
@@ -21,105 +20,40 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+    z-index: -2;
 }
 
 #title {
 	position: absolute;
 	/*z-index: 1;*/
 	font-family: 'Tahoma', san-serif;
-	top: 2em;
-	left: 2em;
+	top: 3em;
+	left: 3em;
 	color: white;
+    z-index: 10;
 }
 
 #title h1 {
 	font-size: 30px;
 	margin: 0px;
 	color: white;
+    z-index: 10;
 }
 
 #title p {
 	font-size: 20px;
 	margin: 0px;
 	color: white;
+    z-index: 10;
 }
 
 /*Knappar*/
-
-#readMore {
-	position: absolute;
-	bottom: 2em;
-	left: 2em;	
-	z-index: 4;
-}
-
-#readMore img {
-	width: 3em;
-	height: 3em;
-}
 
 #getaway {
 	position: absolute;
 	right: 2em;
 	bottom: 2em;
 	z-index: 4;
-}
-
-#showAll {
-	position: absolute;
-	top: 2em;
-	right: 2em;
-	z-index: 4;
-}
-
-#showAll img {
-	width: 3em;
-	height: 3em;
-}
-
-
-/*VISA MER/SHOW MORE INFORMATION*/
-#readMoresite {
-	display: none;
-}
-
-#readMoresite img {
-	filter: blur(10px); /*Firefox*/
-	-webkit-filter: blur(10px); /*Chrome*/
-	
-	/* Set rules to fill background*/
-	min-height: 100%;
-	min-width: 1024px;
-	
-	/* Set up proportionate scaling */
-	width: 100%;
-	height: auto;
-	
-	/* Set up positioning */
-	position: fixed;
-	top: 0;
-	left: 0;
-		
-}
-
-#readMoresite h2,p {
-	filter: blur(0px);  /*Firefox*/
-	-webkit-filter: blur(0px); /*Chrome*/
-	color: white;
-	font-family: 'Tahoma', san-serif;
-	padding: 0px;
-}
-
-#readMoresite h2 {
-	font-size: 40px;
-	text-align: center;	
-}
-
-#readMoresite p {
-	text-align: center;
-	width: 400px;
-	margin-right: auto;
-	margin-left: auto;
 }
 
 /* GETAWAY KNAPP */

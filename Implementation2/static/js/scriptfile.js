@@ -47,6 +47,72 @@ function grabAnytimeHtml(clicked_id){
     document.getElementById('heading3').innerHTML = (clickedAnytime);
 }
 
+
+// --- FUNKTIONER FÖR ATT VISA OCH DÖLJA KNAPPAR OCH DIVAR --- //
+
+function showCriterias() {
+    // Visar kriterier efter att man tryckt visaknappen
+    var centerDiv = document.getElementById("center-div");
+    var showstuff = document.getElementById("fullSizeTest")
+    var readMoreBox = document.getElementById("readMoresite")
+    
+    if (centerDiv.style.display == "none") {
+        centerDiv.style.display = "block";
+        showstuff.style.display = "block";
+        readMoreBox.style.display = "none";
+    }
+    else {
+        centerDiv.style.display = "none";
+        showstuff.style.display = "none";
+        readMoreBox.style.display = "none";
+    }
+}
+
+function hideCriterias() {
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+    var centerDiv = document.getElementById("center-div");
+    var showstuff = document.getElementById("fullSizeTest")
+    
+    if (centerDiv.style.display == "block") {
+        centerDiv.style.display = "none";
+        showstuff.style.display = "none";
+        
+    }
+    else {
+        centerDiv.style.display = "none";
+        showstuff.style.display = "none";
+    }
+}
+
+
+function showCircles() {
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+    var readMore = document.getElementById("readMore");
+    var showAll = document.getElementById("showAll");
+    readMore.style.display = "block";
+    showAll.style.display = "block";
+}
+
+function readMoresite() {
+    // Visar mer information om resmålet när man trycker på pluset
+	var showstuff = document.getElementById("fullSizeTest")
+    var readMoreBox = document.getElementById("readMoresite")
+    var centerDiv = document.getElementById("center-div");
+    
+	if (showstuff.style.display == "block") {
+        showstuff.style.display = "none";
+        readMoreBox.style.display = "none";
+        centerDiv.style.display = "none";
+   }
+   else {
+       showstuff.style.display = "block";
+       readMoreBox.style.display = "block";
+       centerDiv.style.display = "none";
+   }
+    }
+
+// --- FUNKTIONER FÖR FILTRERING AV RESMÅLEN --- //
+
 function randomGrab() {
     // Aktiveras onclick på slumpknapp
     // sparar de valda kriterierna i variabler. Vet inte om vi kan använda detta för att skicka vidare till python sen.
@@ -67,6 +133,8 @@ function randomGrab() {
     localStorage.setItem('inputTxtTag3', name3);    
     localStorage.setItem('inputTxtTag2', name2);
 }
+
+
 
 $(document).ready(function() {
     
@@ -169,7 +237,10 @@ $.ajax({
             }
             }
             } else {
-                alert('finns ej')
+                alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
+                location.reload();
+                return false;
+
             }
         }    
 },

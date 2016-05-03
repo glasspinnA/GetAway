@@ -139,8 +139,13 @@ content {
     float: left;
     padding: 30px;
     background-color: rgb(240, 240, 240);
+<<<<<<< HEAD
     width: 82%;
     color: rgb(130, 130, 130);
+=======
+    width: 80%;
+	min-height: 650px;
+>>>>>>> origin/master
 }
 
 .content {
@@ -223,6 +228,7 @@ label.checkbox {
     font-weight: 300;
 }
 
+<<<<<<< HEAD
 .labels {
     font-weight: 400;
     font-size: 15px;
@@ -250,3 +256,32 @@ label.checkbox {
 #buttons:hover {
     background: rgb(73, 101, 127);
 }
+=======
+#changePassw {
+	padding: 30px;	
+}
+
+#changePassw input {
+	display: block;
+    box-sizing: border-box;
+	margin-top: 5px;
+	padding: 1em;
+	width: 500px;
+	height: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: lightgrey;
+}
+
+
+#changePassw input[type=submit] {
+	color: white;
+	background: rgb(98, 136, 170);
+	line-height: 0px;
+	text-align: left;
+	width: 100px;
+
+}
+>>>>>>> origin/master
