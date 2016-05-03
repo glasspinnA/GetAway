@@ -97,6 +97,7 @@ content {
     padding: 30px;
     background-color: rgb(240, 240, 240);
     width: 80%;
+	min-height: 650px;
 }
 
 .content {
@@ -170,4 +171,32 @@ label.checkbox {
     margin-bottom: 0px;
     margin-left: 10px;
     font-weight: 300;
+}
+
+#changePassw {
+	padding: 30px;	
+}
+
+#changePassw input {
+	display: block;
+    box-sizing: border-box;
+	margin-top: 5px;
+	padding: 1em;
+	width: 500px;
+	height: 20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: lightgrey;
+}
+
+
+#changePassw input[type=submit] {
+	color: white;
+	background: rgb(98, 136, 170);
+	line-height: 0px;
+	text-align: left;
+	width: 100px;
+
 }
