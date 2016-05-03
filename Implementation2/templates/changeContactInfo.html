@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Getaway</title>
-    <link href="addwish.css" rel="stylesheet">
+    <link href="../static/css/addwish.css" rel="stylesheet">
 
     
     <link href=
@@ -69,14 +69,22 @@
 <body id="bodyOne">
     <header>
         <h3 id="logotyp">Getaway</h3>
-        <a href="/" id="signOut" class="a-link">Sign out</a>
+       
     </header>
     <nav>
         <ul id="nav">
-            <li id="liOne"><a href="/add"><div class="nav"><p>Add location</p></div></a></li>
-            <li><a href="/dashboard" class="a-link"><div class="nav"><p>All locations</p></div></a></li>
-            <li><a href="/admin" class="a-link"><div class="nav"><p>Admin settings</p></div></a></li>
-            <li><a href="/admin" class="a-link"><div class="nav"><p>Google Analytics</p></div></a></li>
+            <li>
+                <a href="/admin" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
+            </li>
+            <li>
+                <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
+            </li>
+            <li>
+                <a href="/changeContactInfo" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
+            </li>
+            <li>
+                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
+            </li>
         </ul>
     </nav>
 	

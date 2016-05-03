@@ -4,11 +4,12 @@
   <head>
     <title>GetAway</title>
 
-  
+   <link rel="stylesheet" href="../static/css/dashboard.css">
+      
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    <link href="../static/css/signup.css" rel="stylesheet">
     <script src="../static/js/jquery-1.11.2.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -179,20 +180,34 @@
 </head>
 
   <body>
+   <header>
+        <h3 id="logotyp">Getaway</h3>
+        
+        <form action="" method="post">
+            <input id="signOut" type="submit" value="Sign out">
+      </form>
+        
+    </header>
 
-    <div class="container">
-      <div class="header">          
+            
           <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="/">Hem</a></li>
-            <li role="presentation"><a href="/add">Lägg till</a></li>
- 	    <li role="presentation"><a href="/dashboard">Se</a></li>
-              <li role="presentation" class="active"><a href="/admin">Mina sidor</a></li>
-          </ul>
-        </nav>
+        <ul id="nav">
+            <li>
+                <a href="/admin" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
+            </li>
+            <li>
+                <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
+            </li>
+            <li>
+                <a href="/changeContactInfo" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
+            </li>
+            <li>
+                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
+            </li>
+        </ul>
+    </nav>
           
-        <h3 class="text-muted">GetAway</h3>
-      </div>
+        
 
      
         <script id="listTemplate" type="text/x-jQuery-tmpl">
@@ -209,15 +224,15 @@
                         </li>
     </script>
 
-        <div style="position: absolute; left: 10px; top: 10px; display: flex;">
+       
             
-            <form action="" method="post">
-        <input type="submit" value="Logga ut">
-      </form>
+
             
-      <a style="padding-left: 0.5em;"  href="/changeContactInfo">Ändra lösenord</a>
+         
+            
     
-        </div>
+        
+        <content>
 	<div class="well">
     <div class="row">
         <div class="col-md-12">
@@ -229,20 +244,15 @@
  
                         
                     </ul>
-		    <nav>
-  <ul class="pagination">
-    
-  </ul>
-</nav>
+
                 </div>
                 
             </div>
         </div>
     </div>
- <footer class="footer">
-        <p>&copy; Company 2015</p>
-      </footer>
-</div>
+            </content>
+
+
 
 
 

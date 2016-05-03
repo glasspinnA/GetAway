@@ -41,7 +41,7 @@ header {
     padding-top: 35px;
     border: none;
     color: white;
-    background-color: rgba(73, 101, 127, 0.81);
+    background: rgba(73, 101, 127, 0.0);
 }
 
 #signOut:hover,
@@ -139,11 +139,12 @@ p {
 
 /* ------ INNEHÅLL ----- */
 content {
-    float: left;
+     float: left;
     padding: 30px;
     background-color: rgb(240, 240, 240);
     width: 82%;
     color: rgb(130, 130, 130);
+	min-height: 800px;
 }
 
 .content {
@@ -188,6 +189,9 @@ content {
     display: block;
 }
 
+.modal-body .form-group {
+  float: none !important;  
+}
 
 .form-group {
     clear: both;
