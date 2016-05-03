@@ -241,9 +241,9 @@ def login():
             if request.method == 'POST':
                 usernameInput = request.form['username']
                 passwordInput = request.form['password']
-                cursor.execute('SELECT username FROM tbl_login WHERE username =%s', [usernameInput])
+                cursor.callproc('sp_getUsername',(usernameInput.split()))
                 usernameFromDB = cursor.fetchone()[0]
-                cursor.execute('SELECT password FROM tbl_login WHERE username =%s', [usernameInput])
+                cursor.callproc('sp_getPassword',(usernameInput.split()))
                 passwordFromDB = cursor.fetchone()[0]
                 if usernameInput == usernameFromDB and check_password_hash(passwordFromDB, passwordInput):
                     session['user'] = usernameInput
@@ -286,7 +286,7 @@ def changePassword():
                     newPasswordCheckInput = request.form['newPasswordChecker']
                     if check_password_hash(passwordFromDB, oldPasswordInput) and newPasswordInput == newPasswordCheckInput:
                         newPassword = generate_password_hash(newPasswordInput)
-                        cursor.execute('UPDATE tbl_login SET password=%s WHERE password=%s', (newPassword,passwordFromDB))
+                        cursor.callproc('sp_changePassword',(newPassword.split(),passwordFromDB.split()))
                         flash("Lösenordet är nu ändrat")
                         mysql.commit()
                     else:
