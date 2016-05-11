@@ -95,7 +95,7 @@ a:hover {
 }
 
 #picture {
-    transition: width 2s linear 1s;
+    display: none;
 
 }
 
@@ -130,8 +130,7 @@ a:hover {
 #anything {
     position: absolute;
     display: none;
-    float: left;
-    
+    float: left;  
 }
 
 #anywhere {
@@ -207,8 +206,6 @@ a:hover {
     display: none;
 }
 
-/*TESTKOD*/
-
 #wrap_video {
     position: absolute;
     top: 0;
@@ -261,6 +258,13 @@ a:hover {
     display: block;
     
 }
+
+#bottomLeftDiv p {
+    font-size: 10px;
+    text-align: center;
+    padding-top: 5px;
+}
+
 
 .innerBottomDiv {
     min-width: 100px;

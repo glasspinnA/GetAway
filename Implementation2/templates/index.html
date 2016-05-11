@@ -7,15 +7,17 @@
    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/main.css">
-      <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
 
-    <!---<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">--->
+    <!---Scripts for functions--->
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="../static/js/jquery-1.11.2.js"></script>
     <script type="text/javascript" src="static/js/scriptfile.js"></script>
-	
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
+    </head>
 
   <body>
 <div id="container">
@@ -111,17 +113,20 @@
     
     <div id="bottomLeftDiv">
         <div class="smaller-div resposiveDiv">
-            <button class="button" onclick="randomGrab(); hideCriterias(); showCircles();" id="send_data"><img src="../static/pictures/shuffle.svg"></button>
+            <button alt="Randomize" id="send_data" class="button" onclick="randomGrab(); hideCriterias(); showCircles(); fadeDiv();" ><img src="../static/pictures/shuffle.svg"></button>
+            <p>Shuffle</p>
         </div>
         
         <div class="smaller-div resposiveDiv">
-            <!---<div id="readMore"><img alt="Read more" src="../static/pictures/readmore.png" onclick="readMoresite();"></div>-->
-            <div id="readMore"><button class="button" onclick="readMoresite();"><img src="../static/pictures/plus-2.svg"></button></div>
+            <div alt="Read more" id="readMore"><button class="button" onclick="readMoresite();"><img src="../static/pictures/plus-2.svg"></button>
+            <p>Info</p>
+            </div>
         </div>
         
         <div class="smaller-div resposiveDiv">
-            <!--<div id="showAll"><img alt="Show all" src="../static/pictures/showall.png" onclick="showCriterias();"></div>-->
-            <div id="showAll"><button class="button" onclick="showCriterias();"><img src="../static/pictures/central-alignment.svg"></button></div>
+            <div alt="Change criterias" id="showAll"><button class="button" onclick="showCriterias();"><img src="../static/pictures/central-alignment.svg"></button>
+            <p>Criterias</p>
+            </div>
         </div> 
     </div>
     
