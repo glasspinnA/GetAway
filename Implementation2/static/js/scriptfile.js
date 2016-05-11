@@ -178,12 +178,6 @@ $.ajax({
             var arr_anywhere = arr[2];
             arr = (arr[0] + ' ' + arr[1]);
                                         
-            if (arr == 'the ski') {                                            
-                
-                arr_anytime = arr[4];
-                arr_anywhere = arr[3];
-                arr = (arr + ' ' + 'slopes');
-            }
         } else {
                 
             arr_anytime  = arr[2];
@@ -198,22 +192,35 @@ $.ajax({
             if (data[i].Tag.indexOf(arr) >= 0 || arr == 'anything') {
             if (data[i].Tag.indexOf(arr_anywhere) >= 0 || arr_anywhere == 'anywhere') {
             if (data[i].Tag.indexOf(arr_anytime) >= 0 || arr_anytime == 'anytime') {
-                            counter += i;
+                           
+                            counter += i + ',';
+                
             }
             }
             }
         }
-                        
-        var newCounter = counter.split('');
+        
+        var lastChar = counter.slice(-1);
+        if (lastChar == ',') {
+        counter = counter.slice(0, -1);
+}
+        
+        console.log(counter)
+        var newCounter = counter.split(',');
+        console.log(newCounter)
         var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
 
         for (var i = 0; i <= 1; i++) {
-                            
+                     
             if (data[rand] != undefined) {
+   
             if (data[rand].Tag.indexOf(arr) >= 0 || arr == 'anything') {
+ 
             if (data[rand].Tag.indexOf(arr_anywhere) >= 0 || arr_anywhere == 'anywhere') {
+ 
             if (data[rand].Tag.indexOf(arr_anytime) >= 0 || arr_anytime == 'anytime') {
-                        
+
+                     
                 $('#title').empty(); 
                 var title = $('<h1>');
                 title.append(data[rand].Title);

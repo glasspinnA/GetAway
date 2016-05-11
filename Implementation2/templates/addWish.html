@@ -3,39 +3,21 @@
 <head>
     <meta charset="utf-8">
     <title>Getaway</title>
+    
+    <!--- CSS --->
     <link href="../static/css/addWish.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-    
-    <link href=
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-    rel="stylesheet">
-    <link href=
-    "http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css"
-    rel="stylesheet">
-
-    
-    <script src=
-    "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type=
-    "text/javascript">
-    </script>
-    <script src="../static/js/jquery-1.11.2.js">
-    </script>
-    <script src="../static/js/jquery.ui.widget.js">
-    </script>
-    <script src="../static/js/jquery.fileupload.js" type="text/javascript">
-    </script>
-    <script src="../static/js/jquery.fileupload-process.js" type=
-    "text/javascript">
-    </script>
-    <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript">
-    </script>
-    <script src=
-    "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
-    type="text/javascript">
-    </script>
-    <script src=
-    "http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
-    type="text/javascript">
+    <!--- JavaScript --->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/jquery.ui.widget.js"></script>
+    <script src="../static/js/jquery.fileupload.js" type="text/javascript"></script>
+    <script src="../static/js/jquery.fileupload-process.js" type="text/javascript"></script>
+    <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript">
     </script>
     <script>
                 $(function () {
@@ -64,31 +46,8 @@
         })
         
         
-        
-        
-        
-        
-        /* Saras
-        
-        $(function(){
-
-    $('.nav').(function(){
-
-        $('.nav .active').removeClass('active'); // remove the class from the currently selected
-        $(this).addClass('active'); // add the class to the newly clicked link
-
-    });
-
-}); 
-*/
-        
     </script>
 </head>
-    <!--
-    <a href="/" id="signOut" class="a-link">Sign out</a>
-
-<input type="submit" value="Logga ut">Sign out</input>
--->
     
     
 <body id="bodyAddWish">
@@ -113,10 +72,9 @@
     </nav>
     
     <content>
+        <form action="/addWish" method="post">
 <div class="content">
-    <form action="/addWish" method="post">
-        
-        
+    
         <!-- Text input-->
         <div class="left-group">
             <label for="txtTitle" class="labels">City</label> <input class=
@@ -134,13 +92,12 @@
         
         <!-- Textarea -->
         <div class="left-group">
-            <label for="txtPost" class="labels">Discription</label> 
+            <label for="txtPost" class="labels">Description</label> 
             <textarea class="form-control" id="txtPost" name="inputDescription"
             placeholder="Text" required="required"></textarea>
         </div>
         
-        
-</div>
+        </div>
     
 
 <div class="content">   
@@ -149,7 +106,7 @@
         <div class="criteria-group">
             <label for="txtPost" class="labels">Tags</label><br>
             <select class="lstFruits" id="lstFruits" multiple="multiple" name="inputTag">
-                <option value="a city<">a city</option>
+                <option value="a city">a city</option>
                 <option value="the wilderness">the wilderness</option>
                 <option value="the beach">the beach</option>
                 <option value="the nightlife">the nightlife</option>
@@ -205,7 +162,7 @@
     
 </div>            
             
-        </div><!-- Button -->
+       <!-- Button -->
         <div class="form-group">
             <hr>
             <p class="text-center"><input id="buttons" class="btn btn-primary" id=
