@@ -21,8 +21,9 @@ host = loginDatbaseInfo[0]
 user = loginDatbaseInfo[1]
 password = loginDatbaseInfo[2]
 db = loginDatbaseInfo[3]
+charset = 'utf8mb4'
 
-mysql = pymysql.connect(host=host, user=user, password=password, db=db)
+mysql = pymysql.connect(host=host, user=user, password=password, db=db, charset=charset)
 
 # Fix för Connection Reset på POST
 # Mer info om denna klass:
@@ -261,7 +262,7 @@ def login():
 @app.route('/admin')
 def welcome():
     if g.user:
-        return render_template('welcome.html')
+        return render_template('admin.html')
     else:
         return redirect(url_for('error'))
     return redirect(url_for('login'))
