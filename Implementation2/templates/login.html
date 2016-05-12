@@ -1,40 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<link href="../static/css/login.css" rel="stylesheet" type="text/css">
-		<meta charset="utf-8">
-		<title>Getaway login</title>
-	</head>
-
-	<body>
-
-		<header>
-		<div id= "title">
-		<p>Getaway</p>
-		</div>
-		</header>
-
-	
-		<section>
-		<div id="login">
-		<form action="" method="post">
-        <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
-		<input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
-        <input class="btn btn-default" type="submit" value="Return to Login">
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul class=flashes>
-              {% for message in messages %}
-                <li>{{ message }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
-		</form>
-		</div>
+    
+    <head>
+        
+        <title>Getaway login</title>
+        
+        <meta charset="utf-8">
+        <link href="../static/css/login.css" rel="stylesheet" type="text/css">
 		
-		</div>
-		</section>
-
-	</body>
+    </head>
+    
+    <body>
+        
+        <header>
+            <div id= "title">
+                <p>Getaway</p>
+            </div>
+        </header>
+        
+        <section>
+            <div id="login">
+                <form action="" method="post">
+                    <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
+                    <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
+                    <input class="btn btn-default" type="submit" value="Return to Login">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </form>
+            </div>
+        </section>
+    </body>
 </html>

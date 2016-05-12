@@ -69,27 +69,27 @@ def upload():
 # SIDA: Lägg till.
     
 @app.route('/add')
-def showAddWish():
+def showAdd():
     #if session.get('user'):
-        return render_template('addWish.html')
+        return render_template('add.html')
     #else:
     #    return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Uppdatera inlägg.
     
-@app.route('/updateWish', methods=['POST'])
-def updateWish():
+@app.route('/update', methods=['POST'])
+def update():
     try:
         with mysql.cursor() as cursor:
             #if session.get('user'):
                 _title = request.form['title']
                 _country = request.form['country']
                 _description = request.form['description']
-                _wish_id = request.form['id']
+                _destination_id = request.form['id']
                 _filePath = request.form['filePath']
                 _tag = request.form['tag']
   
-                cursor.callproc('sp_updateWish',(_title,_country,_description,_wish_id.split(),_filePath,_tag))
+                cursor.callproc('sp_updateWish',(_title,_country,_description,_destination_id.split(),_filePath,_tag))
                 data = cursor.fetchall()
 
                 if len(data) is 0:
@@ -104,25 +104,25 @@ def updateWish():
     
 # FUNKTION: Hämta alla inlägg (från databasen).
     
-@app.route('/getAllWishes')
-def getAllWishes():
+@app.route('/getAll')
+def getAll():
     try:
         with mysql.cursor() as cursor:
             cursor.callproc('sp_GetAllWishes',())
-            result = cursor.fetchall()
+            destinations = cursor.fetchall()
                          
-            wishes_dict = []
-            for wish in result:
-                wish_dict = {
-                        'Id': wish[0],
-                        'Title': wish[1],
-						'Country': wish[2],
-                        'Description': wish[3],
-                        'FilePath': wish[4],
-                        'Tag': wish[5]} 
-                wishes_dict.append(wish_dict)
+            destinations_dict = []
+            for destination in destinations:
+                destination_dict = {
+                        'Id': destination[0],
+                        'Title': destination[1],
+						'Country': destination[2],
+                        'Description': destination[3],
+                        'FilePath': destination[4],
+                        'Tag': destination[5]} 
+                destinations_dict.append(destination_dict)
                 
-            return json.dumps(wishes_dict)
+            return json.dumps(destinations_dict)
             return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
@@ -137,8 +137,8 @@ def showDashboard():
 
 # FUNKTION: Ta bort inlägg.
 
-@app.route('/deleteWish',methods=['POST'])
-def deleteWish():
+@app.route('/delete',methods=['POST'])
+def delete():
     try:
         with mysql.cursor() as cursor:
         
@@ -162,8 +162,8 @@ def deleteWish():
         
 # FUNKTION: Hämta ett inläggs id (används för redigering).
     
-@app.route('/getWishById',methods=['POST'])
-def getWishById():
+@app.route('/getById',methods=['POST'])
+def getById():
     try:
         with mysql.cursor() as cursor:
             #if session.get('user'):
@@ -173,10 +173,10 @@ def getWishById():
                 cursor.callproc('sp_GetWishById',(_id.split()))
                 result = cursor.fetchall()
 
-                wish = []
-                wish.append({'Id':result[0][0],'Title':result[0][1],'Country': result[0][2],'Description':result[0][3],'FilePath':result[0][4],'Tag':result[0][5]})
+                destination = []
+                destination.append({'Id':result[0][0],'Title':result[0][1],'Country': result[0][2],'Description':result[0][3],'FilePath':result[0][4],'Tag':result[0][5]})
 
-                return json.dumps(wish)
+                return json.dumps(destination)
             #else:
             #    return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
@@ -184,8 +184,8 @@ def getWishById():
     
 # FUNKTION: Lägg till.   
         
-@app.route('/addWish',methods=['POST'])
-def addWish():    
+@app.route('/addDestination',methods=['POST'])
+def addDestination():    
     try:
         with mysql.cursor() as cursor:
             #if session.get('user'):
@@ -284,7 +284,7 @@ def error():
 
 #Metod som ändrar lösenordet till admin kontont.
 #Skickar det nya lösenordet till DB och ersätter det gamla lösenordet
-@app.route("/changeContactInfo", methods=["POST","GET"])
+@app.route("/changePassword", methods=["POST","GET"])
 def changePassword():
     if g.user:
         try:
@@ -304,7 +304,7 @@ def changePassword():
             return render_template('error.html',error = str(e)) 
         finally:
             cursor.close() 
-        return render_template('changeContactInfo.html')
+        return render_template('changePassword.html')
     return redirect(url_for('login'))
 
 # SIDA: Hämta alla tags.

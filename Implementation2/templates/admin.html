@@ -3,144 +3,144 @@
     
     <head>
         
-    <title>GetAway</title>
-
-    <!--- CSS --->
-    <link rel="stylesheet" href="../static/css/dashboard.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-    
-    <!--- JavaScript --->
-    <script src="../static/js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="../static/js/jquery.ui.widget.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.fileupload.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.fileupload-process.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.fileupload-ui.js"></script>
-    <script type="text/javascript" src="../static/js/admin.js"></script>
-    
-    </head>
-
-<body id="bodyWelcome">
-
-<!--- Header --->
-<header>
-          
-<h3 id="logotyp">Getaway</h3>
-    
-    <!--- Logga ut --->
-    <form action="" method="post">
-        <input id="signOut" type="submit" value="Sign out">
-    </form>
+        <title>GetAway</title>
         
-</header>
-
-<!--- Navigation --->
-    <nav>
-        <ul id="nav">
-            <li id="liWelcome">
-                <a href="/admin" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
-            </li>
-            <li>
-                <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
-            </li>
-            <li>
-                <a href="/changeContactInfo" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
-            </li>
-            <li>
-                <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
-            </li>
-        </ul>
-    </nav>
+        <!--- CSS --->
+        <link rel="stylesheet" href="../static/css/dashboard.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+        
+        <!--- JavaScript --->
+        <script src="../static/js/jquery-1.11.2.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="../static/js/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="../static/js/jquery.fileupload.js"></script>
+        <script type="text/javascript" src="../static/js/jquery.fileupload-process.js"></script>
+        <script type="text/javascript" src="../static/js/jquery.fileupload-ui.js"></script>
+        <script type="text/javascript" src="../static/js/admin.js"></script>
+        
+    </head>
     
-<!--- Listan som visas med alla resmål (fylls med hjälp av admin.js) --->
-<script id="listTemplate" type="text/x-jQuery-tmpl">
-<li class="list-group-item">
-<div class="checkbox"><label>${Title}</label></div>
-<div class="pull-right action-buttons">
-<a data-id=${Id} onclick="Edit(this)" ><span class="glyphicon glyphicon-pencil"></span></a>
-<a data-id=${Id} onclick="ConfirmDelete(this)" ><span class="glyphicon glyphicon-trash"></span></a>
-</div>
-</li>
-</script>
-
-<content>
-    <div class="panel-body"><ul id="ulist" class="list-group"></ul></div>
-</content>
-<!--- Slut  --->
-    
-<!--- Fönstret man redigerar informationen i --->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <body id="bodyWelcome">
+        
+        <!--- Header --->
+        <header>
+            <h3 id="logotyp">Getaway</h3>
             
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="editModalLabel">Update Wish</h4>
+            <!--- Logga ut --->
+            <form action="" method="post">
+                <input id="signOut" type="submit" value="Sign out">
+            </form>
+        </header>
+        <!--- Navigation --->
+        
+        <nav>
+            <ul id="nav">
+                <li id="liWelcome">
+                    <a href="/admin" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
+                </li>
+                <li>
+                    <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
+                </li>
+                <li>
+                    <a href="/changePassword" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
+                </li>
+                <li>
+                    <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!--- Listan som visas med alla resmål (fylls med hjälp av admin.js) --->
+        <script id="listTemplate" type="text/x-jQuery-tmpl">
+        <li class="list-group-item">
+        <div class="checkbox"><label>${Title}</label></div>
+        <div class="pull-right action-buttons">
+        <a data-id=${Id} onclick="Edit(this)" ><span class="glyphicon glyphicon-pencil"></span></a>
+        <a data-id=${Id} onclick="ConfirmDelete(this)" ><span class="glyphicon glyphicon-trash"></span></a>
             </div>
-            
-            <div class="modal-body">
-                <form role="form">
-                    
-                    <div class="form-group">
-                    <label for="recipient-name" class="control-label">Title:</label>
-                    <input type="text" class="form-control" id="editTitle">
+            </li>
+        </script>
+        
+        <content>
+            <div class="panel-body"><ul id="ulist" class="list-group"></ul></div>
+        </content>
+        <!--- Slut  --->
+        
+        <!--- Fönstret man redigerar informationen i --->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="editModalLabel">Update Wish</h4>
                     </div>
                     
-                    <div class="form-group">
-                    <label for="country-text" class="control-label">Country:</label>
-                    <input class="form-control" id="editCountry">
+                    <div class="modal-body">
+                        <form role="form">
+                            
+                            <!--- Titel --->
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Title:</label>
+                                <input type="text" class="form-control" id="editTitle">
+                            </div>
+                    
+                            <!--- Land --->
+                            <div class="form-group">
+                            <label for="country-text" class="control-label">Country:</label>
+                            <input class="form-control" id="editCountry">
+                            </div>
+                    
+                            <!--- Beskrivning --->
+                            <div class="form-group">
+                            <label for="message-text" class="control-label">Description:</label>
+                            <textarea class="form-control" id="editDescription"></textarea>
+                            </div>
+                    
+                            <!--- Tags --->
+                            <div class="form-group">
+                            <label for="tag-text" class="control-label">Tag:</label>
+                            <input type="text" class="form-control" id="editTag">
+                            </div>
+                            
+                            <!--- Foton --->
+                            <div class="form-group">
+                                <label for="txtPost">Photos</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-file">Browse&hellip; <input type="file" id="fileupload" name="file" multiple></span>
+                                    </span>
+                                    <div class="pull-right">
+                                        <img  id="imgUpload" style="width: 140px; height: 140px;" class="img-thumbnail"><input type="hidden" name="filePath" id="filePath">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     
-                    <div class="form-group">
-                    <label for="message-text" class="control-label">Description:</label>
-                    <textarea class="form-control" id="editDescription"></textarea>
+                    <!--- Knapparna i fönstret där man redigerar --->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btnUpdate" type="button" class="btn btn-primary">Update</button>
                     </div>
-                    
-                    <div class="form-group">
-                    <label for="tag-text" class="control-label">Tag:</label>
-                    <input type="text" class="form-control" id="editTag">
-                    </div>
-                    
-                    <div class="form-group">
-                    <label for="txtPost">Photos</label>
-                        <div class="input-group">
-                        <span class="input-group-btn">
-                        <span class="btn btn-primary btn-file">Browse&hellip; <input type="file" id="fileupload" name="file" multiple></span>
-                        </span>
-                        <div class="pull-right">
-                        <img  id="imgUpload" style="width: 140px; height: 140px;" class="img-thumbnail"><input type="hidden" name="filePath" id="filePath">
-                        </div>
-                        </div>
-                    </div>
-                
-                </form>
-
                 </div>
-
-<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="btnUpdate" type="button" class="btn btn-primary">Update</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-       <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header" style="text-align:center;">
-        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">You are going to Delete this forever !!</h4>
-      </div>
-     
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="Delete()">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-     
-  </body>
+            </div>
+        </div>
+        
+        <!--- Fönster för "ta bort" --->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align:center;">
+                        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">You are going to Delete this forever !!</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="Delete()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

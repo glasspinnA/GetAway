@@ -1,56 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Getaway</title>
-    
-    <!--- CSS --->
-    <link href="../static/css/addWish.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-    <!--- JavaScript --->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
-    <script src="../static/js/jquery-1.11.2.js"></script>
-    <script src="../static/js/jquery.ui.widget.js"></script>
-    <script src="../static/js/jquery.fileupload.js" type="text/javascript"></script>
-    <script src="../static/js/jquery.fileupload-process.js" type="text/javascript"></script>
-    <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript">
-    </script>
-    <script>
-                $(function () {
-            $('.lstFruits').multiselect({
-                includeSelectAllOption: true
-            });
-        });
-        $(function(){
-                $('#fileupload').fileupload({
-                    url: 'upload',
-                    dataType: 'json',
-                    add: function (e, data) {
-                        data.submit();
-                    },
-                    success:function(response,status) {
-                    console.log(response.filename);
-                    var filePath = 'static/Uploads/' + response.filename;
-                    $('#imgUpload').attr('src',filePath);
-                    $('#filePath').val(filePath);
-                        console.log('success');
-                    },
-                    error:function(error){
-                        console.log(error);
-                    }
-                });
-        })
+<html lang="en">
+    
+    <head>
         
+        <title>Getaway</title>
+        <meta charset="utf-8">
         
-    </script>
+        <!--- CSS --->
+        <link href="../static/css/add.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+        <!--- JavaScript --->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+        <script src="../static/js/jquery-1.11.2.js"></script>
+        <script src="../static/js/jquery.ui.widget.js"></script>
+        <script src="../static/js/jquery.fileupload.js" type="text/javascript"></script>
+        <script src="../static/js/jquery.fileupload-process.js" type="text/javascript"></script>
+        <script src="../static/js/jquery.fileupload-ui.js" type="text/javascript"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+        <script src="../static/js/add.js"></script>
+        
 </head>
     
     
-<body id="bodyAddWish">
+<body id="bodyAdd">
     <header>
         <h3 id="logotyp">Getaway</h3>
     </header>
@@ -59,11 +35,11 @@
             <li>
                 <a href="/admin" class="a-link up"><div class="nav"><img src="../static/pictures/location.png" alt="location" id="location"><p>All locations</p></div></a>
             </li>
-            <li id="liAddWish">
+            <li id="liAdd">
                 <a href="/add" class="a-link"><div class="nav"><img src="../static/pictures/add_location.png" alt="location" id="addLocation"><p>Add location</p></div></a>
             </li>
             <li>
-                <a href="/changeContactInfo" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
+                <a href="/changePassword" class="a-link"><div class="nav"><img src="../static/pictures/admin.png" alt="location" id="admin"><p>Admin settings</p></div></a>
             </li>
             <li>
                 <a href="/admin" class="a-link"><div class="nav"><img src="../static/pictures/analytics.png" alt="location" id="analytics"><p>Google Analytics</p></div></a>
@@ -72,7 +48,7 @@
     </nav>
     
     <content>
-        <form action="/addWish" method="post">
+        <form action="/addDestination" method="post">
 <div class="content">
     
         <!-- Text input-->

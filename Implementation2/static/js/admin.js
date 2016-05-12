@@ -20,10 +20,10 @@
 
 	$(function(){
 		
-		GetWishes(1);
+		GetDestinations(1);
 		$('#btnUpdate').click(function(){
 			$.ajax({
-			url : '/updateWish',
+			url : '/update',
 			data : {title:$('#editTitle').val(),country:$('#editCountry').val(),description:$('#editDescription').val(),id:localStorage.getItem('editId'),filePath:$('#imgUpload').attr('src'),tag:$('#editTag').val()},
 			type : 'POST',
 			success: function(res){
@@ -31,7 +31,7 @@
 
 			$('#editModal').modal('hide');
 							    
-				GetWishes(1);
+				GetDestinations(1);
 				
 				
 
@@ -48,10 +48,10 @@
 		});
 	});
 
-	function GetWishes(_page){
+	function GetDestinations(_page){
 		
 		$.ajax({
-			url : '/getAllWishes',
+			url : '/getAll',
             type : 'GET',
 			success: function(res){
 				
@@ -80,14 +80,14 @@
 
 	function Delete(){
 		$.ajax({
-			url : '/deleteWish',
+			url : '/delete',
 			data : {id:localStorage.getItem('deleteId')},
 			type : 'POST',
 			success: function(res){
 				var result = JSON.parse(res);
 				if(result.status == 'OK'){
 					$('#deleteModal').modal('hide');
-					GetWishes();
+					GetDestinations();
 				}
 				else{
 					alert(result.status);	
@@ -103,7 +103,7 @@
 		localStorage.setItem('editId',$(elm).attr('data-id'));
         
 		$.ajax({
-			url : '/getWishById',
+			url : '/getById',
 			data : {id:$(elm).attr('data-id')},
             type : 'POST',
 			success: function(res){

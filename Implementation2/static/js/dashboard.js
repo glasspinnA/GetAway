@@ -1,6 +1,6 @@
 		$(function(){
 			    $.ajax({
-        			url: '/getAllWishes',
+        			url: '/getAll',
 				type: 'GET',
 			        success:function(response) {
 					console.log(response);
