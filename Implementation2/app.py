@@ -263,7 +263,7 @@ def welcome():
     if g.user:
         return render_template('welcome.html')
     else:
-        return render_template('error.html', error = 'Unauthorized Access')
+        return redirect(url_for('error'))
     return redirect(url_for('login'))
 
 #Metod som droppar ens session när man loggar ut från admin sidan
@@ -272,6 +272,14 @@ def logout():
     session.pop('user', None)
     flash("Du är utloggad")
     return redirect(url_for('login'))
+
+
+@app.route('/error', methods=["POST","GET"])
+def error():
+	if request.method == "POST":
+		return redirect(url_for("login"))
+	return render_template('error.html')
+
 
 #Metod som ändrar lösenordet till admin kontont.
 #Skickar det nya lösenordet till DB och ersätter det gamla lösenordet
