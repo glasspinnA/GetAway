@@ -111,6 +111,29 @@ function readMoresite() {
    }
     }
 
+// --- FUNKTIONER FÖR FADE AV DIVAR--- //
+ 
+function fadeBackground() {
+    //Ändrar opacity för bakgrundsbilden från 0 till 1 vid varje shuffle klick
+    document.getElementById('picture').style.opacity = 0;
+    
+    $('#picture').fadeTo( "500" , 1, function() {
+    // Animation complete.
+  });
+}
+
+function alertStatus() {
+    $('#send_data').attr('disabled', 'disabled');
+    setTimeout(enable, 500);
+    $('#doneStatus').hide();
+    $('#loadingStatus').show();
+
+}
+
+function enable() {
+    $('#send_data').removeAttr('disabled');
+}
+
 // --- FUNKTIONER FÖR FILTRERING AV RESMÅLEN --- //
 
 function randomGrab() {
@@ -165,7 +188,7 @@ $(document).ready(function() {
 function test(data1) {
     
 $.ajax({
-    url: '/getAll',
+    url: '/getAllWishes',
     type: 'GET',
     success:function(response) {
 					
