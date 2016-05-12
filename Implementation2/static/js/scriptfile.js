@@ -188,7 +188,7 @@ $(document).ready(function() {
 function test(data1) {
     
 $.ajax({
-    url: '/getAllWishes',
+    url: '/getAll',
     type: 'GET',
     success:function(response) {
 					
