@@ -17,7 +17,7 @@ html {
 	margin-top: 300px;
 	font-family: 'Helvetica', sans-serif;
 }
-
+    
 #box h1 {
 	font-size: 70px;
 }
@@ -31,7 +31,6 @@ html {
 	margin-top: 1em;
 	text-align: center;
 	padding: 10px;
-	width: 250px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -41,4 +40,23 @@ html {
 	width: 200px;
 	border: 3px solid;
 	color: yellow;
+}
+
+.cool-link {
+    text-align: center;
+	padding: 10px 4em 10px 4em;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 3px solid yellow;
+    color: black; 
+    font-size: 15px;
+    background: yellow;
+    text-decoration: none;
+    width: 200px;
+}
+
+
+.cool-link:hover, #box input:hover {
+    cursor: pointer;
 }

@@ -264,7 +264,7 @@ def welcome():
     if g.user:
         return render_template('admin.html')
     else:
-        return redirect(url_for('error'))
+        return render_template('error.html', error = 'Unauthorized Access')
     return redirect(url_for('login'))
 
 #Metod som droppar ens session när man loggar ut från admin sidan

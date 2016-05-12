@@ -14,11 +14,15 @@
             
             <div id="box">
                 
-                <h1>404</h1>
-                <p>Sorry but the page you are looking for has not been found. Return to admin and log in.</p> 
+                <div class="jumbotron">
+        <h1>{{error}}</h1>
+        
+      </div>
+                <p>Sorry, you do not have the authority to view this page. Return to the front page or log in.</p> 
                 
-                <form action="" method="post">
-                    <input type="submit" value="Return to Login">
+                <form action="" method="post">    
+                <a class="cool-link" href="/">Front page</a>
+                <input type="submit" value="Login">
                 </form>
             
             </div>
