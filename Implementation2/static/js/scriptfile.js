@@ -47,7 +47,6 @@ function grabAnytimeHtml(clicked_id){
     document.getElementById('heading3').innerHTML = (clickedAnytime);
 }
 
-
 // --- FUNKTIONER FÖR ATT VISA OCH DÖLJA KNAPPAR OCH DIVAR --- //
 
 function showCriterias() {
@@ -68,11 +67,22 @@ function showCriterias() {
     }
 }
 
-function hideCriterias() {
-    // Döljer kriterier efter att man tryckt slumpa på förstasidan
+function hideFrontPage() {
+    
+    var readMore = document.getElementById("readMore");
+    var showAll = document.getElementById("showAll");    
     var centerDiv = document.getElementById("center-div");
     var showstuff = document.getElementById("fullSizeTest")
     
+    // Döljer videon efter första klicket
+    var wrap_video = document.getElementById("wrap_video");
+    wrap_video.style.display = "none";
+    
+    // Visar dessa knappar efter att man tryckt slumpa på förstasidan
+    readMore.style.display = "block";
+    showAll.style.display = "block";
+    
+    // Döljer kriterier efter att man tryckt slumpa på förstasidan
     if (centerDiv.style.display == "block") {
         centerDiv.style.display = "none";
         showstuff.style.display = "none";
@@ -82,15 +92,15 @@ function hideCriterias() {
         centerDiv.style.display = "none";
         showstuff.style.display = "none";
     }
-}
-
-
-function showCircles() {
-    // Döljer kriterier efter att man tryckt slumpa på förstasidan
-    var readMore = document.getElementById("readMore");
-    var showAll = document.getElementById("showAll");
-    readMore.style.display = "block";
-    showAll.style.display = "block";
+    
+    //Ändrar opacity för bakgrundsbilden från 0 till 1 vid varje shuffle klick
+    document.getElementById('picture').style.opacity = 0;
+    
+    $('#send_data').attr('disabled', 'disabled');
+    setTimeout(enable, 500);
+    $('#doneStatus').hide();
+    $('#loadingStatus').show();
+    
 }
 
 function readMoresite() {
@@ -112,23 +122,6 @@ function readMoresite() {
     }
 
 // --- FUNKTIONER FÖR FADE AV DIVAR--- //
- 
-function fadeBackground() {
-    //Ändrar opacity för bakgrundsbilden från 0 till 1 vid varje shuffle klick
-    document.getElementById('picture').style.opacity = 0;
-    
-    $('#picture').fadeTo( "500" , 1, function() {
-    // Animation complete.
-  });
-}
-
-function alertStatus() {
-    $('#send_data').attr('disabled', 'disabled');
-    setTimeout(enable, 500);
-    $('#doneStatus').hide();
-    $('#loadingStatus').show();
-
-}
 
 function enable() {
     $('#send_data').removeAttr('disabled');
@@ -137,147 +130,119 @@ function enable() {
 // --- FUNKTIONER FÖR FILTRERING AV RESMÅLEN --- //
 
 function randomGrab() {
-    // Aktiveras onclick på slumpknapp
-    // sparar de valda kriterierna i variabler. Vet inte om vi kan använda detta för att skicka vidare till python sen.
     
+    // Sparar de tre olika kriterier som är valda i varsin variabel
     var sendAnythingChoice = document.getElementById('heading1').innerHTML
     var sendAnytimeChoice = document.getElementById('heading3').innerHTML
     var sendAnywhereChoice = document.getElementById('heading2').innerHTML
     
+    // Sätter in dessa i ett formulär
     document.getElementById('fillAnything').value = (sendAnythingChoice);
     document.getElementById('fillAnywhere').value = (sendAnywhereChoice);
     document.getElementById('fillAnytime').value = (sendAnytimeChoice);
-        
-    var name = document.getElementById('fillAnything').value;
-    var name3 = document.getElementById('fillAnywhere').value;
-    var name2 = document.getElementById('fillAnytime').value;
     
-    localStorage.setItem('fillAnything', name);
-    localStorage.setItem('inputTxtTag3', name3);    
-    localStorage.setItem('inputTxtTag2', name2);
+    // Sparar detta nya värde i variabler
+    var criteria = document.getElementById('heading1').value;
+    var criteria2 = document.getElementById('heading2').value;
+    var criteria3 = document.getElementById('heading3').value;
+    
+    // Sparar sedan dessa i localStorage
+    localStorage.setItem('fillAnything', criteria);
+    localStorage.setItem('fillAnywhere', criteria2);    
+    localStorage.setItem('fillAnytime', criteria3);
 }
-
-
 
 $(document).ready(function() {
     
-    
-                        $('#send_data').on('click', function() {
-                            
-                            document.getElementById("center-div").className += " MyClass";
-                            
-                            var wrap_video = document.getElementById("wrap_video");
-                            wrap_video.style.display = "none";
-                            
-                            
-                            $.ajax({
-                                url: "/data_post",
-                                method: "POST",
-                                data: {
-                                    data: $('#fillAnything').val() + ' ' + $('#fillAnywhere').val() + ' ' +  $('#fillAnytime').val()
-                                },
-                                success: function(data) {
-                                    console.log(data)
-                                    test(data);
-                                    
-                                }
-                            });
-                        });
-                    });
-
-function test(data1) {
-    
-$.ajax({
-    url: '/getAll',
-    type: 'GET',
-    success:function(response) {
-					
-        var data = JSON.parse(response);
-        var arr = data1.split(' ');
-                      
-        if (arr[0] == 'a' || arr[0] == 'the') {
-                                        
-            var arr_anytime = arr[3];
-            var arr_anywhere = arr[2];
-            arr = (arr[0] + ' ' + arr[1]);
-                                        
-        } else {
-                
-            arr_anytime  = arr[2];
-            arr_anywhere = arr[1];
-            arr = arr[0];
-            }
-                        
-        var counter = "";
-                        
-        for (var i = 0; i < data.length; i++) {
-                            
-            if (data[i].Tag.indexOf(arr) >= 0 || arr == 'anything') {
-            if (data[i].Tag.indexOf(arr_anywhere) >= 0 || arr_anywhere == 'anywhere') {
-            if (data[i].Tag.indexOf(arr_anytime) >= 0 || arr_anytime == 'anytime') {
-                           
-                            counter += i + ',';
-                
-            }
-            }
-            }
-        }
+    $('#send_data').on('click', function() {
         
-        var lastChar = counter.slice(-1);
-        if (lastChar == ',') {
-        counter = counter.slice(0, -1);
-}
+        // Hämtar de sparade variablernas värde från localstorage
+        var criterias = $('#fillAnything').val() + ' ' + $('#fillAnywhere').val() + ' ' +  $('#fillAnytime').val();
         
-        console.log(counter)
-        var newCounter = counter.split(',');
-        console.log(newCounter)
-        var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
+        // Hämtar alla resmål
+        $.ajax({
+            url: '/getAll',
+            type: 'GET',
+            data: {data: criterias},
+            success:function(response) {
+                
+                var data = JSON.parse(response);
+                
+                // Sätter ett mellanrum mellan taggarna (för tydlighet)
+                var arr = criterias.split(' ');
+                
+                
+                // Fix för att vissa kriterier har prefix 'a' och 'the'
+                if (arr[0] == 'a' || arr[0] == 'the') {
+                    
+                    var arr_anytime = arr[3];
+                    var arr_anywhere = arr[2];
+                    arr = (arr[0] + ' ' + arr[1]);
+                
+                } else {
+                    
+                    arr_anytime  = arr[2];
+                    arr_anywhere = arr[1];
+                    arr = arr[0];
+                }
+                
+                // Om kriterier passar överens med en destination sparas dess position i databasen till en variabel.
+                // Siffrorna separeras med kommatecken så att man kan separera dem enkelt senare.
+                var counter = "";
+                
+                for (var i = 0; i < data.length; i++) {
+                    
+                    if (data[i].Tag.indexOf(arr) >= 0 || arr == 'anything') {
+                        if (data[i].Tag.indexOf(arr_anywhere) >= 0 || arr_anywhere == 'anywhere') {
+                            if (data[i].Tag.indexOf(arr_anytime) >= 0 || arr_anytime == 'anytime') {
+                                counter += i + ',';
+                                
+                            }
+                        }
+                    }
+                }
+               
+                // Tar bort det sista kommatecknet
+                counter = counter.slice(0, -1);
 
-        for (var i = 0; i <= 1; i++) {
-                     
-            if (data[rand] != undefined) {
-   
-            if (data[rand].Tag.indexOf(arr) >= 0 || arr == 'anything') {
- 
-            if (data[rand].Tag.indexOf(arr_anywhere) >= 0 || arr_anywhere == 'anywhere') {
- 
-            if (data[rand].Tag.indexOf(arr_anytime) >= 0 || arr_anytime == 'anytime') {
+                // Delar upp numren där det finns kommatecken så att inte t.ex. 10 blir 1 och 0.
+                var newCounter = counter.split(',');
+                
+                // En av positionerna slumpas fram
+                var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
+                
+                // Här sätts all information till lämplig div
+                // Om ett resmål inte finns, skrivs ett felmeddelande och du återkommer till startsidan.
+                if (data[rand] != undefined) {
+                    
+                    $('#title').empty(); 
+                    var title = $('<h1>');
+                    title.append(data[rand].Title);
+                    $('#title').append(title);
 
-                     
-                $('#title').empty(); 
-                var title = $('<h1>');
-                title.append(data[rand].Title);
-                $('#title').append(title);
-                            
-                var country = $('<p>');
-                country.append(data[rand].Country);
-                $('#title').append(country);
-                            
-                $('#readMoresite').empty();     
-                var desc = $('<p>');
-                desc.append(data[rand].Description);
-                $('#readMoresite').append(desc);
-                        
-                $('#picture').empty();
-                var img = $('<img>').attr({'src':data[rand].FilePath,'data-holder-rendered':true,});
-                img.append(data[rand].FilePath)
-                $('#picture').append(img);
-                            
+                    var country = $('<p>');
+                    country.append(data[rand].Country);
+                    $('#title').append(country);
+
+                    $('#readMoresite').empty();     
+                    var desc = $('<p>');
+                    desc.append(data[rand].Description);
+                    $('#readMoresite').append(desc);
+
+                    $('#picture').empty();
+                    var img = $('<img>').attr({'src':data[rand].FilePath,'data-holder-rendered':true,});
+                    img.append(data[rand].FilePath)
+                    $('#picture').append(img).fadeTo( '500' , 1);
+                
+                } else {
+                    alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
+                    location.reload();
+                    return false;
+                }
+            },
+            error:function(error){
+            console.log(error);
             }
-            }
-            }
-            } else {
-                alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
-                location.reload();
-                return false;
-
-            }
-        }    
-},
-
-error:function(error){
-console.log(error);
-
-        }
+        });
     });
-}
+});

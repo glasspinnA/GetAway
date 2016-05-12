@@ -307,15 +307,5 @@ def changePassword():
         return render_template('changePassword.html')
     return redirect(url_for('login'))
 
-# SIDA: Hämta alla tags.
-        
-@app.route('/data_post', methods=['POST'])
-def data_post():
-    
-    checkboxArray = request.form['data'];
-    
-    print(checkboxArray)
-   
-    return checkboxArray
 if __name__ == "__main__":
     app.run(debug=True, port=5002)

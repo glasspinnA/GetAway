@@ -1,138 +1,137 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Getaway</title>
+    
+    <head>
+        
+        <title>Getaway</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/main.css">
+        <link href="../static/css/style.css" rel="stylesheet" type="text/css">
 
-   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/main.css">
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
-
-    <!---Scripts for functions--->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="../static/js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="static/js/scriptfile.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-      
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!---Scripts for functions--->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="../static/js/jquery-1.11.2.js"></script>
+        <script type="text/javascript" src="static/js/scriptfile.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
     </head>
-
-  <body>
-<div id="container">
     
-    <header>
-		<div id="title">
-		</div>
-    </header>
-    
-        <div id="wrap_video">     
-            <video autoplay loop poster="" id="bgvid">
-                <source src="https://player.vimeo.com/external/134025228.hd.mp4?s=9fdf3d36312edfd18b3a5a8df0be17e3&amp;profile_id=113" type="video/mp4">
-            </video>
-            <div id="video_overlays">
-            </div>
-        </div>
-    
-        <!--Här börjar hela diven för att ändra kriterier-->
-        <div id="center-div">
-            <div class="smaller-div"><h1 class="brightH1" id="heading">Take me to</h1></div>
+    <body>
+        
+        <div id="container">
             
-            <!--Divarna som visar och hanterar typ av resmål-->
-            <div id="small-anything-div" class="smaller-div" onclick="getAnything()">
-                <h1 id="heading1">anything</h1>
-                <div class ="medium-div" id="anything">
-                    <h2><a id="city" onclick='grabAnythingHtml(this.id)' href="#" >a city</a></h2>
-                    <h2><a id="wilderness" onclick='grabAnythingHtml(this.id)' href="#">the wilderness</a></h2>
-                    <h2><a id="beach" onclick='grabAnythingHtml(this.id)' href="#">the beach</a></h2>
-                    <h2><a id="nightlife" onclick='grabAnythingHtml(this.id)' href="#">the nightlife</a></h2>
-                    <h2><a id="snow" onclick='grabAnythingHtml(this.id)' href="#">the snow</a></h2>
-                    <hr>
-                    <h2><a id="backToAnything" onclick='grabAnythingHtml(this.id)' href="#" >anything</a></h2>
-
+            <header>
+                <div id="title"></div>
+            </header>
+            
+            <div id="wrap_video">
+                <video autoplay loop poster="" id="bgvid">
+                    <source src="https://player.vimeo.com/external/134025228.hd.mp4?s=9fdf3d36312edfd18b3a5a8df0be17e3&amp;profile_id=113" type="video/mp4">
+                </video>
+                <div id="video_overlays"></div>
+            </div>
+            
+            <!--Här börjar hela diven för att ändra kriterier-->
+            <div id="center-div">
+                <div class="smaller-div"><h1 class="brightH1" id="heading">Take me to</h1></div>
+                
+                <!--Divarna som visar och hanterar typ av resmål-->
+                <div id="small-anything-div" class="smaller-div" onclick="getAnything()">
+                    <h1 id="heading1">anything</h1>
+                    <div class ="medium-div" id="anything">
+                        <h2><a id="city" onclick='grabAnythingHtml(this.id)' href="#" >a city</a></h2>
+                        <h2><a id="wilderness" onclick='grabAnythingHtml(this.id)' href="#">the wilderness</a></h2>
+                        <h2><a id="beach" onclick='grabAnythingHtml(this.id)' href="#">the beach</a></h2>
+                        <h2><a id="nightlife" onclick='grabAnythingHtml(this.id)' href="#">the nightlife</a></h2>
+                        <h2><a id="snow" onclick='grabAnythingHtml(this.id)' href="#">the snow</a></h2>
+                        <hr>
+                        <h2><a id="backToAnything" onclick='grabAnythingHtml(this.id)' href="#" >anything</a></h2>
+                    </div>
                 </div>
-            </div>
-            
-            <!--Divarna som visar och hanterar kontinenter-->
-            <div class="smaller-div in-div" ><h1 class="brightH1">in</h1></div>
+                
+                <!--Divarna som visar och hanterar kontinenter-->
+                <div class="smaller-div in-div" ><h1 class="brightH1">in</h1></div>
                 <div class="smaller-div" onclick="getAnywhere()">
                     <h1 id="heading2">anywhere</h1>
                     <div class ="medium-div" id="anywhere">
-                    <h2><a id="europe" onclick='grabAnywhereHtml(this.id)' href="#">Europe</a></h2>
-                    <h2><a id="africa" onclick='grabAnywhereHtml(this.id)'href="#">Africa</a></h2>
-                    <h2><a id="asia" onclick='grabAnywhereHtml(this.id)' href="#">Asia</a></h2>
-                    <h2><a id="north-America" onclick='grabAnywhereHtml(this.id)' href="#">North America</a></h2>
-                    <h2><a id="south-America" onclick='grabAnywhereHtml(this.id)' href="#">South America</a></h2>
-                    <h2><a id="oceania" onclick='grabAnywhereHtml(this.id)' href="#">Oceania</a></h2>
-                    <hr>
-                    <h2><a id="backToAnywhere" onclick='grabAnywhereHtml(this.id)' href="#">anywhere</a></h2>
-
+                        <h2><a id="europe" onclick='grabAnywhereHtml(this.id)' href="#">Europe</a></h2>
+                        <h2><a id="africa" onclick='grabAnywhereHtml(this.id)'href="#">Africa</a></h2>
+                        <h2><a id="asia" onclick='grabAnywhereHtml(this.id)' href="#">Asia</a></h2>
+                        <h2><a id="north-America" onclick='grabAnywhereHtml(this.id)' href="#">North America</a></h2>
+                        <h2><a id="south-America" onclick='grabAnywhereHtml(this.id)' href="#">South America</a></h2>
+                        <h2><a id="oceania" onclick='grabAnywhereHtml(this.id)' href="#">Oceania</a></h2>
+                        <hr>
+                        <h2><a id="backToAnywhere" onclick='grabAnywhereHtml(this.id)' href="#">anywhere</a></h2>
+                    </div>
+                </div>
+                
+                <!--Divarna som visar och hanterar månader-->
+                <div class="smaller-div in-div" ><h1 class="brightH1">in</h1></div>
+                <div class="smaller-div" onclick="getAnytime()" >
+                    <h1 id="heading3">anytime</h1>
+                    <div class ="medium-div" id="anytime">
+                        <h2><a id="january" onclick='grabAnytimeHtml(this.id)' href="#">January</a></h2>
+                        <h2><a id="february" onclick='grabAnytimeHtml(this.id)' href="#">February</a></h2>
+                        <h2><a id="march" onclick='grabAnytimeHtml(this.id)' href="#">March</a></h2>
+                        <h2><a id="april" onclick='grabAnytimeHtml(this.id)' href="#">April</a></h2>
+                        <h2><a id="may" onclick='grabAnytimeHtml(this.id)' href="#">May</a></h2>
+                        <h2><a id="june" onclick='grabAnytimeHtml(this.id)' href="#">June</a></h2>
+                        <h2><a id="july" onclick='grabAnytimeHtml(this.id)' href="#">July</a></h2>
+                        <h2><a id="august" onclick='grabAnytimeHtml(this.id)' href="#">August</a></h2>
+                        <h2><a id="september" onclick='grabAnytimeHtml(this.id)' href="#">September</a></h2>
+                        <h2><a id="october" onclick='grabAnytimeHtml(this.id)' href="#">October</a></h2>
+                        <h2><a id="november" onclick='grabAnytimeHtml(this.id)' href="#">November</a></h2>
+                        <h2><a id="december" onclick='grabAnytimeHtml(this.id)' href="#">December</a></h2>
+                        <hr>
+                        <h2><a id="backToAnytime" onclick='grabAnytimeHtml(this.id)' href="#">anytime</a></h2>
+                    </div>
                 </div>
             </div>
             
-            <!--Divarna som visar och hanterar månader-->
-            <div class="smaller-div in-div" ><h1 class="brightH1">in</h1></div>
-            <div class="smaller-div" onclick="getAnytime()" >
-                <h1 id="heading3">anytime</h1>
-                <div class ="medium-div" id="anytime">
-                    <h2><a id="january" onclick='grabAnytimeHtml(this.id)' href="#">January</a></h2>
-                    <h2><a id="february" onclick='grabAnytimeHtml(this.id)' href="#">February</a></h2>
-                    <h2><a id="march" onclick='grabAnytimeHtml(this.id)' href="#">March</a></h2>
-                    <h2><a id="april" onclick='grabAnytimeHtml(this.id)' href="#">April</a></h2>
-                    <h2><a id="may" onclick='grabAnytimeHtml(this.id)' href="#">May</a></h2>
-                    <h2><a id="june" onclick='grabAnytimeHtml(this.id)' href="#">June</a></h2>
-                    <h2><a id="july" onclick='grabAnytimeHtml(this.id)' href="#">July</a></h2>
-                    <h2><a id="august" onclick='grabAnytimeHtml(this.id)' href="#">August</a></h2>
-                    <h2><a id="september" onclick='grabAnytimeHtml(this.id)' href="#">September</a></h2>
-                    <h2><a id="october" onclick='grabAnytimeHtml(this.id)' href="#">October</a></h2>
-                    <h2><a id="november" onclick='grabAnytimeHtml(this.id)' href="#">November</a></h2>
-                    <h2><a id="december" onclick='grabAnytimeHtml(this.id)' href="#">December</a></h2>
-                    <hr>
-                    <h2><a id="backToAnytime" onclick='grabAnytimeHtml(this.id)' href="#">anytime</a></h2>
-                </div>
-            </div>
-            <!--<div class="smaller-div"><button id="randomGrab" onclick="randomGrab()">Slumpa</button></div>-->
-        </div>
-        
             <!-- Det dolda formuläret som vi fyller i via javascript-->
             <form id="form" name="form" role="form">
                 <input name="inputTxtTag" type="hidden" id="fillAnything" value=""/>
                 <input name="inputTxtTag3" type="hidden" id="fillAnywhere" value=""/>
                 <input name="inputTxtTag2" type="hidden" id="fillAnytime" value=""/>   
             </form>
-
-      
-
+            
             <!-- Innehåll som visas när resmål visas-->
-
-
-    <div id="picture"></div>
-    <div id="gradientOverlay"></div>
-    <div id="fullSizeTest"><div id="readMoresite"></div></div>
-    
-    <div id="bottomLeftDiv">
-        <div class="smaller-div resposiveDiv">
-            <button alt="Randomize" id="send_data" class="button" onclick="randomGrab(); hideCriterias(); showCircles(); fadeBackground(); alertStatus();" ><img src="../static/pictures/shuffle.svg"></button>
-            <p>Shuffle</p>
+            <div id="picture"></div>
+            <div id="gradientOverlay"></div>
+            <div id="fullSizeTest">
+                <div id="readMoresite"></div></div>
+            <div id="bottomLeftDiv">
+                <div class="smaller-div resposiveDiv">
+                    <button alt="Randomize" id="send_data" class="button" onclick="randomGrab(); hideFrontPage();" >
+                        <img src="../static/pictures/shuffle.svg"></button>
+                    <p>Shuffle</p>
+                </div>
+                
+                <div class="smaller-div resposiveDiv">
+                    <div alt="Read more" id="readMore">
+                        <button class="button" onclick="readMoresite();">
+                            <img src="../static/pictures/plus-2.svg">
+                        </button>
+                        <p>Info</p>
+                    </div>
+                </div>
+                
+                <div class="smaller-div resposiveDiv">
+                    <div alt="Change criterias" id="showAll">
+                        <button class="button" onclick="showCriterias();">
+                            <img src="../static/pictures/central-alignment.svg">
+                        </button>
+                        <p>Criterias</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="getaway"><p>Getaway</p></div>
         </div>
         
-        <div class="smaller-div resposiveDiv">
-            <div alt="Read more" id="readMore"><button class="button" onclick="readMoresite();"><img src="../static/pictures/plus-2.svg"></button>
-            <p>Info</p>
-            </div>
-        </div>
-        
-        <div class="smaller-div resposiveDiv">
-            <div alt="Change criterias" id="showAll"><button class="button" onclick="showCriterias();"><img src="../static/pictures/central-alignment.svg"></button>
-            <p>Criterias</p>
-            </div>
-        </div> 
-    </div>
-    
-    <div id="getaway"><p>Getaway</p></div>
-    </div>
     </body>
 </html>
-
