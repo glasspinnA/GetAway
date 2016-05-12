@@ -57,6 +57,17 @@ html {
 }
 
 
-.cool-link:hover, #box input:hover {
+.cool-link:hover {
     cursor: pointer;
+    background: transparent;
+    color: yellow;
+    transition: ease-in 0.3s;
+}
+
+#box input:hover {
+     cursor: pointer;
+    background: yellow;
+    color: black;
+    transition: ease-in 0.3s;
+    border: 3px solid yellow;
 }
