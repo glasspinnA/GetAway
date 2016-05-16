@@ -121,6 +121,11 @@ function readMoresite() {
    }
     }
 
+function reloadSite() {
+    //aktiveras när man klickar på getaway logotypen. Laddar om sidan och börjar från början.
+    location.reload();
+}
+
 // --- FUNKTIONER FÖR FADE AV DIVAR--- //
 
 function enable() {

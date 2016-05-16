@@ -81,7 +81,18 @@ h2 {
     font-weight: bold;
 }
 
-.brightH1 {
+.whiteH1 {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.whiteH1:hover {
+    color: #d9d9d9;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.darkH1 {
     color: lightblue;
 }
 
@@ -237,6 +248,9 @@ a:hover {
     -webkit-margin-after: -0.5em;
 }
 
+#getaway:hover {
+    cursor: pointer;
+}
 #gradientOverlay {
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.7) 100%);
     display: block;
