@@ -5,12 +5,12 @@
         
         <title>GetAway</title>
         
-        <!--- CSS --->
+        <!-- CSS -->
         <link rel="stylesheet" href="../static/css/dashboard.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
         
-        <!--- JavaScript --->
+        <!-- JavaScript -->
         <script src="../static/js/jquery-1.11.2.js"></script>
         <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -24,16 +24,16 @@
     
     <body id="bodyWelcome">
         
-        <!--- Header --->
+        <!-- Header -->
         <header>
             <h3 id="logotyp">Getaway</h3>
             
-            <!--- Logga ut --->
+            <!-- Logga ut -->
             <form action="" method="post">
                 <input id="signOut" type="submit" value="Sign out">
             </form>
         </header>
-        <!--- Navigation --->
+        <!-- Navigation -->
         
         <nav>
             <ul id="nav">
@@ -52,7 +52,7 @@
             </ul>
         </nav>
         
-        <!--- Listan som visas med alla resmål (fylls med hjälp av admin.js) --->
+        <!-- Listan som visas med alla resmål (fylls med hjälp av admin.js) -->
         <script id="listTemplate" type="text/x-jQuery-tmpl">
         <li class="list-group-item">
         <div class="checkbox"><label>${Title}</label></div>
@@ -66,9 +66,9 @@
         <content>
             <div class="panel-body"><ul id="ulist" class="list-group"></ul></div>
         </content>
-        <!--- Slut  --->
+        <!-- Slut  -->
         
-        <!--- Fönstret man redigerar informationen i --->
+        <!-- Fönstret man redigerar informationen i -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -80,31 +80,31 @@
                     <div class="modal-body">
                         <form role="form">
                             
-                            <!--- Titel --->
+                            <!-- Titel -->
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Title:</label>
                                 <input type="text" class="form-control" id="editTitle">
                             </div>
                     
-                            <!--- Land --->
+                            <!-- Land -->
                             <div class="form-group">
                             <label for="country-text" class="control-label">Country:</label>
                             <input class="form-control" id="editCountry">
                             </div>
                     
-                            <!--- Beskrivning --->
+                            <!-- Beskrivning -->
                             <div class="form-group">
                             <label for="message-text" class="control-label">Description:</label>
                             <textarea class="form-control" id="editDescription"></textarea>
                             </div>
                     
-                            <!--- Tags --->
+                            <!-- Tags -->
                             <div class="form-group">
                             <label for="tag-text" class="control-label">Tag:</label>
                             <input type="text" class="form-control" id="editTag">
                             </div>
                             
-                            <!--- Foton --->
+                            <!-- Foton -->
                             <div class="form-group">
                                 <label for="txtPost">Photos</label>
                                 <div class="input-group">
@@ -119,7 +119,7 @@
                         </form>
                     </div>
                     
-                    <!--- Knapparna i fönstret där man redigerar --->
+                    <!-- Knapparna i fönstret där man redigerar -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button id="btnUpdate" type="button" class="btn btn-primary">Update</button>
@@ -128,7 +128,7 @@
             </div>
         </div>
         
-        <!--- Fönster för "ta bort" --->
+        <!-- Fönster för "ta bort" -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
