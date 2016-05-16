@@ -23,30 +23,6 @@
     z-index: -2;
 }
 
-#title {
-	position: absolute;
-	/*z-index: 1;*/
-	font-family: 'Tahoma', san-serif;
-	top: 3em;
-	left: 3em;
-	color: white;
-    z-index: 10;
-}
-
-#title h1 {
-	font-size: 30px;
-	margin: 0px;
-	color: white;
-    z-index: 10;
-}
-
-#title p {
-	font-size: 20px;
-	margin: 0px;
-	color: white;
-    z-index: 10;
-}
-
 /*Knappar*/
 
 #getaway {

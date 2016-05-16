@@ -37,14 +37,37 @@ video#bgvid {
     position: absolute;
     margin: auto;
     top: 0;
-    right: 0;
     bottom: 0;
-    left: 0;
+    left: 4em;
     width: 90%;
     height: 100px;
     /*background-color: #ccc;*/
     border-radius: 3px;
     z-index: 2;
+}
+
+#title {
+	position: absolute;
+	/*z-index: 1;*/
+	font-family: 'Tahoma', san-serif;
+	top: 4em;
+	left: 4em;
+	color: white;
+    z-index: 10;
+}
+
+#title h1 {
+	font-size: 30px;
+	margin: 0px;
+	color: white;
+    z-index: 10;
+}
+
+#title p {
+	font-size: 20px;
+	margin: 0px;
+	color: white;
+    z-index: 10;
 }
 
 .smaller-div {

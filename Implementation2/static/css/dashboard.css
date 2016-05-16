@@ -108,6 +108,7 @@ nav {
 li:hover {
     background: rgb(80, 111, 139);
     -webkit-transition: width 2s;
+    color: white;
     /* For Safari 3.1 to 6.0 */
     transition: width 2s;
 }
