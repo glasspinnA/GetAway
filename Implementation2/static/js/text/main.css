@@ -1,25 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
-
-*{
-	padding:0;
-	margin:0;
-}
-
-body{
-	font-family: "Ubuntu", sans-serif;
-}
-
-a{
-	text-decoration: none;
-}
-	a:hover{
-		color:#999;
-	}
-p{
-	line-height: 2em;
-	margin:0 0 20px;
-}
-
 span {
     color: #fff !important;
     font-size: 40px;
