@@ -13,7 +13,7 @@ html {
 }
 
 #title p {
-	font-size: 30px;
+	font-size: 40px;
 	font-family: 'Pacifico', san-serif;
 	color: white;
 	margin-left: 50px;
@@ -24,7 +24,7 @@ html {
 	width: 260px;
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 100px;
+	margin-top: 160px;
 }
 
 #login input {
@@ -60,5 +60,24 @@ html {
 	border: 3px solid;
 }
 
+.flashes {
+    color: #FFF;
+    padding: 0px;
+    font-family: 'helvetica';
+    font-size: 15px;
+}
 
+li {
+    list-style: none;
+    text-align: center;
+}
 
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #999;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: /*your box-shadow*/,0 0 0 50px white inset;
+    -webkit-text-fill-color: #999;
+}

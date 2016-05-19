@@ -15,7 +15,7 @@ app = Flask(__name__)
 # DATABAS: Uppgifter för anslutning.
 app.secret_key = os.urandom(24)
 
-loginDatbaseInfo = open("loginDatbaseInfo.txt").read()
+loginDatbaseInfo = open("/Users/sarafeliciaolsson/GitHub/GetAway/Implementation2/loginDatbaseInfo.txt").read()
 loginDatbaseInfo = loginDatbaseInfo.split()
 host = loginDatbaseInfo[0]
 user = loginDatbaseInfo[1]
@@ -46,7 +46,7 @@ class StreamConsumingMiddleware(object):
             if hasattr(app_iter, 'close'):
                 app_iter.close()
 
-app.config['UPLOAD_FOLDER'] = 'static/Uploads'
+app.config['UPLOAD_FOLDER'] = '/Users/sarafeliciaolsson/GitHub/GetAway/Implementation2/static/Uploads'
 app.wsgi_app = StreamConsumingMiddleware(app.wsgi_app)
 
 # SIDA: Start.
@@ -250,10 +250,10 @@ def login():
                     session['user'] = usernameInput
                     return redirect(url_for('welcome'))
                 else:
-                    flash("Fel användarnamn eller lösenord")
+                    flash("Wrong username or password")
             return render_template('login.html')
     except Exception as e:
-        flash("Fel användarnamn eller lösenord")
+        flash("Wrong username or password")
         return render_template('login.html')
     finally:
         cursor.close()
@@ -271,7 +271,7 @@ def welcome():
 @app.route('/admin', methods=["POST","GET"])
 def logout():
     session.pop('user', None)
-    flash("Du är utloggad")
+    flash("You are signed out")
     return redirect(url_for('login'))
 
 
@@ -299,7 +299,7 @@ def changePassword():
                         flash("Lösenordet är nu ändrat")
                         mysql.commit()
                     else:
-                        flash("Det gamla lösenordet är felaktigt eller så stämmer det nya lösenordet inte överrens")
+                        flash("The old password is incorrect or the new password does not match.")
         except Exception as e:
             return render_template('error.html',error = str(e)) 
         finally:
