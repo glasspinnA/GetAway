@@ -309,12 +309,19 @@ label.checkbox {
     display: block;
 }
 
+#well h3 {
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    color: rgb(130, 130, 130);
+    text-transform: uppercase;
+}
+
 #well .imgInList {
     height: 200px; 
     width: 250px;
     padding: 5px;
-    padding-bottom: 0px;
-    margin: 0px;
     border: solid 0.5px;
     border-color: #FFFFFF;
     background-color: #FFFFFF;
@@ -340,11 +347,7 @@ label.checkbox {
 
 #well .caption {
     font-family: 'helvetica neue';
-    margin-top: -70px;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding-left: 10px;
-    font-weight: 300;
 }
 
 #well p {
