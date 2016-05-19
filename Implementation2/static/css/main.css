@@ -246,6 +246,20 @@ a:hover {
     top: 0;
     left: 0;
 }
+
+.wrap {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 4em;
+    width: 90%;
+    height: 100px;
+    z-index: 1000;
+    float: left;
+
+}
+
 #video_overlays {
     position: fixed;
     min-width: 100%;

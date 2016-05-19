@@ -2,16 +2,11 @@ span {
     color: #fff !important;
     font-size: 40px;
     font-family: 'Helvetica', sans-serif;
-}
-
-.wrap{
-	max-width: 600px;
-	margin:250px auto;
+    font-weight: bold;
 }
 
 .type-wrap {
-	margin:10px auto;
-	padding:20px;
+	padding-top: 15px;
 }
 
 .links{

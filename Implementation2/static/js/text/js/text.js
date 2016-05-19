@@ -6,8 +6,8 @@ $('#bottomLeftDiv').hide();
         setTimeout(function() {
           $("#center-div").fadeIn(3000).show()
           $("#bottomLeftDiv").fadeIn(3000).show()
-          $('.wrap').fadeOut().hide(3000)
-       }, 5000);
+          $('.wrap').fadeOut().hide(3500)
+       }, 5500);
         
         $("#typed").typed({
             // strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
