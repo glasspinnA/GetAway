@@ -425,24 +425,19 @@ button.btn.btn-default {
 }
 
 #imgUpload {
-    width: 200px; 
-    height: 140px;
+    width: 300px; 
+    height: 200px;
 }
 
-.glyphicon {
-    color: rgba(73, 101, 127, 0.81);
-}
-
-span.glyphicon.glyphicon-trash {
+.glyphicon.glyphicon-trash {
     padding-right: 10px;
     padding-left: 5px;
-    
 }
 
-{
-    background: rgb(80, 111, 139);
-    -webkit-transition: width 2s;
-    color: white;
-    /* For Safari 3.1 to 6.0 */
-    transition: width 2s;
+.action-buttons a {
+ color: inherit !important;
+}
+
+.action-buttons a:hover {
+    cursor: pointer;
 }
