@@ -29,6 +29,14 @@ body {
     padding-top: 30px;
 }
 
+.logo-start {
+    color: white; 
+}
+
+.logo-start:hover {
+    text-decoration: none;
+}
+
 header {
     background-color: rgba(73, 101, 127, 0.81);
     height: 120px;

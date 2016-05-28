@@ -159,6 +159,9 @@ function randomGrab() {
 
 $(document).ready(function() {
     
+    // Initialisering av värdet previousRandomNumber som vi använder lite längre ned.
+    var previousRandomNumber = 0;
+    
     $('#send_data').on('click', function() {
         
         // Hämtar de sparade variablernas värde från localstorage
@@ -212,10 +215,14 @@ $(document).ready(function() {
 
                 // Delar upp numren där det finns kommatecken så att inte t.ex. 10 blir 1 och 0.
                 var newCounter = counter.split(',');
-                
+                     
                 // En av positionerna slumpas fram
-                var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
-                
+                do {
+                    var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
+                    
+                    /* Kollar om den nya slumpade positionen matchar det som slumpades förra gången */
+                    if(rand != previousRandomNumber){
+                        
                 // Här sätts all information till lämplig div
                 // Om ett resmål inte finns, skrivs ett felmeddelande och du återkommer till startsidan.
                 if (data[rand] != undefined) {
@@ -244,6 +251,13 @@ $(document).ready(function() {
                     location.reload();
                     return false;
                 }
+                    }
+                } while (rand == previousRandomNumber)
+                    if (counter.length != 2) {
+                        
+                        /* sätter den slumpade positionen till previousRandomNumber */
+                        previousRandomNumber =  rand ;
+                    }
             },
             error:function(error){
             console.log(error);

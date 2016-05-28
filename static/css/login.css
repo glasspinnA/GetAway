@@ -19,6 +19,11 @@ html {
 	margin-left: 50px;
 }
 
+.logo-start a {
+    color: white; 
+    text-decoration: none;
+}
+
 #login {
 	display: block;
 	width: 260px;
@@ -40,6 +45,13 @@ html {
 	border: 0px;
 }
 
+#login input:hover {
+    cursor: pointer;
+    background: white !important;
+    color: #666 !important;
+    border-color: #fff !important;
+    transition: ease-in 0.25s;
+}
 
 #login input[type=text] {
 	background: white;
