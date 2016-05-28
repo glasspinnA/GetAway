@@ -82,7 +82,7 @@ header {
 nav {
     float: left;
     width: 18%;
-    min-height: 225vh;
+    min-height: 300vh;
     background-color: rgba(73, 101, 127, 0.81);
 }
 
@@ -155,6 +155,11 @@ p {
     margin-left: 30px;
 }
 
+.dashboard-link {   
+    display: block; 
+    text-align: center;"
+}
+
 #analytics {
     height: 45px;
     width: 30px;
@@ -171,7 +176,7 @@ content {
     background-color: rgb(240, 240, 240);
     width: 82%;
     color: rgb(130, 130, 130);
-	min-height: 225vh;
+	min-height: 300vh;
 }
 
 .content {
