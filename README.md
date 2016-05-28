@@ -37,6 +37,7 @@ pip install PyMySQL
 
 Werkzeug
 ------
+http://werkzeug.pocoo.org
 ```
 För OSX
 $ pip install Werkzeug
