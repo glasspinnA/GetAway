@@ -93,6 +93,7 @@ nav {
     float: left;
     width: 18%;
     min-height: 100vh;
+    background: rgba(107, 130, 151, 1);
 }
 
 .a-link {
