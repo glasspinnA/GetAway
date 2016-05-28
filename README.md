@@ -44,3 +44,16 @@ $ pip install Werkzeug
 För Windows
 pip install Werkzeug
 ```
+
+Instruktioner
+------
+1. Installera alla moduler ovan
+2. Gå till rätt directory (t.ex. cd Desktop)
+3. Skriv:
+```
+python app.py
+```
+eller:
+```
+python3.5 app.py
+```
