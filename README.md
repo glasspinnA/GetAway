@@ -71,3 +71,11 @@ $ pip install Werkzeug
 För Windows
 pip install Werkzeug
 ```
+
+Färdig?
+------
+Då kanske du vill kolla in vår admin-sida?
+```
+127.0.0.1:5002/admin
+```
+*Till detta behöver du lösenord till databasen samt till admin-kontot. Hör av dig till oss om du är intresserad.*
