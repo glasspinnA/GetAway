@@ -7,7 +7,7 @@ Instruktioner
 ```
 cd Desktop/GetAway
 ```
-3. Skriv (när du står i rätt directory):
+Skriv sedan (när du står i rätt directory):
 ```
 python app.py
 ```
@@ -18,15 +18,17 @@ python3.5 app.py
 Notera var du har installerat dina moduler och vilken python-version du använder. 
 GetAway är kompatibelt med både Python 2 och 3.
 
-
-Python (3.5.1)
+Python
 ------
+
+**Python (3.5.1)**
+
 https://www.python.org/downloads/release/python-351/
 
 eller
 
-Python (2.7.11)
-------
+**Python (2.7.11)**
+
 https://www.python.org/downloads/release/python-2711/
 
 pip
