@@ -24,22 +24,7 @@ html {
 
 #box p {
 	font-size: 25px;
-}
-
-
-#box input {
-	margin-top: 1em;
-	text-align: center;
-	padding: 10px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	font-size: 15px;
-	border: 0px;
-	background: transparent;
-	width: 200px;
-	border: 3px solid;
-	color: yellow;
+    margin-bottom: 2em;
 }
 
 .cool-link {
@@ -49,25 +34,18 @@ html {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	border: 3px solid yellow;
-    color: black; 
-    font-size: 15px;
-    background: yellow;
+    color: rgba(0,0,0,0.85);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 12px;
+    background: rgba(255, 255, 0, 0.75);
     text-decoration: none;
     width: 200px;
 }
-
 
 .cool-link:hover {
     cursor: pointer;
     background: transparent;
     color: yellow;
     transition: ease-in 0.3s;
-}
-
-#box input:hover {
-     cursor: pointer;
-    background: yellow;
-    color: black;
-    transition: ease-in 0.3s;
-    border: 3px solid yellow;
 }

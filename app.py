@@ -76,7 +76,7 @@ def showAdd():
     if session.get('user'):
         return render_template('add.html')
     else:
-        return redirect(url_for('login'))
+        return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Uppdatera inlägg.
     
@@ -140,7 +140,7 @@ def showDashboard():
     if g.user:
         return render_template('dashboard.html')
     else:
-        return redirect(url_for('login'))
+        return render_template('error.html', error = 'Unauthorized Access')
     
 # FUNKTION: Ta bort inlägg.
 
