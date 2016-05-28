@@ -59,12 +59,15 @@ def main():
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
-    if request.method == 'POST':
-        file = request.files['file']
-        extension = os.path.splitext(file.filename)[1]
-        f_name = str(uuid.uuid4()) + extension
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], f_name))
-        return json.dumps({'filename':f_name})
+    if session.get('user'):
+        if request.method == 'POST':
+            file = request.files['file']
+            extension = os.path.splitext(file.filename)[1]
+            f_name = str(uuid.uuid4()) + extension
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], f_name))
+            return json.dumps({'filename':f_name})
+    else:
+        return ('Unauthorized Access')
 
 # SIDA: Lägg till.
     
@@ -73,7 +76,7 @@ def showAdd():
     #if session.get('user'):
         return render_template('add.html')
     #else:
-    #    return render_template('error.html', error = 'Unauthorized Access')
+        #return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Uppdatera inlägg.
     
@@ -97,6 +100,8 @@ def update():
                     return json.dumps({'status':'OK'})
                 else:
                     return json.dumps({'status':'ERROR'})
+            #else:
+                #return ('Unauthorized Access')
     except Exception as e:
         return json.dumps({'status':'Unauthorized access'})
     finally:
@@ -108,22 +113,24 @@ def update():
 def getAll():
     try:
         with mysql.cursor() as cursor:
-            cursor.callproc('sp_GetAllWishes',())
-            destinations = cursor.fetchall()
+            #if session.get('user'):
+                cursor.callproc('sp_GetAllWishes',())
+                destinations = cursor.fetchall()
                          
-            destinations_dict = []
-            for destination in destinations:
-                destination_dict = {
-                        'Id': destination[0],
-                        'Title': destination[1],
-						'Country': destination[2],
-                        'Description': destination[3],
-                        'FilePath': destination[4],
-                        'Tag': destination[5]} 
-                destinations_dict.append(destination_dict)
+                destinations_dict = []
+                for destination in destinations:
+                    destination_dict = {
+                            'Id': destination[0],
+                            'Title': destination[1],
+						  'Country': destination[2],
+                            'Description': destination[3],
+                            'FilePath': destination[4],
+                            'Tag': destination[5]} 
+                    destinations_dict.append(destination_dict)
                 
-            return json.dumps(destinations_dict)
-            return render_template('error.html', error = 'Unauthorized Access')
+                return json.dumps(destinations_dict)
+            #else:
+                #return ('Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     finally:
@@ -133,7 +140,10 @@ def getAll():
         
 @app.route('/dashboard')
 def showDashboard():
+    #if session.get('user'):
         return render_template('dashboard.html')
+    #else:
+        #return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Ta bort inlägg.
 
@@ -141,7 +151,6 @@ def showDashboard():
 def delete():
     try:
         with mysql.cursor() as cursor:
-        
             #if session.get('user'):
                 _id = request.form['id']
 
@@ -154,7 +163,7 @@ def delete():
                 else:
                     return json.dumps({'status':'An Error occured'})
             #else:
-            #    return render_template('error.html',error = 'Unauthorized Access')
+                #return ('Unauthorized Access')
     except Exception as e:
         return json.dumps({'status':str(e)})
     finally:
@@ -178,7 +187,7 @@ def getById():
 
                 return json.dumps(destination)
             #else:
-            #    return render_template('error.html', error = 'Unauthorized Access')
+                #return ('Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     
@@ -216,7 +225,6 @@ def addDestination():
                     return render_template('error.html',error = 'An error occurred!')
             #else:
             #    return render_template('error.html', error = 'Unauthorized Access')
-
     except Exception as e:
         return render_template('error.html',error = str(e))
     finally:
@@ -274,7 +282,6 @@ def logout():
     flash("You are signed out")
     return redirect(url_for('login'))
 
-
 @app.route('/error', methods=["POST","GET"])
 def error():
 	if request.method == "POST":
@@ -302,6 +309,8 @@ def changePassword():
                         flash("The old password is incorrect or the new password does not match.")
         except Exception as e:
             return render_template('error.html',error = str(e)) 
+    #else:
+        #return ('Unauthorized Access')
         finally:
             cursor.close() 
         return render_template('changePassword.html')
