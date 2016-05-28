@@ -49,7 +49,7 @@ Instruktioner
 ------
 1. Installera alla moduler ovan.
 2. Gå till rätt directory, d.v.s. där filen ligger på din dator (t.ex. cd Desktop).
-3. Skriv:
+3. Skriv (när du står i rätt directory):
 ```
 python app.py
 ```
