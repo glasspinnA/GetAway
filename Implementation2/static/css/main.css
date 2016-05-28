@@ -105,7 +105,7 @@ h2 {
 }
 
 .whiteH1 {
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -275,7 +275,7 @@ a:hover {
 
 #getaway {
 	position: fixed;
-	right: 1em;
+	left: 2em;
 	bottom: 0em;
 	z-index: 120;
     font-family: 'Pacifico', sans-serif;
@@ -301,7 +301,7 @@ a:hover {
 
 #bottomLeftDiv {
     position: absolute;
-	left: 4em;
+	right: 1em;
 	bottom: 4em;
 	z-index: 10;
     height: 50px;
