@@ -11,6 +11,10 @@
 	src: url('fonts/Pacifico.ttf');
 }
 
+html {
+      background: rgba(107, 130, 151, 1);  
+}
+
 body {
     font-family: 'helvetica neue';
     margin: 0px;
@@ -88,7 +92,7 @@ header {
 nav {
     float: left;
     width: 18%;
-    min-height: 300vh;
+    min-height: 100vh;
     background-color: rgba(73, 101, 127, 0.81);
 }
 
@@ -182,7 +186,7 @@ content {
     background-color: rgb(240, 240, 240);
     width: 82%;
     color: rgb(130, 130, 130);
-	min-height: 300vh;
+	min-height: 100vh;
 }
 
 .content {
