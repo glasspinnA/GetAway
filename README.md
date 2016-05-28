@@ -1,4 +1,4 @@
-# GetAway
+# GetAway - Let us inspire you.
 
 Instruktioner
 ------
