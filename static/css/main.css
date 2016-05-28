@@ -213,6 +213,22 @@ a:hover {
 		
 }
 
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
 #readMoresite h2,p {
 	filter: blur(0px);  /*Firefox*/
 	-webkit-filter: blur(0px); /*Chrome*/
@@ -228,9 +244,10 @@ a:hover {
 
 #readMoresite p {
 	text-align: center;
-	width: 400px;
+	width: 40em;
 	margin-right: auto;
 	margin-left: auto;
+    font-size: 20px;
 }
 
 #readMore {
