@@ -57,4 +57,5 @@ eller:
 ```
 python3.5 app.py
 ```
-Notera var du har installerat dina moduler och vilken python-version du använder. GetAway är kompatibelt med både Python 2 och 3.
+Notera var du har installerat dina moduler och vilken python-version du använder. 
+GetAway är kompatibelt med både Python 2 och 3.
