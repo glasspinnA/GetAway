@@ -2,7 +2,7 @@
 
 Instruktioner
 ------
-1. Installera Python samt alla moduler nedan.
+1. Installera Python samt alla moduler som finns listade nedan.
 2. Gå till rätt directory, d.v.s. där filen ligger på din dator, t.ex: 
 ```
 cd Desktop
