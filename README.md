@@ -4,6 +4,12 @@ Python (3.5.1)
 ------
 https://www.python.org/downloads/release/python-351/
 
+eller
+
+Python (2.7.11)
+------
+https://www.python.org/downloads/release/python-2711/
+
 pip
 ------
 https://pypi.python.org/pypi/pip
