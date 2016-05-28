@@ -73,10 +73,10 @@ def upload():
     
 @app.route('/add')
 def showAdd():
-    #if session.get('user'):
+    if session.get('user'):
         return render_template('add.html')
-    #else:
-        #return render_template('error.html', error = 'Unauthorized Access')
+    else:
+        return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Uppdatera inlägg.
     
@@ -84,7 +84,7 @@ def showAdd():
 def update():
     try:
         with mysql.cursor() as cursor:
-            #if session.get('user'):
+            if session.get('user'):
                 _title = request.form['title']
                 _country = request.form['country']
                 _description = request.form['description']
@@ -100,8 +100,8 @@ def update():
                     return json.dumps({'status':'OK'})
                 else:
                     return json.dumps({'status':'ERROR'})
-            #else:
-                #return ('Unauthorized Access')
+            else:
+                return ('Unauthorized Access')
     except Exception as e:
         return json.dumps({'status':'Unauthorized access'})
     finally:
@@ -113,7 +113,6 @@ def update():
 def getAll():
     try:
         with mysql.cursor() as cursor:
-            #if session.get('user'):
                 cursor.callproc('sp_GetAllWishes',())
                 destinations = cursor.fetchall()
                          
@@ -129,8 +128,6 @@ def getAll():
                     destinations_dict.append(destination_dict)
                 
                 return json.dumps(destinations_dict)
-            #else:
-                #return ('Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     finally:
@@ -140,10 +137,10 @@ def getAll():
         
 @app.route('/dashboard')
 def showDashboard():
-    #if session.get('user'):
+    if session.get('user'):
         return render_template('dashboard.html')
-    #else:
-        #return render_template('error.html', error = 'Unauthorized Access')
+    else:
+        return render_template('error.html', error = 'Unauthorized Access')
 
 # FUNKTION: Ta bort inlägg.
 
@@ -151,7 +148,7 @@ def showDashboard():
 def delete():
     try:
         with mysql.cursor() as cursor:
-            #if session.get('user'):
+            if session.get('user'):
                 _id = request.form['id']
 
                 cursor.callproc('sp_deleteWish',(_id.split()))
@@ -162,8 +159,8 @@ def delete():
                     return json.dumps({'status':'OK'})
                 else:
                     return json.dumps({'status':'An Error occured'})
-            #else:
-                #return ('Unauthorized Access')
+            else:
+                return ('Unauthorized Access')
     except Exception as e:
         return json.dumps({'status':str(e)})
     finally:
@@ -175,7 +172,7 @@ def delete():
 def getById():
     try:
         with mysql.cursor() as cursor:
-            #if session.get('user'):
+            if session.get('user'):
             
                 _id = request.form['id']
     
@@ -186,8 +183,8 @@ def getById():
                 destination.append({'Id':result[0][0],'Title':result[0][1],'Country': result[0][2],'Description':result[0][3],'FilePath':result[0][4],'Tag':result[0][5]})
 
                 return json.dumps(destination)
-            #else:
-                #return ('Unauthorized Access')
+            else:
+                return ('Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     
@@ -197,7 +194,7 @@ def getById():
 def addDestination():    
     try:
         with mysql.cursor() as cursor:
-            #if session.get('user'):
+            if session.get('user'):
                 _title = request.form['inputTitle']
                 _country = request.form['inputCountry']
                 _description = request.form['inputDescription']
@@ -223,8 +220,8 @@ def addDestination():
                     return redirect('/dashboard')
                 else:
                     return render_template('error.html',error = 'An error occurred!')
-            #else:
-            #    return render_template('error.html', error = 'Unauthorized Access')
+            else:
+                return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
     finally:
@@ -309,12 +306,12 @@ def changePassword():
                         flash("The old password is incorrect or the new password does not match.")
         except Exception as e:
             return render_template('error.html',error = str(e)) 
-    #else:
-        #return ('Unauthorized Access')
+        else:
+            return ('Unauthorized Access')
         finally:
             cursor.close() 
-        return render_template('changePassword.html')
-    return redirect(url_for('login'))
+            return render_template('changePassword.html')
+        return redirect(url_for('login'))
 
 if __name__ == "__main__":
     app.run(debug=True, port=5002)
