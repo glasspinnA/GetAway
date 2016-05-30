@@ -97,7 +97,7 @@ function hideFrontPage() {
     document.getElementById('picture').style.opacity = 0;
     
     $('#send_data').attr('disabled', 'disabled');
-    setTimeout(enable, 500);
+    setTimeout(enable, 800);
     $('#doneStatus').hide();
     $('#loadingStatus').show();
     
@@ -175,7 +175,7 @@ $(document).ready(function() {
             success:function(response) {
                 
                 var data = JSON.parse(response);
-                
+
                 // Sätter ett mellanrum mellan taggarna (för tydlighet)
                 var arr = criterias.split(' ');
                 
@@ -215,17 +215,19 @@ $(document).ready(function() {
 
                 // Delar upp numren där det finns kommatecken så att inte t.ex. 10 blir 1 och 0.
                 var newCounter = counter.split(',');
-                     
+                
+                var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
+                    console.log('händer')
+                if (data[rand] != undefined) {
+               
                 // En av positionerna slumpas fram
                 do {
-                    var rand = newCounter[Math.floor(Math.random() * newCounter.length)];
-                    
+                    rand = newCounter[Math.floor(Math.random() * newCounter.length)];
                     /* Kollar om den nya slumpade positionen matchar det som slumpades förra gången */
                     if(rand != previousRandomNumber){
                         
                 // Här sätts all information till lämplig div
                 // Om ett resmål inte finns, skrivs ett felmeddelande och du återkommer till startsidan.
-                if (data[rand] != undefined) {
                     
                     $('#title').empty(); 
                     var title = $('<h1>');
@@ -246,11 +248,6 @@ $(document).ready(function() {
                     img.append(data[rand].FilePath)
                     $('#picture').append(img).fadeTo( '500' , 1);
                 
-                } else {
-                    alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
-                    location.reload();
-                    return false;
-                }
                     }
                 } while (rand == previousRandomNumber)
                     if (counter.length != 2) {
@@ -258,6 +255,11 @@ $(document).ready(function() {
                         /* sätter den slumpade positionen till previousRandomNumber */
                         previousRandomNumber =  rand ;
                     }
+                     } else {
+                    alert('Det verkar inte finnas några resmål med dessa kriterier. Testa igen.')
+                    location.reload();
+                    return false;
+                }
             },
             error:function(error){
             console.log(error);
