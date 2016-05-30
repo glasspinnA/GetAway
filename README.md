@@ -1,5 +1,7 @@
 # GetAway
 
+Demo: http://getawayproject.pythonanywhere.com
+
 Instruktioner
 ------
 1. Installera Python samt alla moduler som finns listade nedan.
