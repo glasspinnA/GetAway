@@ -83,6 +83,7 @@ def showAdd():
 @app.route('/update', methods=['POST'])
 def update():
     try:
+        mysql.connect()
         with mysql.cursor() as cursor:
             if session.get('user'):
                 _title = request.form['title']
@@ -106,12 +107,14 @@ def update():
         return json.dumps({'status':'Unauthorized access'})
     finally:
         cursor.close()
+        mysql.close()
     
 # FUNKTION: Hämta alla inlägg (från databasen).
     
 @app.route('/getAll')
 def getAll():
     try:
+        mysql.connect()
         with mysql.cursor() as cursor:
                 cursor.callproc('sp_GetAllWishes',())
                 destinations = cursor.fetchall()
@@ -132,6 +135,7 @@ def getAll():
         return render_template('error.html',error = str(e))
     finally:
         cursor.close()
+        mysql.close()
                 
 # SIDA: Visa alla inlägg.
         
@@ -147,6 +151,7 @@ def showDashboard():
 @app.route('/delete',methods=['POST'])
 def delete():
     try:
+        mysql.connect()
         with mysql.cursor() as cursor:
             if session.get('user'):
                 _id = request.form['id']
@@ -165,12 +170,14 @@ def delete():
         return json.dumps({'status':str(e)})
     finally:
         cursor.close()
+        mysql.close()
         
 # FUNKTION: Hämta ett inläggs id (används för redigering).
     
 @app.route('/getById',methods=['POST'])
 def getById():
     try:
+        mysql.connect()
         with mysql.cursor() as cursor:
             if session.get('user'):
             
@@ -187,12 +194,16 @@ def getById():
                 return ('Unauthorized Access')
     except Exception as e:
         return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        mysql.close()
     
 # FUNKTION: Lägg till.   
         
 @app.route('/addDestination',methods=['POST'])
 def addDestination():    
     try:
+        mysql.connect()
         with mysql.cursor() as cursor:
             if session.get('user'):
                 _title = request.form['inputTitle']
@@ -226,6 +237,7 @@ def addDestination():
         return render_template('error.html',error = str(e))
     finally:
         cursor.close()
+        mysql.close()
 
 #Metod som kontrollerar om det finns någon aktiv session eller inte
 #Metoden droppar också session om den har varit inaktiv i 20 sekunder
@@ -243,6 +255,7 @@ def before_request():
 def login():
     global passwordFromDB
     try:
+        mysql.connect()
         with mysql.cursor() as cursor:
             if request.method == 'POST':
                 usernameInput = request.form['username']
@@ -262,6 +275,7 @@ def login():
         return render_template('login.html')
     finally:
         cursor.close()
+        mysql.close()
              
 #Metod som renderar admin sidan
 @app.route('/admin')
@@ -292,6 +306,7 @@ def error():
 def changePassword():
     if g.user:
         try:
+            mysql.connect()
             with mysql.cursor() as cursor:
                 if request.method == "POST":
                     oldPasswordInput = request.form['oldPassword']
@@ -309,7 +324,8 @@ def changePassword():
         else:
             return ('Unauthorized Access')
         finally:
-            cursor.close() 
+            cursor.close()
+            mysql.close()
             return render_template('changePassword.html')
         return redirect(url_for('login'))
 
