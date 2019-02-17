@@ -1,83 +1,16 @@
 # GetAway
 
-Demo: http://getawayproject.pythonanywhere.com
+This was a project created by five people in the first year of university. The goal of the project was to create a website which helps users to new exciting travel destinations. The webpage is going to randomize suggestion of destinations based on a number of criteria which the user have selected.  
 
-Instruktioner
-------
-1. Installera Python samt alla moduler som finns listade nedan.
-2. Gå till rätt directory, d.v.s. där filen ligger på din dator, t.ex: 
-```
-cd Desktop/GetAway
-```
-Skriv sedan (när du står i rätt directory):
-```
-python app.py
-```
-eller:
-```
-python3.5 app.py
-```
-*GetAway är kompatibelt med både Python 2 och 3.*
+## Screenshots
 
-Python
-------
-
-**Python (3.5.1)**
-
-https://www.python.org/downloads/release/python-351/
-
-eller
-
-**Python (2.7.11)**
-
-https://www.python.org/downloads/release/python-2711/
-
-pip
-------
-https://pypi.python.org/pypi/pip
-```
-För OSX
-sudo easy_install pip
-
-För Windows
-python get-pip.py
-```
-Flask
-------
-http://flask.pocoo.org/docs/0.10/
-```
-För OSX
-$ pip install Flask
-
-För Windows
-pip install Flask
-```
-PyMySQL
-------
-https://github.com/PyMySQL/PyMySQL
-```
-För OSX
-$ pip install PyMySQL
-
-För Windows
-pip install PyMySQL
-```
-
-Werkzeug
-------
-http://werkzeug.pocoo.org
-```
-För OSX
-$ pip install Werkzeug
-
-För Windows
-pip install Werkzeug
-```
-
-Färdig?
-------
-Då kanske du vill kolla in vår admin-sida?
-```
-127.0.0.1:5002/admin
-```
-*Till detta behöver du lösenord till databasen samt till admin-kontot. Hör av dig till oss om du är intresserad.*
+*When the user enters the webpage, the user lands on this page where the user can select his or hers criteria*
+![Screenshots](screenshots/ga_landningpage.png)
+*The user gets one results on a destination*
+![Screenshots](screenshots/ga_result.png)
+*The user can read more about the destination*
+![Screenshots](screenshots/ga_result_info.png)
+*Login page for admin*
+![Screenshots](screenshots/ga_admin_login.png)
+*Dashboard where the admin can submit new destination recommendations, change password etc*
+![Screenshots](screenshots/ga_add.png)
