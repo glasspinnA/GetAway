@@ -7,7 +7,7 @@ This was a project created by five people in the first year of university. The g
 *When the user enters the webpage, the user lands on this page where the user can select his or hers criteria*
 ![Screenshots](screenshots/ga_landningpage.png)
 *The user gets one results on a destination*
-![Screenshots](screenshots/ga_result.png)
+![Screenshots](screenshots/GA_result.png)
 *The user can read more about the destination*
 ![Screenshots](screenshots/ga_result_info.png)
 *Login page for admin*
